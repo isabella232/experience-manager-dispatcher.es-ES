@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: referencia
 discoiquuid: aeffee 8 e-bb 34-42 a 7-9 a 5 e-b 7 d 0 e 848391 a
 translation-type: tm+mt
-source-git-commit: bd8fff69a9c8a32eade60c68fc75c3aa411582af
+source-git-commit: 2f0ca874c23cb7aecbcedc22802c46a295bb4d75
 
 ---
 
@@ -567,20 +567,23 @@ Cada elemento de la `/filter` sección incluye un tipo y un patrón que coincide
 
 * **Elemento de la línea de solicitud:** Incluya `/method``/url`, `/query`o `/protocol` y un patrón para filtrar solicitudes según estas partes específicas de la parte de la línea de solicitud de la solicitud HTTP. El filtrado en elementos de la línea de solicitud (en lugar de en la línea de solicitud completa) es el método de filtro preferido.
 
-* **propiedad de resplandor**: La `/glob` propiedad se utiliza para coincidir con toda la línea de solicitud de la solicitud HTTP.
-
-Para obtener más información sobre /glob, consulte [Diseño de patrones para propiedades](#designing-patterns-for-glob-properties)de resplandor. Las reglas para utilizar caracteres comodín en /glob propiedades también se aplican a los patrones para elementos coincidentes de la línea de solicitud.
+* **Elementos avanzados de la línea de solicitud:** A partir de Dispatcher 4.2.0, hay cuatro nuevos elementos de filtro disponibles para su uso. Estos nuevos elementos son `/path`, `/selectors`y `/extension``/suffix` respectivamente. Incluya uno o más de estos elementos para controlar aún más los patrones de URL.
 
 >[!NOTE]
 >
->Desde la versión 4.2.0 de Dispatcher, se han añadido varias mejoras en las funciones de registro y configuraciones de filtro:
->
->* [Compatibilidad con expresiones regulares POSIX](dispatcher-configuration.md#main-pars-title-1996763852)
->* [Compatibilidad para filtrar elementos adicionales de la URL de solicitud](dispatcher-configuration.md#main-pars-title-694578373)
->* [Registro de rastreo](dispatcher-configuration.md#main-pars-title-1950006642)
->
+>Para obtener más información sobre la parte de la línea de solicitud que hace referencia a cada uno de estos elementos, consulte la [página Sling URL Decomposition](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) wiki.
 
+* **propiedad de resplandor**: La `/glob` propiedad se utiliza para coincidir con toda la línea de solicitud de la solicitud HTTP.
 
+>[!CAUTION]
+>
+>El filtrado con globos está obsoleto en Dispatcher. Por lo tanto, debe evitar el uso de globos en `/filter` las secciones, ya que puede provocar problemas de seguridad. Entonces, en lugar de:
+
+`/glob "* *.css *"`
+
+debe utilizar
+
+`/url "*.css"`
 
 #### La parte de la línea de solicitud de solicitudes HTTP {#the-request-line-part-of-http-requests}
 
@@ -593,6 +596,18 @@ Los caracteres &lt; CRLF &gt; ponderan un retorno de carro seguido de un salto d
 GET /content/geometrixx-outdoors/en.html HTTP .1 .1 &lt; CRLF &gt;
 
 Los patrones deben tener en cuenta los caracteres de espacio en la línea de solicitud y los caracteres &lt; CRLF &gt;.
+
+#### Comillas dobles vs. comillas simples {#double-quotes-vs-single-quotes}
+
+Al crear las reglas de filtro, utilice comillas dobles `"pattern"` para patrones simples. Si utiliza Dispatcher 4.2.0 o posterior y el patrón incluye una expresión regular, debe encerrar el patrón regex `'(pattern1|pattern2)'` dentro de comillas simples.
+
+#### Expresiones regulares {#regular-expressions}
+
+Después de Dispatcher 4.2.0, puede incluir expresiones regulares POSIX Extended en los patrones de filtro.
+
+#### Solución de problemas de filtros {#troubleshooting-filters}
+
+Si los filtros no se activan de la manera esperada, habilite [Rastrear registro](#trace-logging) en dispatcher para que pueda ver qué filtro está interceptando la solicitud.
 
 #### Filtro de ejemplo: Denegar todo {#example-filter-deny-all}
 
@@ -659,15 +674,6 @@ Este filtro permite extensiones en directorios de contenido no públicos usando 
 ```
 
 #### Filtro de ejemplo: Filtrar elementos adicionales de una dirección URL de solicitud {#example-filter-filter-additional-elements-of-a-request-url}
-
-Una de las mejoras introducidas en dispatcher 4.2.0 es la capacidad para filtrar elementos adicionales de la dirección URL de la solicitud. Los nuevos elementos introducidos son:
-
-* path
-* selectores
-* extension
-* sufijo
-
-Se pueden configurar agregando la propiedad del mismo nombre a la regla de filtrado: `/path`, `/selectors`y `/extension``/suffix` respectivamente.
 
 A continuación se muestra un ejemplo de regla que bloquea la toma de contenido desde `/content` la ruta y el subárbol, utilizando filtros para ruta, selectores y extensiones:
 
