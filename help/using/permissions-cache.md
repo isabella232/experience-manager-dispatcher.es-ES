@@ -1,79 +1,79 @@
 ---
-title: Almacenamiento en caché de contenido protegido
+title: Almacenamiento en caché de contenido seguro
 seo-title: Almacenamiento en caché de contenido seguro en AEM Dispatcher
-description: Descubra cómo funciona el almacenamiento en caché sensible a los permisos en Dispatcher.
-seo-description: Descubra cómo funciona el almacenamiento en caché sensible a los permisos en AEM Dispatcher.
-uuid: abfed 68 a -2 efe -45 f 6-bdf 7-2284931629 d 6
+description: Descubra cómo funciona el almacenamiento en caché con distinción de permisos en Dispatcher.
+seo-description: Descubra cómo funciona el almacenamiento en caché con distinción de permisos en AEM Dispatcher.
+uuid: abfeed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: Usuario
-products: SG_ EXPERIENCEMANAGER/DISPATCHER
+products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: referencia
-discoiquuid: 4 f 9 b 2 bc 8-a 309-47 bc-b 70 d-a 1 c 0 da 78 d 464
+discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 translation-type: tm+mt
 source-git-commit: 8dd56f8b90331f0da43852e25893bc6f3e606a97
 
 ---
 
 
-# Almacenamiento en caché de contenido protegido {#caching-secured-content}
+# Almacenamiento en caché de contenido seguro {#caching-secured-content}
 
-El almacenamiento en caché sensible a los permisos permite almacenar en caché las páginas seguras. Dispatcher comprueba los permisos de acceso de los usuarios para una página antes de enviar la página en caché.
+El almacenamiento en caché con distinción de permisos permite almacenar en caché las páginas seguras. Dispatcher comprueba los permisos de acceso del usuario para una página antes de entregar la página en caché.
 
-Dispatcher incluye el módulo authchecker que implementa almacenamiento en caché sensible a permisos. Cuando se activa el módulo, el procesamiento llama a un servlet AEM para realizar la autenticación de usuario y la autorización del contenido solicitado. La respuesta servlet determina si el contenido se entrega al explorador Web.
+Dispatcher incluye el módulo AuthChecker que implementa almacenamiento en caché que distingue permisos. Cuando se activa el módulo, el procesamiento llama a un servlet de AEM para realizar la autenticación del usuario y la autorización del contenido solicitado. La respuesta del servlet determina si el contenido se envía al explorador Web.
 
 Dado que los métodos de autenticación y autorización son específicos de la implementación de AEM, es necesario crear el servlet.
 
 >[!NOTE]
 >
->Use `deny` filtros para aplicar restricciones de seguridad en blanco. Utilice el almacenamiento en caché sensible a los permisos para las páginas configuradas para permitir el acceso a un subconjunto de usuarios o grupos.
+>Utilice `deny` filtros para aplicar restricciones de seguridad generales. Utilice el almacenamiento en caché con distinción de permisos para páginas configuradas para permitir el acceso a un subconjunto de usuarios o grupos.
 
-Los siguientes diagramas ilustran el orden de los eventos que se producen cuando un explorador Web solicita una página para la cual se utiliza el almacenamiento en caché sensible a los permisos.
+Los siguientes diagramas ilustran el orden de los eventos que se producen cuando un explorador Web solicita una página para la que se utiliza el almacenamiento en caché que distingue permisos.
 
 ## La página se almacena en caché y el usuario está autorizado {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
 1. Dispatcher determina que el contenido solicitado se almacena en caché y es válido.
-1. Dispatcher envía un mensaje de solicitud al procesamiento. La sección HEAD incluye todas las líneas de encabezado de la solicitud del navegador.
+1. Dispatcher envía un mensaje de solicitud al procesamiento. La sección HEAD incluye todas las líneas de encabezado de la solicitud del explorador.
 1. El procesamiento llama al autorizador para realizar la comprobación de seguridad y responde a Dispatcher. El mensaje de respuesta incluye un código de estado HTTP de 200 para indicar que el usuario está autorizado.
-1. Dispatcher envía un mensaje de respuesta al explorador que consiste en líneas de encabezado de la respuesta de procesamiento y el contenido almacenado en caché en el cuerpo.
+1. Dispatcher envía un mensaje de respuesta al navegador que consta de las líneas de encabezado de la respuesta de procesamiento y del contenido almacenado en caché del cuerpo.
 
 ## La página no se almacena en caché y el usuario está autorizado {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
-1. Dispatcher determina que el contenido no se almacena en caché o requiere actualización.
-1. Dispatcher envía la solicitud original al procesamiento.
+1. Dispatcher determina que el contenido no se almacena en caché o que requiere actualización.
+1. Dispatcher reenvía la solicitud original al procesamiento.
 1. El procesamiento llama al servlet del autorizador para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
-1. Dispatcher envía la respuesta al explorador. Dispatcher agrega el cuerpo del mensaje de respuesta del procesamiento a la caché.
+1. Dispatcher reenvía la respuesta al explorador. Dispatcher agrega el cuerpo del mensaje de respuesta del procesamiento a la caché.
 
 ## El usuario no está autorizado {#user-is-not-authorized}
 
 ![](assets/chlimage_1-2.png)
 
 1. Dispatcher comprueba la caché.
-1. Dispatcher envía un mensaje de solicitud al procesamiento que incluye todas las líneas de encabezado de la solicitud del navegador.
-1. El procesamiento llama al servlet del autorizador para realizar una comprobación de seguridad que falla y el procesamiento envía la solicitud original a Dispatcher.
+1. Dispatcher envía un mensaje de solicitud al procesamiento que incluye todas las líneas de encabezado de la solicitud del explorador.
+1. El procesamiento llama al servlet del autorizador para realizar una comprobación de seguridad que falla y el procesamiento reenvía la solicitud original al despachante.
 
-## Implementación de caché sensible a los permisos {#implementing-permission-sensitive-caching}
+## Implementación de almacenamiento en caché que distingue permisos {#implementing-permission-sensitive-caching}
 
-Para implementar el almacenamiento en caché sensible a los permisos, realice las tareas siguientes:
+Para implementar el almacenamiento en caché que distingue permisos, realice las siguientes tareas:
 
-* Desarrollar un servlet que lleve a cabo la autenticación y autorización
-* Configurar Dispatcher
+* Desarrollar un servlet que realice autenticación y autorización
+* Configuración del despachante
 
 >[!NOTE]
 >
->Normalmente, los recursos seguros se almacenan en una carpeta distinta a los archivos no seguros. Por ejemplo, /content/secure/
+>Normalmente, los recursos seguros se almacenan en una carpeta independiente que los archivos no seguros. Por ejemplo, /content/secure/
 
 
 ## Creación del servlet de autorización {#create-the-authorization-servlet}
 
-Cree e implemente un servlet que lleve a cabo la autenticación y autorización del usuario que solicita el contenido web. El servlet puede utilizar cualquier método de autenticación y autorización, como la cuenta de usuario y el repositorio de AEM, o un servicio de búsqueda LDAP. Implemente el servlet en la instancia de AEM que Dispatcher usa como representación.
+Cree e implemente un servlet que realice la autenticación y autorización del usuario que solicita el contenido web. El servlet puede utilizar cualquier método de autenticación y autorización, como la cuenta de usuario de AEM y las ACL del repositorio, o un servicio de búsqueda LDAP. El servlet se implementa en la instancia de AEM que Dispatcher utiliza como procesamiento.
 
-El servlet debe ser accesible para todos los usuarios. Por lo tanto, el servlet debería ampliar `org.apache.sling.api.servlets.SlingSafeMethodsServlet` la clase, que proporciona acceso de solo lectura al sistema.
+Todos los usuarios deben tener acceso al servlet. Por lo tanto, el servlet debe extender la `org.apache.sling.api.servlets.SlingSafeMethodsServlet` clase, que proporciona acceso de sólo lectura al sistema.
 
-El servlet solo recibe solicitudes HEAD del procesamiento, por lo que solo es necesario implementar `doHead` el método.
+El servlet sólo recibe solicitudes HEAD del procesamiento, por lo que solo necesita implementar el `doHead` método.
 
 El procesamiento incluye el URI del recurso solicitado como parámetro de la solicitud HTTP. Por ejemplo, se accede a un servlet de autorización mediante `/bin/permissioncheck`. Para realizar una comprobación de seguridad en la página /content/geometrixx-outdoors/en.html, el procesamiento incluye la siguiente URL en la solicitud HTTP:
 
@@ -81,13 +81,13 @@ El procesamiento incluye el URI del recurso solicitado como parámetro de la sol
 
 El mensaje de respuesta servlet debe contener los siguientes códigos de estado HTTP:
 
-* 200: Se ha superado la autenticación y la autorización.
+* 200: Autenticación y autorización pasadas.
 
-El siguiente servlet de ejemplo obtiene la URL del recurso solicitado de la solicitud HTTP. El código utiliza la `Property` anotación Felix SCR para definir el valor de `sling.servlet.paths` la propiedad en /bin/permissioncheck. En `doHead` el método, el servlet obtiene el objeto session y utiliza `checkPermission` el método para determinar el código de respuesta adecuado.
+El siguiente servlet de ejemplo obtiene la dirección URL del recurso solicitado de la solicitud HTTP. El código utiliza la anotación Félix SCR `Property` para establecer el valor de la `sling.servlet.paths` propiedad en /bin/permission check. En el `doHead` método, el servlet obtiene el objeto session y utiliza el `checkPermission` método para determinar el código de respuesta adecuado.
 
 >[!NOTE]
 >
->El valor de la propiedad sling. servlet. paths debe estar habilitado en el servicio Sling Servlet Resolver (org. apache. sling. servlets. resolver. slingservletresolver).
+>El valor de la propiedad sling.servlet.paths debe habilitarse en el servicio Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
 ### Servlet de ejemplo {#example-servlet}
 
@@ -138,23 +138,23 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 }
 ```
 
-## Configurar Dispatcher para almacenar en caché los permisos {#configure-dispatcher-for-permission-sensitive-caching}
+## Configuración de Dispatcher para almacenamiento en caché con distinción de permisos {#configure-dispatcher-for-permission-sensitive-caching}
 
-La sección auth_ checker del despachante. any controla el comportamiento del almacenamiento en caché sensible a los permisos. La sección auth_ checker incluye las siguientes subsecciones:
+La sección auth_checker del archivo dispatcher.any controla el comportamiento del almacenamiento en caché que distingue permisos. La sección auth_checker incluye las siguientes subsecciones:
 
-* `url`: Valor de `sling.servlet.paths` la propiedad del servlet que realiza la comprobación de seguridad.
+* `url`:: El valor de la `sling.servlet.paths` propiedad del servlet que realiza la comprobación de seguridad.
 
-* `filter`: Filtros que especifican las carpetas en las que se aplica el almacenamiento en caché sensible a los permisos. Normalmente, se `deny` aplica un filtro a todas las carpetas y `allow` los filtros se aplican a las carpetas seguras.
+* `filter`:: Filtros que especifican las carpetas a las que se aplica la caché que distingue permisos. Normalmente, se aplica un `deny` filtro a todas las carpetas y `allow` los filtros a las carpetas seguras.
 
-* `headers`: Especifica los encabezados HTTP que incluye el servlet de autorización en la respuesta.
+* `headers`:: Especifica los encabezados HTTP que incluye el servlet de autorización en la respuesta.
 
-Cuando se inicia Dispatcher, el archivo de registro Dispatcher incluye el siguiente mensaje de nivel de depuración:
+Cuando se inicia Dispatcher, el archivo de registro de Dispatcher incluye el siguiente mensaje de nivel de depuración:
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-La siguiente sección auth_ checker configura Dispatcher para utilizar el servlet del tema prevoius. La sección de filtro hace que las comprobaciones de permisos se realicen únicamente en recursos HTML seguros.
+En el siguiente ejemplo, la sección auth_checker configura Dispatcher para que utilice el servlet del tema anterior. La sección de filtros hace que las comprobaciones de permisos se realicen únicamente en recursos HTML seguros.
 
-### Configuración de ejemplo {#example-configuration}
+### Ejemplo de configuración {#example-configuration}
 
 ```xml
 /auth_checker
