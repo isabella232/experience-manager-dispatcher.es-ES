@@ -3,11 +3,11 @@ title: Notas de la versión de AEM Dispatcher
 seo-title: Notas de la versión de AEM Dispatcher
 description: Notas de la versión específicas de Adobe Experience Manager Dispatcher
 seo-description: Notas de la versión específicas de Adobe Experience Manager Dispatcher
-uuid: ae 3 ccf 62-0514-4 c 03-a 3 b 9-71799 a 482 cbd
+uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
 topic-tags: notas de la versión
 content-type: referencia
-products: SG_ EXPERIENCEMANAGER/6.4
-discoiquuid: ff 3 d 38 e 0-71 c 9-4 b 41-85 f 9-fa 896393 aac 5
+products: SG_EXPERIENCEMANAGER/6.4
+discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
 source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
 
@@ -18,18 +18,18 @@ source-git-commit: 2d72839d459973cba40f6a938ee157198c7cf50a
 
 ## Información de versión {#release-information}
 
-|  |
+|  |  |
 |--- |--- |
-| Productos | Adobe Experience Manager (AEM) Dispatcher |
+| Productos | Distribuidor de Adobe Experience Manager (AEM) |
 | Versión | 4.3.2 |
 | Tipo | Versión menor |
 | Fecha | 31 de enero de 2019 |
-| URL de descarga | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Servicios de información de Internet de Microsoft (IIS)](release-notes.md#iis)</li></ul> |
+| Descargar URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
 | Compatibilidad | AEM 6.1 o superior |
 
-## Requisitos del sistema y requisitos previos {#system-requirements-and-prerequisites}
+## Requisitos y requisitos previos del sistema {#system-requirements-and-prerequisites}
 
-Consulte la página [Plataformas](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) admitidas para obtener más información acerca de los requisitos y requisitos previos.
+Consulte la página Plataformas [](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) admitidas para obtener más información sobre los requisitos y requisitos previos.
 
 Adobe recomienda encarecidamente utilizar la versión más reciente de AEM Dispatcher para aprovechar la funcionalidad más reciente, las correcciones de errores más recientes y el mejor rendimiento posible.
 
@@ -39,73 +39,73 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ## Historial de versiones {#release-history}
 
-### Versión 4.3.2 (2019-Jan -31) {#jan}
+### Versión 4.3.2 (2019-Ene-31) {#jan}
 
-**Corrección de errores**:
+**Corrección** de errores:
 
-* DISP -734 - Dispatcher produce un bloqueo en insert_ output_ filter si no se establece como controlador
-* DISP -735 - RES no funciona en Linux Alpine
-* DISP -740 - La carga de Dispatcher en macos Mojave está deshabilitada de forma predeterminada
-* DISP -742 - Las solicitudes bloqueadas pueden filtrar información a recursos protegidos por autenticadores.
+* DISP-734 - Dispatcher provoca un bloqueo en insert_output_filter si no se establece como controlador
+* DISP-735 - Las REs no funcionan en Alpine Linux
+* DISP-740 - Cargar despachante en macOS Mojave está desactivado de forma predeterminada
+* DISP-742 - Las solicitudes bloqueadas pueden filtrar información a los recursos protegidos del comprobador de autenticación
 
 **Mejoras**:
 
-* DISP -746 - Cadenas no modificadas en Dispatcher. any debería generar una advertencia
+* DISP-746 - Las cadenas sin etiquetar en dispatcher.any deben generar una advertencia
 
 **Nueva función**:
 
-* DISP -747 - Proporcionar información de solicitud en el entorno Apache
+* DISP-747 - Proporciona información de solicitud en el entorno Apache
 
-### Versión 4.3.1 (2018-2018) {#oct}
+### Versión 4.3.1 (2018-Oct-16) {#oct}
 
-**Corrección de errores**:
+**Corrección** de errores:
 
-* DISP -656 - Dispatcher proporciona un encabezado etag incorrecto
-* DISP -694 - Suprimir advertencias cuando se mantienen conexiones viva
-* DISP -714 - La administración de sesiones basada en cookies no funciona en IIS
-* DISP -715 - Indicador seguro para cookie renderid
-* DISP -720 - Los archivos temporales no cerrados pueden llevar al agotamiento (demasiados archivos abiertos)
-* DISP -721 - Dispatcher interrumpe la encuesta () cuando Apache reinicia el elemento secundario
-* DISP -722 - Los archivos de caché se crean con el modo octal 0600.
-* DISP -723 - Tiempo de espera implícito de 10 minutos (y reintento) cuando los tiempos de espera de procesamiento se definen en 0
-* DISP -725 - Los caracteres finales después de cadenas se convierten de forma silenciosa en valor sin nombre
-* DISP -726 - Registro de una advertencia cuando ninguna granja coincide con el host entrante
-* DISP -727 - Dispatcher comprueba la longitud del contenido de los archivos de caché vacíos
-* DISP -730 - 404 al intentar acceder al archivo de encabezado sobre Dispatcher
-* DISP -731 - Dispatcher es vulnerable a la inyección de registros
-* DISP -732 - Dispatcher debe eliminar «/» consecutiva en la URL
-* DISP -733 - Dispatcher debe establecer (calculate) un encabezado de edad
-
-**Mejoras**:
-
-* DISP -656 - Dispatcher proporciona un encabezado etag incorrecto
-* DISP -694 - Suprimir advertencias cuando se mantienen conexiones viva
-* DISP -715 - Indicador seguro para cookie renderid
-* DISP -722 - Los archivos de caché se crean con el modo octal 0600.
-* DISP -726 - Registro de una advertencia cuando ninguna granja coincide con el host entrante
-
-### Versión 4.3.0 (2018-junio de 2018) {#jun}
-
-**Corrección de errores**:
-
-* DISP -682 - Nivel de registro numérico aplicado incorrectamente
-* DISP -685 - 32 bits Solaris SPARC binarios tienen una referencia undefined a__ divdi 3
-* DISP -688 - Dispatcher no devuelve el encabezado «X-Cache-Info» en la respuesta 404
-* DISP -690 - El encabezado Last-Modified no se puede almacenar en caché
-* DISP -691 - Accesos de acceso en w 3 wp. exe
-* DISP -693 - Need to update Architecture details for solaris servers on dispatcher download page
-* DISP -695 - Problema con dispatcherlog en el módulo Dispatcher 4.2.3
-* DISP -698 - Dispatcher TTL necesita admitir las directivas s-maxage y privadas
-* DISP -700 - Module no funciona correctamente en Linux Alpine
-* DISP -704 - Las solicitudes del explorador que contienen % 2 b se envían al Editor no codificado
-* DISP -705 - Dispatcher crash due to double free or corrupto (fasttop)
-* DISP -706 - Durante la invalidación, dispatcher hace referencia a vínculos simbólicos de referencia que pueden provocar un bucle infinito
-* DISP -709 - Bloquear algunas extensiones de URL personales
-* DISP -710 - Compilaciones para Linux no utilizable en Centos 6
+* DISP-656 - Dispatcher presenta un encabezado ETag incorrecto
+* DISP-694 - Suprimir las advertencias cuando las conexiones de mantenimiento se mantengan antiguas
+* DISP-714: la administración de sesiones basada en cookies no funciona en IIS
+* DISP-715 - Indicador seguro para cookie renderid
+* DISP-720 - Los archivos temporales no cerrados pueden provocar agotamiento (demasiados archivos abiertos)
+* DISP-721 - Dispatcher interrumpe la función poll() cuando Apache reinicia correctamente el elemento secundario
+* DISP-722 - Los archivos de caché se crean con el modo octal 0600
+* DISP-723: tiempo de espera implícito de 10 minutos (y reintento) cuando los tiempos de espera de procesamiento se establecen en 0
+* DISP-725 - Los caracteres finales después de que las cadenas se conviertan silenciosamente en valores sin nombre
+* DISP-726 - Registre una advertencia cuando ninguna granja coincida realmente con el host entrante
+* DISP-727 - Dispatcher comprueba la longitud del contenido de la solicitud para los archivos de caché vacíos
+* DISP-730 - 404 al intentar acceder al archivo de encabezado a través del despachante
+* DISP-731 - Dispatcher es vulnerable a la inyección de registro
+* DISP-732 - Dispatcher debe eliminar ‘/’ consecutivo en la dirección URL
+* DISP-733 - Dispatcher debe establecer (calcular) un encabezado de edad
 
 **Mejoras**:
 
-* DISP -652 - Dispatcher proporciona encabezados de fecha incorrectos
+* DISP-656 - Dispatcher presenta un encabezado ETag incorrecto
+* DISP-694 - Suprimir las advertencias cuando las conexiones de mantenimiento se mantengan antiguas
+* DISP-715 - Indicador seguro para cookie renderid
+* DISP-722 - Los archivos de caché se crean con el modo octal 0600
+* DISP-726 - Registre una advertencia cuando ninguna granja coincida realmente con el host entrante
+
+### Versión 4.3.0 (2018-Jun-13) {#jun}
+
+**Corrección** de errores:
+
+* DISP-682: nivel de registro numérico aplicado incorrectamente
+* DISP-685 - Los binarios Solaris SPARC de 32 bits tienen una referencia indefinida a __divdi3
+* DISP-688 - Dispatcher no devuelve el encabezado "X-Cache-Info" en la respuesta 404
+* DISP-690 - El encabezado de última modificación no se puede almacenar en caché
+* DISP-691 - Violaciones de acceso en w3wp.exe
+* DISP-693 - Necesidad de actualizar los detalles arquitectónicos de los servidores solaris en la página de descarga del despachante
+* DISP-695 - Problema con el nivel DispatcherLog en el módulo Dispatcher 4.2.3
+* DISP-698 - Dispatcher TTL necesita admitir el s-maxage y las directivas privadas
+* DISP-700 - El módulo no funciona correctamente en Alpine Linux
+* DISP-704 - Las solicitudes de explorador que contienen %2b se envían al Editor sin codificar
+* DISP-705 - Bloqueo de Dispatcher debido a doble gratuita o corrupción (tapa rápida)
+* DISP-706 - Durante la invalidación, dispatcher sigue los enlaces simbólicos de referencia inversa que pueden provocar un bucle infinito
+* DISP-709 - Bloquee algunas extensiones de URL personales
+* DISP-710 - Compilaciones para Linux no utilizables en Cent OS 6
+
+**Mejoras**:
+
+* DISP-652 - Dispatcher presenta un encabezado de fecha incorrecto
 
 ## Recursos útiles {#helpful-resources}
 
@@ -117,15 +117,15 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 | Plataforma | Arquitectura | Compatibilidad con SSL | Descargar |
 |---|---|---|---|
-| AIX | Powerpc (32 bits) | No | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
-| AIX | Powerpc (32 bits) | Sí | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
-| AIX | Powerpc (64 bits) | No | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
-| AIX | Powerpc (64 bits) | Sí | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
-| Linux | i 686 (32 bits) | No | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
-| Linux | i 686 (32 bits) | Sí | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
-| Linux | x 86_ 64 (64 bits) | No | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
-| Linux | x 86_ 64 (64 bits) | Sí | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
-| macOS | x 86_ 64 (64 bits) | No | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
+| AIX | PowerPC (32 bits) | No | [dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.2.tar.gz) |
+| AIX | PowerPC (32 bits) | Sí | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.2.tar.gz) |
+| AIX | PowerPC (64 bits) | No | [dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.2.tar.gz) |
+| AIX | PowerPC (64 bits) | Sí | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.2.tar.gz) |
+| Linux | i686 (32 bits) | No | [dispatcher-apache2.4-linux-i686-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.2.tar.gz) |
+| Linux | i686 (32 bits) | Sí | [dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.2.tar.gz) |
+| Linux | x86_64 (64 bits) | No | [dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.2.tar.gz) |
+| Linux | x86_64 (64 bits) | Sí | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.2.tar.gz) |
+| macOS | x86_64 (64 bits) | No | [dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.2.tar.gz) |
 | Solaris | AMD (32 bits) | No | [dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.2.tar.gz) |
 | Solaris | AMD (32 bits) | Sí | [dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.2.tar.gz) |
 | Solaris | AMD (64 bits) | No | [dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.2.tar.gz) |
@@ -139,7 +139,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 | Plataforma | Arquitectura | Compatibilidad con SSL | Descargar |
 |---|---|---|---|
-| Windows | x 86 (32 bits) | No | [dispatcher-iis-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
-| Windows | x 86 (32 bits) | Sí | [dispatcher-iis-windows-x86-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.2.zip) |
-| Windows | x 64 (64 bits) | No | [dispatcher-iis-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
-| Windows | x 64 (64 bits) | Sí | [dispatcher-iis-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
+| Windows | x86 (32 bits) | No | [dispatcher-is-windows-x86-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.2.zip) |
+| Windows | x86 (32 bits) | Sí | [dispatcher-is-windows-x86-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.2.zip) |
+| Windows | x64 (64 bits) | No | [dispatcher-is-windows-x64-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.2.zip) |
+| Windows | x64 (64 bits) | Sí | [dispatcher-is-windows-x64-ssl-4.3.2.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.2.zip) |
