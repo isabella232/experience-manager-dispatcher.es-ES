@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: referencia
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
+source-git-commit: 119f952439a59e51f769f285c79543aec8fdda37
 
 ---
 
@@ -19,7 +19,7 @@ source-git-commit: a997d2296e80d182232677af06a2f4ab5a14bfd5
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher incrustada en la documentación de una versión anterior de AEM.
+>Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
 Las siguientes secciones describen cómo configurar varios aspectos del despachante.
 
@@ -163,7 +163,7 @@ La propiedad `/farms` define uno o más conjuntos de comportamientos de Dispatch
 
 La `/farms` propiedad es una propiedad de nivel superior de la estructura de configuración. Para definir una granja, agregue una propiedad secundaria a la `/farms` propiedad. Utilice un nombre de propiedad que identifique de forma exclusiva el conjunto de servidores dentro de la instancia de Dispatcher.
 
-La `/*farmname*` propiedad tiene varios valores y contiene otras propiedades que definen el comportamiento de Dispatcher:
+La `/farmname` propiedad tiene varios valores y contiene otras propiedades que definen el comportamiento de Dispatcher:
 
 * Las direcciones URL de las páginas a las que se aplica el conjunto de servidores.
 * Una o varias URL de servicio (normalmente de instancias de publicación de AEM) que se utilizarán para procesar documentos.
@@ -213,6 +213,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/reintentarDelay](#specifying-the-page-retry-delay) | El retraso antes de volver a intentar una conexión con error. |
 | [/availablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics) | Sanciones que afectan a las estadísticas para cálculos de equilibrio de carga. |
 | [/failover](#using-the-fail-over-mechanism) | Volver a enviar solicitudes a diferentes procesamientos cuando se produzca un error en la solicitud original. |
+| [/auth_checker](permissions-cache.md) | Para almacenar en caché los permisos, consulte [Almacenamiento en caché de contenido](permissions-cache.md)seguro. |
 
 ## Especificar una página predeterminada (solo IIS) - /homepage {#specify-a-default-page-iis-only-homepage}
 
@@ -545,7 +546,7 @@ Con Dispatcher versión **4.1.6**, puede configurar la `/always-resolve` propied
 Además, esta propiedad se puede utilizar en caso de que se produzcan problemas de resolución dinámica de IP, como se muestra en el siguiente ejemplo:
 
 ```xml
-/rend {
+/renders {
   /0001 {
      /hostname "host-name-here"
      /port "4502"
@@ -780,7 +781,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configuración del servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
+>Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configurar el servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
 
 >[!NOTE]
 >
@@ -846,7 +847,7 @@ Los filtros de despachante deben bloquear el acceso a las siguientes páginas y 
 Tenga en cuenta que debe ver el procesamiento normal de la página para /content/add_valid_page.html?debug=layout.
 
 
-* /admin
+* /administrador
 * /system/console
 * /dav/crx.default
 * /crx
@@ -974,6 +975,7 @@ La `/cache` sección controla la forma en que Dispatcher almacena en caché los 
 * /headers
 * /mode
 * /GracePeriod
+* /enableTTL
 
 
 Una sección de caché de ejemplo podría tener el siguiente aspecto:
@@ -1051,11 +1053,11 @@ Sin embargo, si sus requisitos permiten almacenar en caché documentos autentica
 
 La `/rules` propiedad controla qué documentos se almacenan en caché según la ruta del documento. Independientemente de la propiedad /rules, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
 
-* Si el URI de la solicitud contiene un signo de interrogación ("?").\
+* Si el URI de la solicitud contiene el signo de interrogación ("?").\
    Esto generalmente indica una página dinámica, como un resultado de búsqueda que no necesita almacenarse en caché.
-* Falta la extensión del archivo.\
+* Si falta la extensión del archivo.\
    El servidor web necesita la extensión para determinar el tipo de documento (el tipo MIME).
-* El encabezado de autenticación está establecido (esto se puede configurar)
+* Si el encabezado de autenticación está establecido (esto se puede configurar)
 * Si la instancia de AEM responde con los siguientes encabezados:
 
    * `no-cache`
@@ -1064,7 +1066,7 @@ La `/rules` propiedad controla qué documentos se almacenan en caché según la 
 
 >[!NOTE]
 >
->El despachante puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre la caché de encabezados de respuesta, consulte la sección Encabezados [de respuesta HTTP en](dispatcher-configuration.md#caching-http-response-headers) caché.
+>Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#caching-http-response-headers) section.
 
 Cada elemento de la propiedad /rules incluye un patrón [glob](#designing-patterns-for-glob-properties) y un tipo:
 
@@ -1159,7 +1161,7 @@ Utilice la `/statfileslevel` propiedad para invalidar los archivos en caché seg
 
 * Cuando se invalida un archivo ubicado en un determinado nivel, se tocarán **todos** los archivos desde docroot `.stat` hasta **el nivel del archivo invalidado o el configurado** `statsfilevel` (el que sea más pequeño).
 
-   * Por ejemplo: si establece la `statfileslevel` propiedad en 6 y se invalida un archivo en el nivel 5, se tocará cada `.stat` archivo de docroot a 5. Continuando con este ejemplo, si un archivo se invalida en el nivel 7, entonces cada . `stat` desde docroot hasta 6 se tocará (desde `/statfileslevel = "6"`).
+   *  Por ejemplo: si establece la `statfileslevel` propiedad en 6 y se invalida un archivo en el nivel 5, se tocará cada `.stat` archivo de docroot a 5. Continuando con este ejemplo, si un archivo se invalida en el nivel 7, entonces cada . `stat` desde docroot hasta 6 se tocará (desde `/statfileslevel = "6"`).
 
 Solo se ven afectados los recursos** a lo largo de la ruta** al archivo invalidado. Considere el siguiente ejemplo: un sitio web utiliza la estructura `/content/myWebsite/xx/.` Si se establece `statfileslevel` como 3, se crea un `.stat`archivo de la siguiente manera:
 
@@ -1505,7 +1507,7 @@ Para obtener información adicional sobre el `httponly` indicador, lea [esta pá
 
 ### secure {#secure}
 
-Cuando las conexiones adhesivas están habilitadas, el módulo del despachante establece la `renderid` cookie. Esta cookie no tiene el indicador **seguro** , que debe agregarse para mejorar la seguridad. Puede hacerlo estableciendo la `secure` propiedad en el `/stickyConnections` nodo de un archivo de `dispatcher.any` configuración. El valor de la propiedad (0 o 1) define si la `renderid` cookie tiene el `secure` atributo anexado. El valor predeterminado es 0, lo que significa que el atributo se agregará si* *la solicitud entrante es segura. Si el valor se establece en 1, se agregará el indicador seguro independientemente de si la solicitud entrante es segura o no.
+Cuando las conexiones adhesivas están habilitadas, el módulo del despachante establece la `renderid` cookie. Esta cookie no tiene el indicador **seguro** , que debe agregarse para mejorar la seguridad. Puede hacerlo estableciendo la `secure` propiedad en el `/stickyConnections` nodo de un archivo de `dispatcher.any` configuración. El valor de la propiedad (0 o 1) define si la `renderid` cookie tiene el `secure` atributo anexado. El valor predeterminado es 0, lo que significa que el atributo se agregará **si** la solicitud entrante es segura. Si el valor se establece en 1, se agregará el indicador seguro independientemente de si la solicitud entrante es segura o no.
 
 ## Gestión de errores de conexión de procesamiento {#handling-render-connection-errors}
 
@@ -1595,16 +1597,16 @@ La configuración `/ignoreEINTR` en `"1"` hace que Dispatcher continúe intentan
 
 ## Diseño de patrones para propiedades de gob {#designing-patterns-for-glob-properties}
 
-Varias secciones del archivo de configuración de Dispatcher utilizan `glob` propiedades como criterios de selección para solicitudes de cliente. Los valores de las propiedades glob son patrones que Dispatcher compara con un aspecto de la solicitud, como la ruta del recurso solicitado o la dirección IP del cliente. For example, the items in the  section use glob patterns to identify the paths of the pages that Dispatcher acts on or rejects.`/filter`
+Varias secciones del archivo de configuración de Dispatcher utilizan `glob` propiedades como criterios de selección para solicitudes de cliente. Los valores de las propiedades glob son patrones que Dispatcher compara con un aspecto de la solicitud, como la ruta del recurso solicitado o la dirección IP del cliente. Por ejemplo, los elementos de la `/filter` sección utilizan patrones de glob para identificar las rutas de las páginas en las que Dispatcher actúa o rechaza.
 
-The glob values can include wildcard characters and alphanumeric characters to define the pattern.
+Los valores de los gob pueden incluir caracteres comodín y caracteres alfanuméricos para definir el patrón.
 
 | Carácter comodín | Descripción | Ejemplos |
 |--- |--- |--- |
-| `*` | Matches zero or more contiguous instances of any character in the string. The final character of the match is determined by either of the following situations: A character in the string matches the next character in the pattern, and the pattern character has the following characteristics:<br/><br/><ul><li>Not a *</li><li>Not a ?</li><li>A literal character (including a space) or a character class.</li><li>The end of the pattern is reached.</li></ul>Inside a character class, the character is interpreted literally. | `*/geo*` Matches any page below the  node and the  node. `/content/geometrixx``/content/geometrixx-outdoors` The following HTTP requests match the glob pattern: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` Matches any page below the  node. <br/>`/content/geometrixx-outdoors` For example, the following HTTP request matches the glob pattern: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | Matches any single character. Use outside character classes. Inside a character class, this character is interpreted literally. | `*outdoors/??/*`<br/> Matches the pages for any language in the geometrixx-outdoors site. For example, the following HTTP request matches the glob pattern: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>The following request does not match the glob pattern: <br/><ul><li>"GET /content/geometrixx-outdoors/en.html"</li></ul> |
-| `[ and ]` | Demarks the beginning and end of a character class. Character classes can include one or more character ranges and single characters.<br/>Se produce una coincidencia si el carácter de destino coincide con alguno de los caracteres de la clase de caracteres o dentro de un rango definido.<br/>If the closing bracket is not included, the pattern produces no matches. | `*[o]men.html*`<br/> Matches the following HTTP request:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Does not match the following HTTP request:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes solicitudes HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `-` | Indica un rango de caracteres. Para su uso en clases de caracteres.  Outside of a character class, this character is interpreted literally. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `*` | Coincide con cero o más instancias contiguas de cualquier carácter de la cadena. El carácter final de la coincidencia está determinado por cualquiera de las situaciones siguientes: <br/>Un carácter de la cadena coincide con el siguiente carácter del patrón y éste tiene las siguientes características:<br/><ul><li>No es *</li><li>¿No es un ?</li><li>Un carácter literal (incluido un espacio) o una clase de caracteres.</li><li>Se llega al final del patrón.</li></ul>Dentro de una clase de caracteres, el carácter se interpreta literalmente. | `*/geo*` Coincide con cualquier página debajo del `/content/geometrixx` nodo y del `/content/geometrixx-outdoors` nodo. Las siguientes solicitudes HTTP coinciden con el patrón glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Coincide con cualquier página debajo del `/content/geometrixx-outdoors` nodo. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
+| `?` | Coincide con cualquier carácter individual. Utilice clases de caracteres externos. Dentro de una clase de caracteres, este carácter se interpreta literalmente. | `*outdoors/??/*`<br/> Coincide con las páginas de cualquier idioma del sitio de Geometrixx-outdoors. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La siguiente solicitud no coincide con el patrón de glob: <br/><ul><li>"GET /content/geometrixx-outdoors/en.html"</li></ul> |
+| `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o varios rangos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con alguno de los caracteres de la clase de caracteres o dentro de un rango definido.<br/>Si no se incluye el soporte de cierre, el patrón no produce coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes solicitudes HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `-` | Indica un rango de caracteres. Para su uso en clases de caracteres.  Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Anula la clase de caracteres o caracteres que sigue. Se utiliza solo para negar caracteres e intervalos de caracteres dentro de clases de caracteres. Equivalente al `^ wildcard`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[!o]men.html*`<br/> Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` o `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Anula el rango de caracteres o caracteres que sigue. Se utiliza para negar solo caracteres e intervalos de caracteres dentro de clases de caracteres. Equivale al carácter `!` comodín. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | Se aplican los ejemplos del carácter `!` comodín, sustituyendo los `!` caracteres de los patrones de ejemplo por `^` caracteres. |
 
@@ -1786,14 +1788,14 @@ https://localhost:80/libs/wcm/core/content/siteadmin.html
 1. Active una página para comprobar que la caché se está vaciando correctamente.
 1. Si todo funciona correctamente, puede reducir el `loglevel` a `0`.
 
-## Uso de varios despachantes {#using-multiple-dispatchers}
+## Uso de varias instancias de Dispatcher {#using-multiple-dispatchers}
 
-En configuraciones complejas, puede utilizar varios despachantes. Por ejemplo, puede utilizar:
+En configuraciones complejas, puede utilizar varias instancias de Dispatcher. Por ejemplo, puede utilizar:
 
-* un despachante para publicar un sitio web en la Intranet
-* un segundo despachante, en una dirección diferente y con una configuración de seguridad diferente, para publicar el mismo contenido en Internet.
+* una instancia de Dispatcher para publicar un sitio web en la Intranet
+* una segunda instancia de Dispatcher, en una dirección y con una configuración de seguridad diferentes, para publicar el mismo contenido en Internet.
 
-En ese caso, asegúrese de que cada solicitud pasa por un único despachante. Un despachante no gestiona solicitudes procedentes de otro despachante. Por lo tanto, asegúrese de que ambos despachantes acceden directamente al sitio web de AEM.
+En ese caso, asegúrese de que cada solicitud pasa por una única instancia de Dispatcher. Una instancia de Dispatcher no gestiona solicitudes procedentes de otra instancia de Dispatcher. Por lo tanto, asegúrese de que ambas instancias de Dispatcher acceden directamente al sitio web de AEM.
 
 ## Depuración {#debugging}
 
