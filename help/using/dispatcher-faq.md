@@ -4,7 +4,7 @@ seo-title: Problemas principales de AEM Dispatcher
 description: Problemas principales de AEM Dispatcher
 seo-description: Problemas principales de Adobe AEM Dispatcher
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
@@ -25,15 +25,15 @@ Para el almacenamiento en caché, el módulo Dispatcher utiliza la capacidad del
 
 Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz del documento del servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
 
-* **Las actualizaciones** de contenido eliminan las páginas que han cambiado, así como los archivos que están directamente asociados a ellas.
-* **La invalidación** automática invalida automáticamente las partes de la caché que pueden estar desactualizadas tras una actualización. Por ejemplo, marca efectivamente las páginas relevantes como obsoletas, sin eliminar nada.
+* **Las actualizaciones de contenido** eliminan las páginas que han cambiado, así como los archivos que están directamente asociados a ellas.
+* **La invalidación automática** invalida automáticamente las partes de la caché que pueden estar desactualizadas tras una actualización. Por ejemplo, marca efectivamente las páginas relevantes como obsoletas, sin eliminar nada.
 
 ### ¿Cuáles son los beneficios del equilibrio de carga?
 
 Equilibrio de carga distribuye solicitudes de usuario (carga) en varias instancias de AEM.En la siguiente lista se describen las ventajas del equilibrio de carga:
 
-* **Mayor potencia** de procesamiento: En la práctica, esto significa que Dispatcher comparte solicitudes de documento entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. El despachante mantiene estadísticas internas para cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
-* **Mayor cobertura** de seguridad contra fallos: Si el despachante no recibe respuestas de una instancia, reenviará automáticamente solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una desaceleración del sitio, proporcional a la potencia computacional perdida.
+* **Mayor potencia** de procesamiento: En la práctica, esto significa que Dispatcher comparte solicitudes de documento entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
+* **Mayor cobertura** de seguridad contra fallos: Si el despachante no recibe respuestas de una instancia, reenviará automáticamente solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida.
 
 >[!NOTE]
 >
@@ -82,7 +82,7 @@ Para algunas aplicaciones, puede ser posible utilizar tanto conexiones adhesivas
 
 Sí, si la máquina es suficientemente poderosa. Sin embargo, se recomienda configurar la instancia de Dispatcher y AEM Publish en diferentes equipos.
 
-Normalmente, la instancia de Publish reside dentro del servidor de seguridad y el despachante reside en la DMZ. Si decide que la instancia de Publish y Dispatcher están en el mismo equipo físico, asegúrese de que la configuración del cortafuegos prohíba el acceso directo a la instancia de Publish desde redes externas.
+Normalmente, la instancia de Publish reside dentro del servidor de seguridad y Dispatcher reside en la DMZ. Si decide que la instancia de Publish y Dispatcher están en el mismo equipo físico, asegúrese de que la configuración del cortafuegos prohíba el acceso directo a la instancia de Publish desde redes externas.
 
 ### ¿Puedo almacenar en caché solo archivos con extensiones específicas?
 
@@ -153,20 +153,20 @@ Para habilitarlo:
 ¿Cómo determina el despachante si un documento está actualizado?
 Para determinar si un documento está actualizado, el despachante realiza estas acciones:
 
-Comprueba si el documento está sujeto a invalidación automática. En caso contrario, el documento se considera actualizado.
-Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior al último cambio disponible. Si es anterior, Dispatcher solicita la versión actual desde la instancia de AEM y reemplaza la versión en la caché.
+Comprueba si el documento depende de la invalidación automática. Si no depende de ello, considera que el documento está actualizado.
+Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior a la fecha del último cambio disponible. Si es anterior, Dispatcher solicita la versión actual a la instancia de AEM y reemplaza la versión en la caché.
 
 ### ¿Cómo devuelve el despachante los documentos?
 
-Puede definir si Dispatcher almacena en caché un documento mediante el [archivo de configuración](dispatcher-configuration.md) de Dispatcher `dispatcher.any`. El despachante comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
+Puede definir si Dispatcher almacena en caché un documento mediante el [archivo de configuración](dispatcher-configuration.md) de Dispatcher `dispatcher.any`. Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
 
 La `/rules` propiedad controla qué documentos se almacenan en caché según la ruta del documento. Independientemente de la `/rules` propiedad, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
 
-* Si el URI de la solicitud contiene un signo de interrogación `(?)`.
+* Si el URI de la solicitud contiene el signo de interrogación `(?)`.
 * Esto generalmente indica una página dinámica, como un resultado de búsqueda que no necesita almacenarse en caché.
-* Falta la extensión del archivo.
+* Si falta la extensión del archivo.
 * El servidor web necesita la extensión para determinar el tipo de documento (el tipo MIME).
-* El encabezado de autenticación está establecido (esto se puede configurar)
+* Si el encabezado de autenticación está establecido (esto se puede configurar)
 * Si la instancia de AEM responde con los siguientes encabezados:
    * no-cache
    * sin almacén
@@ -176,7 +176,7 @@ Dispatcher almacena archivos en caché en el servidor web como si formaran parte
 
 >[!NOTE]
 >
->El despachante puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre la caché de encabezados de respuesta, consulte la sección Encabezados [de respuesta HTTP en](dispatcher-configuration.md#caching-http-response-headers) caché.
+>Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#caching-http-response-headers) section.
 
 ### ¿Puedo implementar varios despachantes en una configuración?
 
