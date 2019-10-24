@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: referencia
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ---
 
@@ -27,7 +27,7 @@ Comment Type: draft
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher incrustada en la documentación de una versión anterior de AEM.
+>Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
 Utilice la página [Notas](release-notes.md) de revisión de Dispatcher para obtener el archivo de instalación más reciente de Dispatcher para el sistema operativo y el servidor web. Los números de versión de Dispatcher son independientes de los números de versión de Adobe Experience Manager y son compatibles con las versiones de Adobe Experience Manager 6.x, 5.x y Adobe CQ 5.x.
 
@@ -109,7 +109,7 @@ El archivo ZIP contiene los siguientes archivos:
 
 | Archivo | Descripción |
 |--- |--- |
-| `disp_iis.dll` |  Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
+| `disp_iis.dll` | Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
 | `disp_iis.ini` | Archivo de configuración para IIS. Este ejemplo se puede actualizar según sus necesidades. **Nota**: El archivo ini debe tener el mismo nombre-raíz que el archivo dll. |
 | `dispatcher.any` | Un archivo de configuración de ejemplo para Dispatcher. |
 | `author_dispatcher.any` | Un archivo de configuración de ejemplo para Dispatcher que trabaja con la instancia de creación. |
@@ -250,7 +250,7 @@ Utilice el siguiente procedimiento para escribir los mensajes de registro de Dis
    `IIS AppPool\DefaultAppPool`
 
 1. Haga clic en el botón Comprobar nombres. Cuando Windows resuelva la cuenta de usuario, haga clic en Aceptar.
-1. En el cuadro de diálogo Permisos de la carpeta del distribuidor, seleccione la cuenta que acaba de agregar, habilite todos los permisos de la cuenta** excepto Control total* y haga clic en Aceptar. Haga clic en Aceptar para cerrar el cuadro de diálogo Propiedades de la carpeta.
+1. En el cuadro de diálogo Permisos de la carpeta del despachante, seleccione la cuenta que acaba de agregar, habilite todos los permisos de la cuenta **excepto Control total,** y haga clic en Aceptar. Haga clic en Aceptar para cerrar el cuadro de diálogo Propiedades de la carpeta.
 1. Utilice un editor de texto para abrir el `disp_iis.ini` archivo.
 1. Agregue una línea de texto similar al siguiente ejemplo para configurar la ubicación del archivo de registro y, a continuación, guarde el archivo:
 
@@ -378,7 +378,7 @@ En la tabla siguiente se enumeran los ejemplos que se pueden utilizar; las entra
 
 **Entradas de configuración específicas del despachante**
 
-Las entradas de configuración específicas de Dispatcher se colocan después de la entrada LoadModule. En la tabla siguiente se muestra un ejemplo de configuración aplicable tanto a Unix como a Windows:
+Las entradas de configuración específicas del despachante se colocan después de la entrada LoadModule. En la tabla siguiente se muestra un ejemplo de configuración aplicable tanto a Unix como a Windows:
 
 **Windows y Unix**
 
@@ -569,7 +569,7 @@ Los archivos del archivo de instalación contienen los siguientes archivos, seg�
 
 | Archivo | Descripción |
 |---|---|
-| `disp_ns.dll` | Windows: Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
+| `disp_ns.dll` | Windows:Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
 | `dispatcher.so` | Unix: El archivo de biblioteca de objetos compartidos Dispatcher. |
 | `dispatcher.so` | Unix: Un vínculo de ejemplo. |
 | `obj.conf.disp` | Un archivo de configuración de ejemplo para el servidor web iPlanet/Sun Java System. |
