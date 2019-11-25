@@ -5,12 +5,12 @@ description: Obtenga información sobre cómo configurar Dispatcher.
 seo-description: Obtenga información sobre cómo configurar Dispatcher.
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 topic-tags: dispatcher
-content-type: referencia
+content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
 
 ---
 
@@ -133,7 +133,7 @@ Por ejemplo, si los archivos `farm_1.any` que se van a incluir para `farm_5.any`
 
 Puede utilizar variables de entorno en propiedades con valor de cadena en el archivo dispatcher.any en lugar de codificar los valores de forma rígida. Para incluir el valor de una variable de entorno, utilice el formato `${variable_name}`.
 
-Por ejemplo, si el archivo dispatcher.any se encuentra en el mismo directorio que el directorio de memoria caché, se puede utilizar el siguiente valor para la propiedad [docroot](dispatcher-configuration.md#main-pars-title-30) :
+Por ejemplo, si el archivo dispatcher.any se encuentra en el mismo directorio que el directorio de la memoria caché, se puede utilizar el siguiente valor para la propiedad [docroot](dispatcher-configuration.md#main-pars-title-30) :
 
 ```xml
 /docroot "${PWD}/cache"
@@ -192,7 +192,7 @@ El valor puede incluir cualquier carácter alfanumérico (a-z, 0-9). En el sigui
 
 >[!NOTE]
 >
->Si utiliza más de un conjunto de procesamiento, la lista se evalúa de abajo hacia arriba. Esto es especialmente relevante a la hora de definir hosts [virtuales](dispatcher-configuration.md#main-pars-117-15-0006) para sus sitios web.
+>Si utiliza más de un conjunto de procesamiento, la lista se evalúa de abajo hacia arriba. Esto es especialmente relevante a la hora de definir los hosts [virtuales](dispatcher-configuration.md#main-pars-117-15-0006) para los sitios web.
 
 Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 
@@ -221,7 +221,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 >
 >El `/homepage`parámetro (solo IIS) ya no funciona. En su lugar, debe utilizar el módulo [de reescritura de URL de](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)IIS.
 >
->Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio web Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **['pass|PT' (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** para forzar al motor de reescritura a establecer el `uri` campo de la `request_rec` estructura interna en el valor del `filename` campo.
+>Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio Web de Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **['pass|PT' (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** para forzar al motor de reescritura a establecer el `uri` campo de la `request_rec` estructura interna en el valor del `filename` campo.
 
 <!-- 
 
@@ -322,7 +322,7 @@ El siguiente código es un ejemplo de configuración para `/clientheaders`:
 
 ## Identificación de hosts virtuales {#identifying-virtual-hosts-virtualhosts}
 
-La `/virtualhosts` propiedad define una lista de todas las combinaciones de nombre de host/URI que Dispatcher acepta para esta granja. Puede utilizar el carácter de asterisco ("*") como comodín. Los valores de la propiedad / `virtualhosts` utilizan el siguiente formato:
+La `/virtualhosts` propiedad define una lista de todas las combinaciones de nombre de host/URI que Dispatcher acepta para esta granja de servidores. Puede utilizar el carácter de asterisco ("*") como comodín. Los valores de la propiedad / `virtualhosts` utilizan el siguiente formato:
 
 ```xml
 [scheme]host[uri][*]
@@ -359,7 +359,7 @@ Cuando Dispatcher recibe una solicitud HTTP o HTTPS, encuentra el valor de host 
 * Dispatcher comienza en la granja más baja y avanza hacia arriba en el archivo dispatcher.any.
 * Para cada granja, Dispatcher comienza con el valor superior de la propiedad y avanza hacia abajo en la lista de valores. `virtualhosts`
 
-Dispatcher encuentra el valor de host virtual que mejor se corresponde de la siguiente manera:
+Dispatcher encuentra el valor de host virtual que mejor se corresponde con él de la siguiente manera:
 
 * Se utiliza el host virtual que se encuentra por primera vez y que coincide con los tres `host`, el `scheme`y el `uri` de la solicitud.
 * Si ningún `virtualhosts` valor tiene `scheme` y `uri` partes que coincidan tanto con el `scheme` como con `uri` la solicitud, se utiliza el host virtual que se encuentra por primera vez y que coincide con el `host` de la solicitud.
@@ -449,7 +449,7 @@ Nombre del encabezado HTTP o la cookie que almacena la información de autorizac
 
 **/timeout** (opcional)
 
-Número de segundos hasta que se agota el tiempo de espera de la sesión después de que se haya utilizado por última vez. Si no se especifica "800", el tiempo de espera de la sesión finaliza un poco más de 13 minutos después de la última solicitud del usuario.
+El número de segundos hasta que se agota el tiempo de espera de la sesión después de que se haya utilizado por última vez. Si no se especifica "800", el tiempo de espera de la sesión finaliza un poco más de 13 minutos después de la última solicitud del usuario.
 
 A continuación se muestra un ejemplo de configuración:
 
@@ -521,7 +521,7 @@ Especifica el tiempo de espera de conexión que accede a la instancia de AEM en 
 
 **/receivedTimeout**
 
-Especifica el tiempo en milisegundos que puede tardar una respuesta. El valor predeterminado es "600000", lo que provoca que Dispatcher espere 10 minutos. El valor "0" elimina completamente el tiempo de espera.\
+Especifica el tiempo en milisegundos que puede tardar una respuesta. El valor predeterminado es "600000", lo que provoca que Dispatcher espere 10 minutos. Un valor de "0" elimina completamente el tiempo de espera.\
 Si se alcanza el tiempo de espera al analizar los encabezados de respuesta, se devuelve un estado HTTP 504 (puerta de enlace incorrecta). Si se alcanza el tiempo de espera mientras se lee el cuerpo de respuesta, Dispatcher devolverá la respuesta incompleta al cliente, pero eliminará cualquier archivo de caché que se haya escrito.
 
 **/ipv4**
@@ -623,7 +623,7 @@ Si los filtros no se activan de la manera esperada, habilite [Seguimiento de reg
 
 #### Ejemplo de filtro: Denegar todo {#example-filter-deny-all}
 
-La siguiente sección de filtro de ejemplo provoca que Dispatcher deniegue solicitudes para todos los archivos. Debe denegar el acceso a todos los archivos y permitir el acceso a áreas específicas.
+La siguiente sección de filtro de ejemplo provoca que Dispatcher deniegue solicitudes para todos los archivos. Debe denegar el acceso a todos los archivos y, a continuación, permitir el acceso a áreas específicas.
 
 ```xml
   /0001  { /glob "*" /type "deny" }
@@ -708,7 +708,7 @@ Al configurar Dispatcher, debe restringir el acceso externo tanto como sea posib
    * `/etc/designs/default*`
    * `/etc/designs/mydesign*`
 
-Después de crear filtros, [pruebe el acceso](dispatcher-configuration.md#main-pars-title-19) a la página para asegurarse de que la instancia de AEM es segura.
+Después de crear los filtros, [pruebe el acceso](dispatcher-configuration.md#main-pars-title-19) a la página para asegurarse de que la instancia de AEM es segura.
 
 La siguiente sección /filter del archivo dispatcher.any puede utilizarse como base en el archivo de configuración [de](dispatcher-configuration.md) Dispatcher.
 
@@ -781,7 +781,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configurar el servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
+>Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configuración del servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
 
 >[!NOTE]
 >
@@ -792,7 +792,7 @@ Tenga en cuenta las siguientes recomendaciones si decide ampliar el acceso:
 * El acceso externo a `/admin` siempre debe estar *completamente* deshabilitado si utiliza CQ versión 5.4 o una versión anterior.
 
 * Se debe tener cuidado al permitir el acceso a los archivos en `/libs`. El acceso debe permitirse de forma individual.
-* Denegar el acceso a la configuración de replicación para que no se vea:
+* Denegar el acceso a la configuración de replicación para que no se pueda ver:
 
    * `/etc/replication.xml*`
    * `/etc/replication.infinity.json*`
@@ -907,7 +907,7 @@ Ejecute el siguiente comando en un terminal o símbolo del sistema para intentar
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
-## Habilitación del acceso a direcciones URL de vanidad {#enabling-access-to-vanity-urls-vanity-urls}
+## Habilitación del acceso a las direcciones URL de vanidad {#enabling-access-to-vanity-urls-vanity-urls}
 
 <!-- 
 
@@ -1161,7 +1161,7 @@ Utilice la `/statfileslevel` propiedad para invalidar los archivos en caché seg
 
 * Cuando se invalida un archivo ubicado en un determinado nivel, se tocarán **todos** los archivos desde docroot `.stat` hasta **el nivel del archivo invalidado o el configurado** `statsfilevel` (el que sea más pequeño).
 
-   *  Por ejemplo: si establece la `statfileslevel` propiedad en 6 y se invalida un archivo en el nivel 5, se tocará cada `.stat` archivo de docroot a 5. Continuando con este ejemplo, si un archivo se invalida en el nivel 7, entonces cada . `stat` desde docroot hasta 6 se tocará (desde `/statfileslevel = "6"`).
+   * Por ejemplo: si establece la `statfileslevel` propiedad en 6 y se invalida un archivo en el nivel 5, se tocará cada `.stat` archivo de docroot a 5. Continuando con este ejemplo, si un archivo se invalida en el nivel 7, entonces cada . `stat` desde docroot hasta 6 se tocará (desde `/statfileslevel = "6"`).
 
 Solo se ven afectados los recursos **a lo largo de la ruta** al archivo invalidado. Considere el siguiente ejemplo: un sitio web utiliza la estructura `/content/myWebsite/xx/.` Si se establece `statfileslevel` como 3, se crea un `.stat`archivo de la siguiente manera:
 
@@ -1184,9 +1184,9 @@ Cuando se invalida un archivo en `/content/myWebsite/xx` , todos los archivos `.
 
 La `/invalidate` propiedad define los documentos que se invalidan automáticamente al actualizar el contenido.
 
-Con la invalidación automática, Dispatcher no elimina los archivos en caché después de una actualización de contenido, pero comprueba su validez cuando se solicitan por primera vez. Los documentos de la caché que no se invalidan automáticamente permanecerán en la caché hasta que una actualización de contenido los elimine explícitamente.
+Con la invalidación automática, Dispatcher no elimina los archivos en caché después de una actualización de contenido, sino que comprueba su validez cuando se solicitan por primera vez. Los documentos de la caché que no se invalidan automáticamente permanecerán en la caché hasta que una actualización de contenido los elimine explícitamente.
 
-La invalidación automática se suele utilizar en páginas HTML. Las páginas HTML suelen contener vínculos a otras páginas, lo que dificulta la determinación de si una actualización de contenido afecta a una página. Para asegurarse de que todas las páginas relevantes se invalidan al actualizar el contenido, invalide automáticamente todas las páginas HTML. La siguiente configuración invalida todas las páginas HTML:
+La invalidación automática se utiliza generalmente para las páginas HTML. Las páginas HTML suelen contener vínculos a otras páginas, lo que dificulta la determinación de si una actualización de contenido afecta a una página. Para asegurarse de que todas las páginas relevantes se invalidan cuando se actualiza el contenido, invalide automáticamente todas las páginas HTML. La siguiente configuración invalida todas las páginas HTML:
 
 ```xml
   /invalidate
@@ -1255,7 +1255,7 @@ printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 
 ### Limitación de los clientes que pueden vaciar la caché {#limiting-the-clients-that-can-flush-the-cache}
 
-La propiedad /allowClients define los clientes específicos que pueden vaciar la caché. Los patrones de globalización se comparan con la IP.
+La propiedad /allowClients define los clientes específicos a los que se permite vaciar la caché. Los patrones de globalización se comparan con la IP.
 
 El siguiente ejemplo:
 
@@ -1361,7 +1361,7 @@ FileETag none
 
 ### Permisos de archivos de caché de Dispatcher {#dispatcher-cache-file-permissions}
 
-La `mode` propiedad especifica qué permisos de archivo se aplican a los nuevos directorios y archivos de la caché. Esta configuración está restringida por el `umask` proceso de llamada. Es un número octal construido a partir de la suma de uno o más de los siguientes valores:
+La `mode` propiedad especifica los permisos de archivo que se aplican a los nuevos directorios y archivos de la caché. Esta configuración está restringida por el `umask` proceso de llamada. Es un número octal construido a partir de la suma de uno o más de los siguientes valores:
 
 * 0400 Permitir lectura por propietario.
 * 0200 Permitir escritura por propietario.
@@ -1377,25 +1377,19 @@ El valor predeterminado es 0755, que permite al propietario leer, escribir o bus
 
 ### Tocación del archivo .stat {#throttling-stat-file-touching}
 
-Con la propiedad predeterminada, `/invalidate` cada activación invalida todos `.html` los archivos (cuando su ruta coincide con la `/invalidate` sección). En un sitio web con tráfico considerable, las activaciones múltiples y posteriores incrementarán la carga de la CPU en el servidor. En tal caso, sería deseable "acelerar" el contacto de archivos `.stat` para mantener el sitio web adaptable. Para ello, utilice la `/gracePeriod` propiedad .
+Con la propiedad predeterminada, `/invalidate` cada activación invalida todos `.html` los archivos (cuando su ruta coincide con la `/invalidate` sección). En un sitio web con un tráfico considerable, las activaciones múltiples y posteriores incrementarán la carga de la CPU en el servidor. En tal caso, sería deseable "acelerar" el contacto de archivos `.stat` para mantener el sitio web adaptable. Para ello, utilice la `/gracePeriod` propiedad .
 
 La `/gracePeriod` propiedad define el número de segundos que un recurso antiguo e invalidado automáticamente puede seguir sirviéndose desde la caché después de la última activación que se está produciendo. La propiedad se puede utilizar en una configuración en la que un lote de activaciones invalidaría repetidamente toda la caché. El valor recomendado es de 2 segundos.
 
 Para obtener más información, lea también las `/invalidate` secciones y `/statfileslevel`secciones anteriores.
 
-## Configuración de la invalidación de caché basada en tiempo - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### Configuración de la invalidación de caché basada en tiempo - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-Si se establece, la `enableTTL` propiedad evaluará los encabezados de respuesta desde el servidor y, si contienen una `Cache-Control` `Expires` antigüedad o una fecha máxima, se creará un archivo auxiliar vacío junto al archivo de caché, con una hora de modificación igual a la fecha de caducidad. Cuando se solicita el archivo en caché más allá del tiempo de modificación, se vuelve a solicitar automáticamente desde el servidor.
-
-Puede activar la función agregando esta línea al `dispatcher.any` archivo:
-
-```xml
-/enableTTL "1"
-```
+Si se establece, la `/enableTTL` propiedad evaluará los encabezados de respuesta desde el servidor y, si contienen una `Cache-Control` `Expires` antigüedad o una fecha máxima, se creará un archivo auxiliar vacío junto al archivo de caché, con una hora de modificación igual a la fecha de caducidad. Cuando se solicita el archivo en caché más allá del tiempo de modificación, se vuelve a solicitar automáticamente desde el servidor.
 
 >[!NOTE]
 >
->Esta función está disponible con la versión **4.1.11** del despachante.
+>Esta función está disponible en la versión **4.1.11** o posterior del despachante.
 
 ## Configuración del equilibrio de carga - /statistics {#configuring-load-balancing-statistics}
 
@@ -1487,7 +1481,7 @@ El ejemplo siguiente define una conexión fija a la carpeta /products:
 /stickyConnectionsFor "/products"
 ```
 
-Cuando una página está compuesta de contenido de varios nodos de contenido, incluya la `/paths` propiedad que enumera las rutas al contenido. Por ejemplo, una página contiene contenido de `/content/image`, `/content/video`y `/var/files/pdfs`. La siguiente configuración habilita las conexiones adhesivas para todo el contenido de la página:
+Cuando una página está compuesta de contenido de varios nodos de contenido, incluya la `/paths` propiedad que enumera las rutas de acceso al contenido. Por ejemplo, una página contiene contenido de `/content/image`, `/content/video`y `/var/files/pdfs`. La siguiente configuración habilita las conexiones adhesivas para todo el contenido de la página:
 
 ```xml
 /stickyConnections {
@@ -1527,7 +1521,7 @@ Utilice la `/health_check` propiedad para especificar una URL que se compruebe c
 
 ### Especificación del retraso en el reintento de página {#specifying-the-page-retry-delay}
 
-La propiedad / `retryDelay` establece el tiempo (en segundos) que el despachante espera entre rondas de intentos de conexión con los procesamientos de granja. Para cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de representaciones en el conjunto de servidores.
+La propiedad / `retryDelay` establece el tiempo (en segundos) que el despachante espera entre rondas de intentos de conexión con los procesamientos del conjunto de servidores. Para cada ronda, el número máximo de veces que Dispatcher intenta establecer una conexión con un procesamiento es el número de representaciones en el conjunto de servidores.
 
 Dispatcher utiliza un valor de `"1"` si no `/retryDelay` se define explícitamente. El valor predeterminado es adecuado en la mayoría de los casos.
 
@@ -1557,7 +1551,7 @@ Habilite el mecanismo de conmutación por error en la granja de Dispatcher para 
    * Si la comprobación de estado devuelve 500 (INTERNAL_SERVER_ERROR), Dispatcher envía la solicitud original a un procesamiento diferente.
    * Si la comprobación de estado devuelve el estado HTTP 200, Dispatcher devuelve el error HTTP 500 inicial al cliente.
 
-Para habilitar la conmutación por error, agregue la línea siguiente al conjunto (o sitio web):
+Para habilitar la conmutación por error, agregue la línea siguiente a la granja (o sitio web):
 
 ```xml
 /failover "1" 
@@ -1608,7 +1602,7 @@ Los valores de los gob pueden incluir caracteres comodín y caracteres alfanumé
 | `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o varios rangos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con alguno de los caracteres de la clase de caracteres o dentro de un rango definido.<br/>Si no se incluye el soporte de cierre, el patrón no produce coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes solicitudes HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un rango de caracteres. Para su uso en clases de caracteres.  Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Anula la clase de caracteres o caracteres que sigue. Se utiliza solo para negar caracteres e intervalos de caracteres dentro de clases de caracteres. Equivalente al `^ wildcard`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[!o]men.html*`<br/> Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` o `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
-| `^` | Anula el rango de caracteres o caracteres que sigue. Se utiliza para negar solo caracteres e intervalos de caracteres dentro de clases de caracteres. Equivale al carácter `!` comodín. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | Se aplican los ejemplos del carácter `!` comodín, sustituyendo los `!` caracteres de los patrones de ejemplo por `^` caracteres. |
+| `^` | Anula el rango de caracteres o caracteres que sigue. Se utiliza para negar solo caracteres e intervalos de caracteres dentro de clases de caracteres. Equivalente al carácter `!` comodín. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | Se aplican los ejemplos del carácter `!` comodín, sustituyendo los `!` caracteres de los patrones de ejemplo por `^` caracteres. |
 
 
 <!--- need to troubleshoot table
@@ -1712,9 +1706,9 @@ En la configuración del servidor web, puede establecer:
 
 Consulte la documentación del servidor web y el archivo léame de la instancia de Dispatcher para obtener más información.
 
-**Registros rotados/canalizados de Apache**
+**Registros rotados/canjeados de Apache**
 
-Si utiliza un servidor web **Apache** puede utilizar la funcionalidad estándar para los registros rotados y/o canalizados. Por ejemplo, con registros de tubería:
+Si utiliza un servidor web **Apache** , puede utilizar la funcionalidad estándar para los registros rotados y/o canalizados. Por ejemplo, con registros de tubería:
 
 `DispatcherLog "| /usr/apache/bin/rotatelogs logs/dispatcher.log%Y%m%d 604800"`
 
@@ -1843,7 +1837,7 @@ A continuación se muestra una lista con los encabezados de respuesta que `X-Dis
 * **no se puede almacenar en caché: solicitud no era GET ni HEAD** El método HTTP no es GET ni HEAD. El despachante supone que el resultado contendrá datos dinámicos que no deben almacenarse en caché.
 * **no se puede almacenar en caché: la solicitud contenía una cadena de consulta**\
    La solicitud contenía una cadena de consulta. El despachante supone que el resultado depende de la cadena de consulta proporcionada y, por lo tanto, no almacena en caché.
-* **no se puede almacenar en caché: session manager no se autenticó**\
+* **no se puede almacenar en caché: el administrador de sesiones no se autenticó**\
    La caché del conjunto de servidores está gobernada por un administrador de sesiones (la configuración contiene un `sessionmanagement` nodo) y la solicitud no contenía la información de autenticación adecuada.
 * **no se puede almacenar en caché: solicitud contiene autorización**\
    El conjunto de servidores no puede almacenar en caché la salida ( `allowAuthorized 0`) y la solicitud contiene información de autenticación.
@@ -1851,10 +1845,10 @@ A continuación se muestra una lista con los encabezados de respuesta que `X-Dis
    El archivo de destino es un directorio. Esto podría indicar algún error conceptual, en el que una dirección URL y algunas subdirecciones URL contienen resultados que se pueden almacenar en caché; por ejemplo, si una solicitud `/test.html/a/file.ext` llega primero y contiene resultados que se pueden almacenar en caché, el despachante no podrá almacenar en caché el resultado de una solicitud posterior a `/test.html`.
 * **no se puede almacenar en caché: la dirección URL de solicitud tiene una barra diagonal final**\
    La dirección URL de la solicitud tiene una barra diagonal final.
-* **no se puede almacenar en caché: la URL de solicitud no está en las reglas de caché**\
+* **no se puede almacenar en caché: la dirección URL de solicitud no está en las reglas de caché**\
    Las reglas de caché del conjunto de servidores deniegan explícitamente el almacenamiento en caché del resultado de alguna URL de solicitud.
 * **no se puede almacenar en caché: acceso denegado del comprobador de autorización**\
    El comprobador de autorización de la granja denegó el acceso al archivo en caché.
 * **no se puede almacenar en caché: sesión no válida** La caché del conjunto de servidores está gobernada por un administrador de sesiones (la configuración contiene un `sessionmanagement` nodo) y la sesión del usuario ya no es válida.
 * **no se puede almacenar en caché: contiene`no_cache `** El servidor remoto devolvió un `Dispatcher: no_cache` encabezado, que prohíbe al despachante almacenar en caché la salida.
-* **no se puede almacenar en caché: la longitud del contenido de respuesta es cero**. La longitud del contenido de la respuesta es cero; el distribuidor no creará un archivo de longitud cero.
+* **no se puede almacenar en caché: la longitud del contenido de respuesta es cero**. La longitud del contenido de la respuesta es cero; el despachante no creará un archivo de longitud cero.
