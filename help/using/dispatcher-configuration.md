@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 71bca4bea15ca8fa89888e10770743422c56b827
+source-git-commit: fb7891406af215c59e9768b699a5d191ba4b1eb2
 
 ---
 
@@ -118,7 +118,7 @@ Por ejemplo, para incluir el archivo myFarm.any en la configuración /Granjas, u
   }
 ```
 
-Utilice el asterisco ("*") como comodín para especificar un rango de archivos que se van a incluir.
+Utilice el asterisco (&quot;*&quot;) como comodín para especificar un rango de archivos que se van a incluir.
 
 Por ejemplo, si los archivos `farm_1.any` que se van a incluir para `farm_5.any` contener la configuración de las granjas de uno a cinco, puede incluirlos de la siguiente manera:
 
@@ -221,7 +221,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 >
 >El `/homepage`parámetro (solo IIS) ya no funciona. En su lugar, debe utilizar el módulo [de reescritura de URL de](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)IIS.
 >
->Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio Web de Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **['pass|PT' (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** para forzar al motor de reescritura a establecer el `uri` campo de la `request_rec` estructura interna en el valor del `filename` campo.
+>Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio Web de Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **[&#39;pass|PT&#39; (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**para forzar al motor de reescritura a establecer el`uri`campo de la`request_rec`estructura interna en el valor del`filename`campo.
 
 <!-- 
 
@@ -322,7 +322,7 @@ El siguiente código es un ejemplo de configuración para `/clientheaders`:
 
 ## Identificación de hosts virtuales {#identifying-virtual-hosts-virtualhosts}
 
-La `/virtualhosts` propiedad define una lista de todas las combinaciones de nombre de host/URI que Dispatcher acepta para esta granja de servidores. Puede utilizar el carácter de asterisco ("*") como comodín. Los valores de la propiedad / `virtualhosts` utilizan el siguiente formato:
+La `/virtualhosts` propiedad define una lista de todas las combinaciones de nombre de host/URI que Dispatcher acepta para esta granja de servidores. Puede utilizar el carácter de asterisco (&quot;*&quot;) como comodín. Los valores de la propiedad / `virtualhosts` utilizan el siguiente formato:
 
 ```xml
 [scheme]host[uri][*]
@@ -405,7 +405,7 @@ En este ejemplo, la tabla siguiente muestra los hosts virtuales resueltos para s
 
 | URL de solicitud | Host virtual resuelto |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*;` |
+| `https://www.mycompany.com/products/gloves.html` | `www.mycompany.com/products/*` |
 | `https://www.mycompany.com/about.html` | `www.mycompany.com` |
 
 ## Habilitación de sesiones seguras: /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -441,7 +441,7 @@ El directorio que almacena la información de la sesión. Si el directorio no ex
 
 **/encode** (opcional)
 
-Cómo se codifica la información de la sesión. Utilice "md5" para el cifrado con el algoritmo md5 o "hex" para la codificación hexadecimal. Si cifra los datos de la sesión, un usuario con acceso al sistema de archivos no podrá leer el contenido de la sesión. El valor predeterminado es "md5".
+Cómo se codifica la información de la sesión. Utilice &quot;md5&quot; para el cifrado con el algoritmo md5 o &quot;hex&quot; para la codificación hexadecimal. Si cifra los datos de la sesión, un usuario con acceso al sistema de archivos no podrá leer el contenido de la sesión. El valor predeterminado es &quot;md5&quot;.
 
 **/header** (opcional)
 
@@ -449,7 +449,7 @@ Nombre del encabezado HTTP o la cookie que almacena la información de autorizac
 
 **/timeout** (opcional)
 
-El número de segundos hasta que se agota el tiempo de espera de la sesión después de que se haya utilizado por última vez. Si no se especifica "800", el tiempo de espera de la sesión finaliza un poco más de 13 minutos después de la última solicitud del usuario.
+El número de segundos hasta que se agota el tiempo de espera de la sesión después de que se haya utilizado por última vez. Si no se especifica &quot;800&quot;, el tiempo de espera de la sesión finaliza un poco más de 13 minutos después de la última solicitud del usuario.
 
 A continuación se muestra un ejemplo de configuración:
 
@@ -482,7 +482,7 @@ La propiedad /renders define la dirección URL a la que Dispatcher envía solici
   }
 ```
 
-La siguiente sección de ejemplo /renders identifica una instancia de AEM que se ejecuta en el mismo equipo que Dispatcher:
+La siguiente sección de ejemplo /renders identifica una instancia de AEM que se ejecuta en el mismo equipo que dispatcher:
 
 ```xml
 /renders
@@ -517,11 +517,11 @@ La siguiente sección de ejemplo /renders distribuye las solicitudes de procesam
 
 **/timeout**
 
-Especifica el tiempo de espera de conexión que accede a la instancia de AEM en milisegundos. El valor predeterminado es "0", lo que provoca que Dispatcher espere indefinidamente.
+Especifica el tiempo de espera de conexión que accede a la instancia de AEM en milisegundos. El valor predeterminado es &quot;0&quot;, lo que provoca que Dispatcher espere indefinidamente.
 
 **/receivedTimeout**
 
-Especifica el tiempo en milisegundos que puede tardar una respuesta. El valor predeterminado es "600000", lo que provoca que Dispatcher espere 10 minutos. Un valor de "0" elimina completamente el tiempo de espera.\
+Especifica el tiempo en milisegundos que puede tardar una respuesta. El valor predeterminado es &quot;600000&quot;, lo que provoca que Dispatcher espere 10 minutos. Un valor de &quot;0&quot; elimina completamente el tiempo de espera.\
 Si se alcanza el tiempo de espera al analizar los encabezados de respuesta, se devuelve un estado HTTP 504 (puerta de enlace incorrecta). Si se alcanza el tiempo de espera mientras se lee el cuerpo de respuesta, Dispatcher devolverá la respuesta incompleta al cliente, pero eliminará cualquier archivo de caché que se haya escrito.
 
 **/ipv4**
@@ -534,13 +534,13 @@ El Equilibrio de carga elástica de Amazon (ELB) es un servicio que responde a g
 
 **/secure**
 
-Si la `/secure` propiedad tiene el valor "1" Dispatcher utiliza HTTPS para comunicarse con la instancia de AEM. Para obtener más información, consulte también [Configuración de Dispatcher para Usar SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+Si la `/secure` propiedad tiene el valor &quot;1&quot; Dispatcher utiliza HTTPS para comunicarse con la instancia de AEM. Para obtener más información, consulte también [Configuración de Dispatcher para Usar SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
 Con Dispatcher versión **4.1.6**, puede configurar la `/always-resolve` propiedad de la siguiente manera:
 
-* Cuando se establece en "1", se resuelve el nombre de host en cada solicitud (Dispatcher nunca almacenará en caché ninguna dirección IP). Puede haber un ligero impacto en el rendimiento debido a la llamada adicional necesaria para obtener la información del host para cada solicitud.
+* Cuando se establece en &quot;1&quot;, se resuelve el nombre de host en cada solicitud (Dispatcher nunca almacenará en caché ninguna dirección IP). Puede haber un ligero impacto en el rendimiento debido a la llamada adicional necesaria para obtener la información del host para cada solicitud.
 * Si no se establece la propiedad, la dirección IP se almacenará en caché de forma predeterminada.
 
 Además, esta propiedad se puede utilizar en caso de que se produzcan problemas de resolución dinámica de IP, como se muestra en el siguiente ejemplo:
@@ -601,13 +601,13 @@ debe usar
 
 HTTP/1.1 define la línea [de](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) solicitud de la siguiente manera:
 
-*Método Request-URI HTTP-Version*&lt;CRLF&gt;
+*Método Request-URI HTTP-Version*&lt;CRLF>
 
-Los caracteres &lt;CRLF&gt; representan un retorno de carro seguido de una fuente de línea. El siguiente ejemplo es la línea de solicitud que se recibe cuando un cliente solicita la página final del sitio Geometrixx-Outoors:
+Los caracteres &lt;CRLF> representan un retorno de carro seguido de una fuente de línea. El siguiente ejemplo es la línea de solicitud que se recibe cuando un cliente solicita la página final del sitio Geometrixx-Outoors:
 
-GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
+GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
 
-Los patrones deben tener en cuenta los caracteres de espacio en la línea de solicitud y los caracteres &lt;CRLF&gt;.
+Los patrones deben tener en cuenta los caracteres de espacio en la línea de solicitud y los caracteres &lt;CRLF>.
 
 #### Comillas dobles vs. Comillas simples {#double-quotes-vs-single-quotes}
 
@@ -955,7 +955,7 @@ Utilice el siguiente procedimiento para habilitar el acceso a las direcciones UR
 
 Normalmente, las solicitudes de distribución solo están destinadas a Dispatcher, por lo que de forma predeterminada no se envían al procesador (por ejemplo, una instancia de AEM).
 
-Si es necesario, establezca la propiedad /propagateSyndPost en "1" para reenviar solicitudes de distribución a Dispatcher. Si se establece, debe asegurarse de que las solicitudes POST no se denieguen en la sección de filtros.
+Si es necesario, establezca la propiedad /propagateSyndPost en &quot;1&quot; para reenviar solicitudes de distribución a Dispatcher. Si se establece, debe asegurarse de que las solicitudes POST no se denieguen en la sección de filtros.
 
 ## Configuración de la caché de Dispatcher - /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -1029,7 +1029,7 @@ El archivo de estado no tiene contenido. Cuando se actualiza el contenido, Dispa
 
 La `/serveStaleOnError` propiedad controla si Dispatcher devuelve documentos invalidados cuando el servidor de procesamiento devuelve un error. De forma predeterminada, cuando se toca un archivo de estado e invalida el contenido almacenado en caché, Dispatcher elimina el contenido almacenado en caché la próxima vez que se solicite.
 
-Si `/serveStaleOnError` se establece en "1", Dispatcher no elimina el contenido invalidado de la caché a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 5xx de AEM o un tiempo de espera de conexión hace que Dispatcher proporcione el contenido obsoleto y responda con y HTTP Status de 111 (error de revalidación).
+Si `/serveStaleOnError` se establece en &quot;1&quot;, Dispatcher no elimina el contenido invalidado de la caché a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 5xx de AEM o un tiempo de espera de conexión hace que Dispatcher proporcione el contenido obsoleto y responda con y HTTP Status de 111 (error de revalidación).
 
 ### Almacenamiento en caché cuando se utiliza la autenticación {#caching-when-authentication-is-used}
 
@@ -1053,7 +1053,7 @@ Sin embargo, si sus requisitos permiten almacenar en caché documentos autentica
 
 La `/rules` propiedad controla qué documentos se almacenan en caché según la ruta del documento. Independientemente de la propiedad /rules, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
 
-* Si el URI de la solicitud contiene el signo de interrogación ("?").\
+* Si el URI de la solicitud contiene el signo de interrogación (&quot;?&quot;).\
    Esto generalmente indica una página dinámica, como un resultado de búsqueda que no necesita almacenarse en caché.
 * Si falta la extensión del archivo.\
    El servidor web necesita la extensión para determinar el tipo de documento (el tipo MIME).
@@ -1292,7 +1292,7 @@ Para especificar qué parámetros se omiten, agregue reglas de gob a la `ignoreU
 * Para ignorar un parámetro, cree una propiedad glob que permita el parámetro.
 * Para evitar que la página se almacene en caché, cree una propiedad glob que deniegue el parámetro.
 
-El ejemplo siguiente hace que Dispatcher ignore el parámetro "q", de modo que las direcciones URL de solicitud que incluyen el parámetro q se almacenen en caché:
+El ejemplo siguiente hace que Dispatcher ignore el parámetro &quot;q&quot;, de modo que las direcciones URL de solicitud que incluyen el parámetro q se almacenen en caché:
 
 ```xml
 /ignoreUrlParams
@@ -1377,7 +1377,7 @@ El valor predeterminado es 0755, que permite al propietario leer, escribir o bus
 
 ### Tocación del archivo .stat {#throttling-stat-file-touching}
 
-Con la propiedad predeterminada, `/invalidate` cada activación invalida todos `.html` los archivos (cuando su ruta coincide con la `/invalidate` sección). En un sitio web con un tráfico considerable, las activaciones múltiples y posteriores incrementarán la carga de la CPU en el servidor. En tal caso, sería deseable "acelerar" el contacto de archivos `.stat` para mantener el sitio web adaptable. Para ello, utilice la `/gracePeriod` propiedad .
+Con la propiedad predeterminada, `/invalidate` cada activación invalida todos `.html` los archivos (cuando su ruta coincide con la `/invalidate` sección). En un sitio web con un tráfico considerable, las activaciones múltiples y posteriores incrementarán la carga de la CPU en el servidor. En tal caso, sería deseable &quot;acelerar&quot; el contacto de archivos `.stat` para mantener el sitio web adaptable. Para ello, utilice la `/gracePeriod` propiedad .
 
 La `/gracePeriod` propiedad define el número de segundos que un recurso antiguo e invalidado automáticamente puede seguir sirviéndose desde la caché después de la última activación que se está produciendo. La propiedad se puede utilizar en una configuración en la que un lote de activaciones invalidaría repetidamente toda la caché. El valor recomendado es de 2 segundos.
 
@@ -1465,7 +1465,7 @@ Por ejemplo, la penalización se aplica cuando no se puede establecer la conexi�
 
 La `/unavailablePenalty` propiedad es un elemento secundario directo de la `/farm` sección (un elemento secundario de la `/statistics` sección).
 
-Si no existe ninguna `/unavailablePenalty` propiedad, se utiliza un valor de "1".
+Si no existe ninguna `/unavailablePenalty` propiedad, se utiliza un valor de &quot;1&quot;.
 
 ```xml
 /unavailablePenalty "1"
@@ -1581,7 +1581,7 @@ Internamente, Dispatcher lee la respuesta del servidor remoto (es decir, AEM) ut
 read more data  
 }`
 
-Estos mensajes pueden generarse cuando `EINTR` se producen en la sección " `read more data`" y se deben a la recepción de una señal antes de recibir datos.
+Estos mensajes pueden generarse cuando `EINTR` se producen en la sección &quot; `read more data`&quot; y se deben a la recepción de una señal antes de recibir datos.
 
 Para ignorar estas interrupciones, puede agregar el siguiente parámetro a `dispatcher.any` (antes `/farms`):
 
@@ -1598,7 +1598,7 @@ Los valores de los gob pueden incluir caracteres comodín y caracteres alfanumé
 | Carácter comodín | Descripción | Ejemplos |
 |--- |--- |--- |
 | `*` | Coincide con cero o más instancias contiguas de cualquier carácter de la cadena. El carácter final de la coincidencia está determinado por cualquiera de las situaciones siguientes: <br/>Un carácter de la cadena coincide con el siguiente carácter del patrón y éste tiene las siguientes características:<br/><ul><li>No es *</li><li>¿No es un ?</li><li>Un carácter literal (incluido un espacio) o una clase de caracteres.</li><li>Se llega al final del patrón.</li></ul>Dentro de una clase de caracteres, el carácter se interpreta literalmente. | `*/geo*` Coincide con cualquier página debajo del `/content/geometrixx` nodo y del `/content/geometrixx-outdoors` nodo. Las siguientes solicitudes HTTP coinciden con el patrón glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Coincide con cualquier página debajo del `/content/geometrixx-outdoors` nodo. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
-| `?` | Coincide con cualquier carácter individual. Utilice clases de caracteres externos. Dentro de una clase de caracteres, este carácter se interpreta literalmente. | `*outdoors/??/*`<br/> Coincide con las páginas de cualquier idioma del sitio de Geometrixx-outdoors. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La siguiente solicitud no coincide con el patrón de glob: <br/><ul><li>"GET /content/geometrixx-outdoors/en.html"</li></ul> |
+| `?` | Coincide con cualquier carácter individual. Utilice clases de caracteres externos. Dentro de una clase de caracteres, este carácter se interpreta literalmente. | `*outdoors/??/*`<br/> Coincide con las páginas de cualquier idioma del sitio de Geometrixx-outdoors. Por ejemplo, la siguiente solicitud HTTP coincide con el patrón glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>La siguiente solicitud no coincide con el patrón de glob: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
 | `[ and ]` | Marca el principio y el final de una clase de caracteres. Las clases de caracteres pueden incluir uno o varios rangos de caracteres y caracteres únicos.<br/>Se produce una coincidencia si el carácter de destino coincide con alguno de los caracteres de la clase de caracteres o dentro de un rango definido.<br/>Si no se incluye el soporte de cierre, el patrón no produce coincidencias. | `*[o]men.html*`<br/> Coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Coincide con las siguientes solicitudes HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica un rango de caracteres. Para su uso en clases de caracteres.  Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[m-p]men.html*` Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Anula la clase de caracteres o caracteres que sigue. Se utiliza solo para negar caracteres e intervalos de caracteres dentro de clases de caracteres. Equivalente al `^ wildcard`. <br/>Fuera de una clase de caracteres, este carácter se interpreta literalmente. | `*[!o]men.html*`<br/> Coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>No coincide con la siguiente solicitud HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> No coincide con la siguiente solicitud HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` o `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
@@ -1850,5 +1850,5 @@ A continuación se muestra una lista con los encabezados de respuesta que `X-Dis
 * **no se puede almacenar en caché: acceso denegado del comprobador de autorización**\
    El comprobador de autorización de la granja denegó el acceso al archivo en caché.
 * **no se puede almacenar en caché: sesión no válida** La caché del conjunto de servidores está gobernada por un administrador de sesiones (la configuración contiene un `sessionmanagement` nodo) y la sesión del usuario ya no es válida.
-* **no se puede almacenar en caché: contiene`no_cache `** El servidor remoto devolvió un `Dispatcher: no_cache` encabezado, que prohíbe al despachante almacenar en caché la salida.
+* **no se puede almacenar en caché: contiene`no_cache `**El servidor remoto devolvió un`Dispatcher: no_cache`encabezado, que prohíbe al despachante almacenar en caché la salida.
 * **no se puede almacenar en caché: la longitud del contenido de respuesta es cero**. La longitud del contenido de la respuesta es cero; el despachante no creará un archivo de longitud cero.
