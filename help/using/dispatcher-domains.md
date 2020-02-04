@@ -4,14 +4,14 @@ seo-title: 'Uso de Dispatcher con varios dominios '
 description: Aprenda a utilizar Dispatcher para procesar solicitudes de página en varios dominios web.
 seo-description: Aprenda a utilizar Dispatcher para procesar solicitudes de página en varios dominios web.
 uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
-contentOwner: Usuario
+contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: referencia
+content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
 
 ---
 
@@ -56,7 +56,7 @@ Cuando los clientes envían solicitudes HTTP al servidor web, la dirección URL 
 
 ## Invalidación de caché
 
-Cuando los agentes de replicación Dispatcher Flush solicitan que Dispatcher invalide los archivos en caché, la ruta del contenido en el repositorio debe resolverse en el contenido de la caché.
+Cuando los agentes de replicación de Dispatcher Flush solicitan que Dispatcher invalide los archivos en caché, la ruta del contenido en el repositorio debe resolverse en el contenido de la caché.
 
 ![](assets/chlimage_1-9.png)
 
@@ -70,8 +70,8 @@ Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y 
 
 Para permitir que las direcciones URL de dominio y las rutas de contenido se resuelvan en archivos en caché, en algún momento del proceso se debe traducir una ruta de archivo o una dirección URL de página. Se proporcionan descripciones de las siguientes estrategias comunes, donde las traducciones de ruta o URL se producen en diferentes puntos del proceso:
 
-* (Recomendado) La instancia de publicación de AEM utiliza la asignación de Sling para la resolución de recursos a fin de implementar las reglas de reescritura de URL internas. Las direcciones URL de dominio se traducen a rutas de repositorio de contenido. (Consulte [AEM Reescribe las direcciones URL](dispatcher-domains.md#main-pars-title-2)entrantes).
-* El servidor web utiliza reglas de reescritura de URL internas que traducen las direcciones URL de dominio a las rutas de caché. (Consulte [El servidor web reescribe las direcciones URL](dispatcher-domains.md#main-pars-title-1)entrantes).
+* (Recomendado) La instancia de publicación de AEM utiliza la asignación de Sling para la resolución de recursos a fin de implementar las reglas de reescritura de URL internas. Las direcciones URL de dominio se traducen a rutas de repositorio de contenido. (Consulte [AEM Reescribe las direcciones URL](#aem-rewrites-incoming-urls)entrantes).
+* El servidor web utiliza reglas de reescritura de URL internas que traducen las direcciones URL de dominio a las rutas de caché. (Consulte [El servidor web reescribe las direcciones URL](#the-web-server-rewrites-incoming-urls)entrantes).
 
 Por lo general, es recomendable utilizar direcciones URL cortas para las páginas web. Normalmente, las direcciones URL de las páginas reflejan la estructura de las carpetas del repositorio que contienen el contenido web. Sin embargo, las direcciones URL no revelan los nodos de repositorio superiores, como `/content`. El cliente no es necesariamente consciente de la estructura del repositorio de AEM.
 
@@ -90,7 +90,7 @@ Las soluciones de ejemplo proporcionadas se aplican a un entorno con las siguien
 
 * Las instancias de creación y publicación de AEM se implementan en sistemas Linux.
 * Apache HTTPD es el servidor web, implementado en un sistema Linux.
-* El repositorio de contenido AEM y la raíz del documento del servidor web utilizan las siguientes estructuras de archivos (la raíz del documento del servidor web Apache es /`usr/lib/apache/httpd-2.4.3/htdocs)`:
+* El repositorio de contenido de AEM y la raíz del documento del servidor web utilizan las siguientes estructuras de archivos (la raíz del documento del servidor web Apache es /`usr/lib/apache/httpd-2.4.3/htdocs)`:
 
    **Repositorio**
 
@@ -119,7 +119,7 @@ Las soluciones de ejemplo proporcionadas se aplican a un entorno con las siguien
 
 ## AEM reescribe las direcciones URL entrantes {#aem-rewrites-incoming-urls}
 
-La asignación de Sling para la resolución de recursos le permite asociar direcciones URL entrantes con rutas de contenido de AEM. Cree asignaciones en la instancia de publicación de AEM para que las solicitudes de procesamiento de Dispatcher se resuelvan en el contenido correcto del repositorio.
+La asignación de Sling para la resolución de recursos le permite asociar las direcciones URL entrantes con las rutas de contenido de AEM. Cree asignaciones en la instancia de publicación de AEM para que las solicitudes de procesamiento de Dispatcher se resuelvan en el contenido correcto del repositorio.
 
 Las solicitudes de Distribuidor para la representación de página identifican la página utilizando la dirección URL que se pasa desde el servidor web. Cuando la dirección URL incluye un nombre de dominio, las asignaciones de Sling resuelven la dirección URL del contenido. El siguiente gráfico ilustra una asignación de la `branda.com/en.html` URL al `/content/sitea/en` nodo.
 
@@ -212,7 +212,7 @@ Los conjuntos de servidores para hosts virtuales deben tener las configuraciones
 * La `/virtualhosts` propiedad se establece en el nombre del dominio. Esta propiedad permite a Dispatcher asociar la granja con el dominio.
 * La `/filter` propiedad permite acceder a la ruta de la URL de solicitud truncada después de la parte del nombre de dominio. Por ejemplo, para la `https://branda.com/en.html` URL, la ruta se interpreta como `/en.html`, por lo que el filtro debe permitir el acceso a esta ruta.
 
-* La `/docroot` propiedad se establece en la ruta del directorio raíz del contenido del sitio del dominio en la caché de Dispatcher. Esta ruta se utiliza como prefijo para la dirección URL concatenada de la solicitud original. Por ejemplo, docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` hace que la solicitud de `https://branda.com/en.html` resolución del `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` archivo.
+* La `/docroot` propiedad se establece en la ruta del directorio raíz del contenido del sitio del dominio en la caché de Dispatcher. Esta ruta se utiliza como prefijo para la dirección URL concatenada de la solicitud original. Por ejemplo, el docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` hace que la solicitud de `https://branda.com/en.html` resolución del `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` archivo.
 
 Además, la instancia de publicación de AEM debe designarse como el procesamiento del host virtual. Configure otras propiedades de granja de servidores según sea necesario. El siguiente código es una configuración de granja abreviada para el dominio branda.com:
 
@@ -242,7 +242,7 @@ Se requiere un conjunto de servidores Dispatcher para gestionar solicitudes de i
 
 Las siguientes configuraciones de propiedad permiten a Dispatcher resolver archivos del repositorio de contenido de AEM de archivos de la caché:
 
-* La `/docroot` propiedad se establece en la raízDeDocumento predeterminada del servidor web. Normalmente, este es el directorio donde se crea la `/content` carpeta. Un valor de ejemplo para Apache en Linux es `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* La `/docroot` propiedad se establece en la raízDeDocumento predeterminada del servidor web. Normalmente, este es el directorio en el que se crea la `/content` carpeta. Un valor de ejemplo para Apache en Linux es `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * La `/filter` propiedad permite acceder a los archivos situados debajo del `/content` directorio.
 
 La `/statfileslevel`propiedad debe ser lo suficientemente alta como para que los archivos .stat se creen en el directorio raíz de cada host virtual. Esta propiedad permite que la caché de cada dominio se invalide por separado. Para la configuración de ejemplo, un `/statfileslevel` valor de `2` crea archivos .stat en el `*docroot*/content/sitea` directorio y en el `*docroot*/content/siteb` directorio.
@@ -300,7 +300,7 @@ Después de crear la asignación para la página de contenido, para descubrir as
 
 >[!NOTE]
 >
->El transformador del comprobador de vínculos del reescritor Apache Sling predeterminado modifica automáticamente los hipervínculos de la página para evitar que se rompan los vínculos. Sin embargo, la reescritura de vínculos solo se realiza cuando el destino del vínculo es un archivo HTML o HTML. Para actualizar los vínculos a otros tipos de archivo, cree un componente de transformador y agréguelo a una canalización de reescritura HTML.
+>El transformador del comprobador de vínculos del reescritor Apache Sling predeterminado modifica automáticamente los hipervínculos de la página para evitar que se rompan los vínculos. Sin embargo, la reescritura de vínculos solo se realiza cuando el destino del vínculo es un archivo HTML o HTM. Para actualizar los vínculos a otros tipos de archivo, cree un componente de transformador y agréguelo a una canalización de reescritura HTML.
 
 ### Ejemplos de nodos de asignación de recursos
 
@@ -652,7 +652,7 @@ Cree un nodo JCR que defina una canalización que utilice el transformador. La s
 >
 >Si establece la propiedad Transformador `pipeline.mode` en `global`, no es necesario configurar una canalización. El `global` modo inserta el transformador en todos los conductos.
 
-### Nodo de configuración de reescritor: representación XML {#rewriter-configuration-node-xml-representation}
+### Nodo de configuración de Rewriter - Representación XML {#rewriter-configuration-node-xml-representation}
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
