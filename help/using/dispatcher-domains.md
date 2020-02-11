@@ -11,7 +11,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 translation-type: tm+mt
-source-git-commit: 851202feff9b8fe3c6a44241d0ed12822b07b806
+source-git-commit: 64d26d802dbc9bb0b6815011a16e24c63a7672aa
 
 ---
 
@@ -70,8 +70,8 @@ Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y 
 
 Para permitir que las direcciones URL de dominio y las rutas de contenido se resuelvan en archivos en caché, en algún momento del proceso se debe traducir una ruta de archivo o una dirección URL de página. Se proporcionan descripciones de las siguientes estrategias comunes, donde las traducciones de ruta o URL se producen en diferentes puntos del proceso:
 
-* (Recomendado) La instancia de publicación de AEM utiliza la asignación de Sling para la resolución de recursos a fin de implementar las reglas de reescritura de URL internas. Las direcciones URL de dominio se traducen a rutas de repositorio de contenido. (Consulte [AEM Reescribe las direcciones URL](#aem-rewrites-incoming-urls)entrantes).
-* El servidor web utiliza reglas de reescritura de URL internas que traducen las direcciones URL de dominio a las rutas de caché. (Consulte [El servidor web reescribe las direcciones URL](#the-web-server-rewrites-incoming-urls)entrantes).
+* (Recomendado) La instancia de publicación de AEM utiliza la asignación de Sling para la resolución de recursos a fin de implementar las reglas de reescritura de URL internas. Las direcciones URL de dominio se traducen a rutas de repositorio de contenido. Consulte [AEM Reescribe las direcciones URL](#aem-rewrites-incoming-urls)entrantes.
+* El servidor web utiliza reglas de reescritura de URL internas que traducen las direcciones URL de dominio a las rutas de caché. Consulte [El servidor web reescribe las direcciones URL](#the-web-server-rewrites-incoming-urls)entrantes.
 
 Por lo general, es recomendable utilizar direcciones URL cortas para las páginas web. Normalmente, las direcciones URL de las páginas reflejan la estructura de las carpetas del repositorio que contienen el contenido web. Sin embargo, las direcciones URL no revelan los nodos de repositorio superiores, como `/content`. El cliente no es necesariamente consciente de la estructura del repositorio de AEM.
 
