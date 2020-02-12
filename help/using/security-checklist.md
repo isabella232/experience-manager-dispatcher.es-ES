@@ -1,25 +1,25 @@
 ---
-title: Lista de comprobación de seguridad del despachante
-seo-title: Lista de comprobación de seguridad del despachante
-description: Lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
-seo-description: Lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
+title: Lista de comprobación de seguridad de Dispatcher
+seo-title: Lista de comprobación de seguridad de Dispatcher
+description: Una lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
+seo-description: Una lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
-contentOwner: Usuario
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: referencia
+content-type: reference
 discoiquuid: fbfafa55-c029-4ed7-ab3e-1bebfde18248
 jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 6d3ff696780ce55c077a1d14d01efeaebcb8db28
+source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
 
 ---
 
 
-# Lista de comprobación de seguridad del despachante{#the-dispatcher-security-checklist}
+# Lista de comprobación de seguridad de Dispatcher{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -91,7 +91,7 @@ Las listas blancas son una mejor manera de proporcionar control de acceso, ya qu
 
 ## Ejecutar Dispatcher con un usuario de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Al configurar Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda conceder acceso de escritura únicamente a la carpeta de caché del despachante.
+Al configurar Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda otorgar acceso de escritura únicamente a la carpeta de caché del despachante.
 
 Además, los usuarios de IIS deben configurar su sitio web de la siguiente manera:
 
@@ -147,7 +147,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configurar Dispatcher para evitar ataques CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
 AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) para prevenir los ataques de falsificación de solicitudes entre sitios. Para poder utilizar este marco correctamente, debe incluir la compatibilidad con tokens CSRF en la lista blanca del despachante. Puede hacerlo mediante:
 
@@ -156,7 +156,7 @@ AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/
 
 ## Evitar el secuestro de clics {#prevent-clickjacking}
 
-Para evitar el "clickjacking" recomendamos configurar el servidor web para que proporcione el encabezado `X-FRAME-OPTIONS` HTTP definido en `SAMEORIGIN`.
+Para evitar el &quot;clickjacking&quot; recomendamos configurar el servidor web para que proporcione el encabezado `X-FRAME-OPTIONS` HTTP definido en `SAMEORIGIN`.
 
 Para obtener más [información sobre el rastreo de clics, consulte el sitio](https://www.owasp.org/index.php/Clickjacking)OWASP.
 
