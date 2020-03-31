@@ -1,51 +1,59 @@
 ---
-source-git-commit: f35c79b487454059062aca6a7c989d5ab2afaf7b
+source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
 translation-type: tm+mt
 
 ---
-# Contribución
+# Contribución a la documentación de Adobe Experience Manager
 
-¡Gracias por elegir contribute!
+Gracias por contribuir a la documentación de Adobe Experience Manager. Agradecemos las contribuciones de contenido de toda nuestra comunidad de lectores, así como de otros empleados de Adobe.
 
-A continuación se proporciona un conjunto de directrices para seguir al contribuir a este proyecto.
+Este archivo describe cómo puede contribuir, así como las directrices que debe seguir al realizar sus contribuciones.
 
-## Código de conducta
+## Código de conducta de Adobe Open Source
 
-Este proyecto se adhiere al [código de conducta de Adobe](code-of-conduct.md). Al participar, se espera que respete este código. Informe de un comportamiento inaceptable a
-[Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
+Este proyecto ha adoptado el Código de conducta [de código abierto de](code-of-conduct.md)Adobe. Al contribuir a la documentación de AEM, acepta adherirse a este código de conducta. Please report unacceptable behavior to [Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
 
-## ¿Tiene una pregunta?
+## Directrices para la contribución
 
-Comience por archivar un problema. Los traficantes existentes de este proyecto trabajan para alcanzar
-un consenso en torno a la dirección del proyecto y a las soluciones de problemas dentro de los hilos
-de problema (cuando sea necesario).
+Si bien acogemos con satisfacción cualquier contribución para mejorar la documentación de AEM, pedimos que las contribuciones se ajusten a determinadas directrices y normas siempre que sea posible. Consulte las [Directrices para contribuir a la documentación](guidelines.md) de AEM para obtener más información.
 
-## Acuerdo de licencia de colaborador
+## Cómo contribuir
 
-Todas las contribuciones de terceros a este proyecto deben estar acompañados por un contrato de licencia de colaborador
-firmado. Esto proporciona permiso de Adobe para redistribuir las contribuciones
-como parte del proyecto. [Firme nuestro CLA](http://opensource.adobe.com/cla.html). Solo necesita enviar un CLA de Adobe, por lo que, si ha enviado uno anteriormente,
-es bueno ir.
+Queremos que sea lo más fácil posible enviar sus contribuciones. Puede contribuir de dos maneras:
 
-## Revisiones de código
+* [Crear un problema](#create-an-issue)
+* [Crear una solicitud de extracción](#create-a-pull-request)
 
-Todos los envíos deben ser solicitudes de extracción y deben ser revisados
-por los defensores del proyecto. Lea [la documentación
-de solicitud extraíble de github](https://help.github.com/articles/about-pull-requests/)para obtener más información sobre el envío de solicitudes de extracción.
+El método que elija dependerá de la comodidad con la que edite la documentación en GitHub.
 
-<!--
-Lastly, please follow the [pull request template](PULL_REQUEST_TEMPLATE.md) when
-submitting a pull request!
--->
+>[!NOTE]
+>
+>Las contribuciones que envía están cubiertas por las condiciones de uso de [Adobe.](https://www.adobe.com/legal/terms.html)
 
-## De Colaborador al Supervisor
+### Crear un número {#create-an-issue}
 
-¡Nos encantan las contribuciones de nuestra comunidad! Si desea ir más allá de la colaborador
-y convertirse en un contratador con acceso de escritura completa y un ejemplo en el proyecto, debe
-ser invitado al proyecto. Los participantes existentes emplean un proceso de nominación
-interna que debe alcanzar un consenso diferido (el silencio es aprobación) antes de que se envíen invitaciones. Si cree que está cualificado y desea involucrarse más profundamente,
-puede ponerse en contacto con los usuarios existentes para hablar sobre esto.
+¿Tiene una sugerencia, una observación sobre los documentos actuales o una pregunta sobre cómo se describe algo? Entonces cree un problema. Los problemas también son excelentes si tiene algo que aportar, pero no se sienta cómodo editando los documentos o haciendo una solicitud de extracción usted mismo.
 
-## Problemas de seguridad
+Los problemas le permiten describir fácilmente su idea para mejorar los documentos y un miembro del equipo de AEM Docs puede revisarla. Simplemente haga clic en el vínculo **Registrar un problema** en la parte superior del panel de navegación derecho en cualquier página para crear un problema.
 
-Los problemas de seguridad no deberían informarse en este rastreador de problemas. En lugar de eso [, envíe un problema a nuestros expertos en seguridad](https://helpx.adobe.com/security/alertus.html)
+### Crear una solicitud de extracción {#create-a-pull-request}
+
+Si ve un problema y sabe exactamente cómo solucionarlo, considere la posibilidad de crear una solicitud de extracción. Las solicitudes de extracción le permiten realizar sus propios cambios en la documentación, que luego un miembro del equipo de AEM Docs revisa para su inclusión. Simplemente haga clic en el vínculo **Editar esta página** en la parte superior del panel de navegación derecho en cualquier página para realizar los cambios sugeridos y crear la solicitud de extracción.
+
+Todas las solicitudes de extracción deben ir acompañadas de un contrato de licencia de [colaborador firmado o de un CLA.](https://opensource.adobe.com/cla.html)  Esto otorga permiso a Adobe para redistribuir sus contribuciones como parte del proyecto. Solo tiene que enviar un CLA de Adobe una vez, por lo que si lo ha enviado anteriormente, ¡ya está listo!
+
+### Introducción rápida al vídeo
+
+Consulte el siguiente vídeo para obtener una descripción general rápida de cómo crear problemas y extraer solicitudes.
+
+>[!VIDEO](https://video.tv.adobe.com/v/27069)
+
+### Contribuciones de empleados de Adobe
+
+Si es un empleado de Adobe y desea realizar una solicitud de extracción, utilice el repositorio privado en `https://git.corp.adobe.com/AdobeDocs`.
+
+Para problemas, por favor siéntase libre de usar los repositorios públicos.
+
+## Información adicional
+
+Consulte la Guía [del colaborador de](https://docs.adobe.com/help/en/contributor/contributor-guide/introduction.html) Adobe Docs para obtener más información sobre cómo utilizar la plataforma de creación GitHub.
