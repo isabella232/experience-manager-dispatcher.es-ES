@@ -1,19 +1,19 @@
 ---
-source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
+source-git-commit: 053f90d9a0574c7d470cec6794498919e3340713
 translation-type: tm+mt
 
 ---
-# Directrices para contribuir a la documentación de AEM
+# Directrices para contribuir a la documentación de Adobe Experience Manager
 
-## Filosofía de la documentación de AEM
+## Filosofía de la documentación
 
 Sabemos que los usuarios de Adobe Experience Manager trabajan en entornos muy competitivos, esforzándose por crear experiencias digitales que los diferencien de sus competidoras. Por lo tanto, es fundamental que, cuando Adobe ofrece nuevas herramientas avanzadas en AEM, estas herramientas se complementen con una documentación precisa y clara que permita al cliente aprovechar inmediatamente su inversión en AEM y maximizar el retorno de la inversión.
 
 El objetivo de la documentación de AEM es poner la documentación en manos de los usuarios de AEM lo antes posible. Por lo tanto, damos prioridad a la documentación precisa y utilizable y nos esforzamos por actualizarla y mejorarla continuamente.
 
-## AEM Documentation Contributions
+## Contribuciones a la documentación
 
-Para mejorar continuamente la documentación de AEM, toda la comunidad de usuarios de AEM puede contribuir a la documentación. Ya sea a través de solicitudes o problemas, las mejoras en la documentación pueden ser correcciones, aclaraciones, expansiones y ejemplos adicionales.
+Con el fin de mejorar continuamente la documentación de AEM, toda la comunidad de usuarios de AEM puede contribuir a la documentación. Ya sea a través de solicitudes o problemas, las mejoras en la documentación pueden ser correcciones, aclaraciones, expansiones y ejemplos adicionales.
 
 ## Normas de documentación
 
@@ -35,9 +35,9 @@ Las excepciones a esta regla se aplican a las notas de la versión en las que lo
 
 Cualquier idea que tenga para mejorar la documentación de AEM será bienvenida como contribución. Sin embargo, los comentarios, los problemas y las solicitudes de extracción solo están destinados a *contribuciones* . No están pensados para utilizarse para responder a sus preguntas sobre cómo utilizar AEM, implementar su proyecto AEM o resolver problemas técnicos.
 
-Las preguntas sobre el uso de AEM o los errores técnicos que pueda haber recibido se deben notificar mediante el proceso de asistencia normal a través del portal [de asistencia técnica de](https://daycare.day.com/home.html) Experience Manager o analizarse en la comunidad [de](http://help-forums.adobe.com/content/adobeforums/en/experience-manager-forum/adobe-experience-manager.html)Experience Manager.
+Cualquier pregunta sobre el uso de AEM o los errores técnicos que pueda haber tenido se debe informar a través del proceso de asistencia técnica normal a través del portal [de asistencia técnica de](https://helpx.adobe.com/contact/enterprise-support.ec.html) Experience Cloud Enterprise o se debe analizar en la comunidad [de](https://forums.adobe.com/community/experience-cloud/marketing-cloud/experience-manager)Experience Manager.
 
-***Las contribuciones a la documentación de AEM no sustituyen a la asistencia de Adobe*** y se rechazará cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
+***Las contribuciones a la documentación de AEM no sustituyen al Servicio de atención*** al cliente de Adobe y se rechazará cualquier contribución de este tipo que busque respuestas a preguntas relacionadas con la asistencia.
 
 ### Las contribuciones deben hacer referencia claramente a las páginas de documentación afectadas.
 
