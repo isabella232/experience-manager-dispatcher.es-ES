@@ -1,5 +1,5 @@
 ---
-source-git-commit: 36c4ad10a9140d368fdbf3f0939e6756cc2bfbbf
+source-git-commit: a7f81343602253c16d7d3770b98b9a8e9fd32c8e
 translation-type: tm+mt
 
 ---
@@ -19,7 +19,7 @@ Si bien acogemos con satisfacción cualquier contribución para mejorar la docum
 
 ## Cómo contribuir
 
-Queremos que sea lo más fácil posible enviar sus contribuciones. Puede contribuir de dos maneras:
+Queremos que sea lo más fácil posible presentar sus contribuciones. Puede contribuir de dos maneras:
 
 * [Crear un problema](#create-an-issue)
 * [Crear una solicitud de extracción](#create-a-pull-request)
@@ -50,9 +50,9 @@ Consulte el siguiente vídeo para obtener una descripción general rápida de c�
 
 ### Contribuciones de empleados de Adobe
 
-Si es un empleado de Adobe y desea realizar una solicitud de extracción, utilice el repositorio privado en `https://git.corp.adobe.com/AdobeDocs`.
+Si usted es un empleado de Adobe y tiene una contribución, utilice la `AdobeDocs` organización en el Git corporativo.
 
-Para problemas, por favor siéntase libre de usar los repositorios públicos.
+Por supuesto, nos complace cualquier contribución y revisaremos su contribución si se realiza en el repositorio público. Sin embargo, las solicitudes de extracción de los empleados de Adobe son más fáciles de procesar y se pueden aprobar más rápido en la repo corporativa. Asegúrese de que cualquier información de propiedad solo se analiza en la repo corporativa.
 
 ## Información adicional
 
