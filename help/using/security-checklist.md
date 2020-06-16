@@ -14,7 +14,10 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 5b5ac8cdff27d6bc6664f1c18302c53649df7360
+source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+workflow-type: tm+mt
+source-wordcount: '672'
+ht-degree: 1%
 
 ---
 
@@ -32,11 +35,11 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-El despachante como sistema front-end ofrece una capa adicional de seguridad a su infraestructura de Adobe Experience Manager. Adobe recomienda encarecidamente completar la siguiente lista de comprobación antes de continuar con la producción.
+El despachante como sistema front-end oferta un nivel adicional de seguridad a la infraestructura de Adobe Experience Manager. Adobe recomienda encarecidamente completar la siguiente lista de comprobación antes de continuar con la producción.
 
 >[!CAUTION]
 >
->También debe completar la lista de comprobación de seguridad de su versión de AEM antes de activarla. Consulte la documentación [correspondiente de](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager.
+>También debe completar la lista de comprobación de seguridad de su versión de AEM antes de activarla. Consulte la documentación [de](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager correspondiente.
 
 ## Usar la versión más reciente de Dispatcher {#use-the-latest-version-of-dispatcher}
 
@@ -77,21 +80,21 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restringir acceso {#restrict-access}
 
-Al configurar Dispatcher, debe restringir el acceso externo tanto como sea posible. Consulte la sección [](dispatcher-configuration.md#main-pars_184_1_title) Ejemplo/filtro en la documentación de Dispatcher.
+Al configurar el Dispatcher, debe restringir el acceso externo tanto como sea posible. Consulte [Ejemplo de sección](dispatcher-configuration.md#main-pars_184_1_title) /filter en la documentación de Dispatcher.
 
 ## Asegúrese de denegar el acceso a las direcciones URL administrativas {#make-sure-access-to-administrative-urls-is-denied}
 
 Asegúrese de utilizar filtros para bloquear el acceso externo a cualquier dirección URL administrativa, como la consola web.
 
-Consulte [Prueba de seguridad](dispatcher-configuration.md#testing-dispatcher-security) del despachante para obtener una lista de las direcciones URL que deben bloquearse.
+Consulte [Prueba de seguridad](dispatcher-configuration.md#testing-dispatcher-security) de Dispatcher para obtener una lista de las direcciones URL que deben bloquearse.
 
-## Usar listas blancas en lugar de listas negras {#use-whitelists-instead-of-blacklists}
+## Usar listas permitidas en lugar de listas de bloqueo {#use-allowlists-instead-of-blocklists}
 
-Las listas blancas son una mejor manera de proporcionar control de acceso, ya que suponen que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista blanca. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que podrían no haberse revisado aún o no haberse tenido en cuenta durante una determinada etapa de configuración.
+Las listas de permitidos son una mejor manera de proporcionar controles de acceso ya que de manera inherente, suponen que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que podrían no haberse revisado aún o no haberse tenido en cuenta durante una determinada etapa de configuración.
 
-## Ejecutar Dispatcher con un usuario de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
+## Ejecución de Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Al configurar Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda otorgar acceso de escritura únicamente a la carpeta de caché del despachante.
+Al configurar el Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda otorgar acceso de escritura únicamente a la carpeta de caché del despachante.
 
 Además, los usuarios de IIS deben configurar su sitio web de la siguiente manera:
 
@@ -119,7 +122,7 @@ A nivel de distribuidor, existen dos métodos de configuración para evitar ataq
    * `.ppt`
    Se puede ver un archivo de configuración de ejemplo para [restringir el acceso](#restrict-access)externo, que incluye restricciones para tipos de MIME.
 
-Para habilitar de forma segura toda la funcionalidad en las instancias de publicación, configure filtros para evitar el acceso a los siguientes nodos:
+Para habilitar de forma segura toda la funcionalidad en las instancias de publicación, configure filtros para evitar el acceso a los nodos siguientes:
 
 * `/etc/`
 * `/libs/`
@@ -149,10 +152,10 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) para prevenir los ataques de falsificación de solicitudes entre sitios. Para poder utilizar este marco correctamente, debe incluir la compatibilidad con tokens CSRF en la lista blanca del despachante. Puede hacerlo mediante:
+AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) para prevenir los ataques de falsificación de solicitudes entre sitios. Para poder utilizar este marco correctamente, debe permitir la inclusión de la compatibilidad con tokens CSRF en el despachante. Puede hacerlo mediante:
 
 1. Creación de un filtro para permitir la `/libs/granite/csrf/token.json` ruta;
-1. Agregue el `CSRF-Token` encabezado a la `clientheaders` sección de la configuración de Dispatcher.
+1. Añada el `CSRF-Token` encabezado a la `clientheaders` sección de la configuración de Dispatcher.
 
 ## Evitar el secuestro de clics {#prevent-clickjacking}
 
