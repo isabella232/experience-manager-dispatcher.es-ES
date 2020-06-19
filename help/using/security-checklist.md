@@ -120,6 +120,7 @@ A nivel de distribuidor, existen dos métodos de configuración para evitar ataq
    * `.doc`
    * `.pdf`
    * `.ppt`
+
    Se puede ver un archivo de configuración de ejemplo para [restringir el acceso](#restrict-access)externo, que incluye restricciones para tipos de MIME.
 
 Para habilitar de forma segura toda la funcionalidad en las instancias de publicación, configure filtros para evitar el acceso a los nodos siguientes:
