@@ -2,10 +2,14 @@
 cloud: experience-cloud
 product: experience manager
 sub-product: dispatcher de experience manager
-archetype: Administrador
+archetype: Administrator
 user-guide-title: Ayuda de Dispatcher de Experience Manager
-translation-type: ht
-source-git-commit: 5cd966c0e317949582084d3268c6914540b707b1
+user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
+translation-type: tm+mt
+source-git-commit: 02a082ec66e32f2c4c0b3a6135eacbb4c5e9de7b
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 81%
 
 ---
 
