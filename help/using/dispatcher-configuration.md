@@ -10,7 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 183131dec51b67e152a8660c325ed980ae9ef458
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '8802'
+ht-degree: 2%
 
 ---
 
@@ -166,7 +169,7 @@ La `/farms` propiedad es una propiedad de nivel superior de la estructura de con
 La `/farmname` propiedad tiene varios valores y contiene otras propiedades que definen el comportamiento de Dispatcher:
 
 * Las direcciones URL de las páginas a las que se aplica el conjunto de servidores.
-* Una o varias URL de servicio (normalmente de instancias de publicación de AEM) que se utilizarán para procesar documentos.
+* Una o más direcciones URL de servicio (normalmente de AEM instancias de publicación) que se utilizarán para procesar documentos.
 * Estadísticas que se utilizarán para equilibrar la carga de varios procesadores de documento.
 * Otros comportamientos, como qué archivos se van a almacenar en caché y dónde.
 
@@ -202,7 +205,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | Encabezados de la solicitud HTTP del cliente para pasar. |
 | [/virtualhosts](#identifying-virtual-hosts-virtualhosts) | Los hosts virtuales de esta granja. |
 | [/sessionmanagement](#enabling-secure-sessions-sessionmanagement) | Compatibilidad con la administración y autenticación de sesiones. |
-| [/renders](#defining-page-renderers-renders) | Servidores que proporcionan páginas procesadas (normalmente instancias de publicación de AEM). |
+| [/renders](#defining-page-renderers-renders) | Servidores que proporcionan páginas procesadas (normalmente AEM instancias de publicación). |
 | [/filter](#configuring-access-to-content-filter) | Define las direcciones URL a las que Dispatcher habilita el acceso. |
 | [/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls) | Configura el acceso a las direcciones URL personales. |
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | Compatibilidad con el reenvío de solicitudes de distribución. |
@@ -221,7 +224,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 >
 >El `/homepage`parámetro (solo IIS) ya no funciona. En su lugar, debe utilizar el módulo [de reescritura de URL de](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module)IIS.
 >
->Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio Web de Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **[&#39;pass|PT&#39; (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)**para forzar al motor de reescritura a establecer el`uri`campo de la`request_rec`estructura interna en el valor del`filename`campo.
+>Si utiliza Apache, debe utilizar el `mod_rewrite` módulo. Consulte la documentación del sitio Web de Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Cuando se utiliza `mod_rewrite`, se recomienda utilizar el indicador **[&#39;pass|PT&#39; (pasar al siguiente controlador)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** para forzar al motor de reescritura a establecer el `uri` campo de la `request_rec` estructura interna en el valor del `filename` campo.
 
 <!-- 
 
@@ -412,7 +415,7 @@ En este ejemplo, la tabla siguiente muestra los hosts virtuales resueltos para s
 
 >[!CAUTION]
 >
->`/allowAuthorized` **debe** configurarse `"0"` en la `/cache` sección para habilitar esta función.
+>`/allowAuthorized` **debe** configurarse en `"0"` la sección `/cache` para habilitar esta función.
 
 Cree una sesión segura para acceder al conjunto de procesamiento, de modo que los usuarios tengan que iniciar sesión para acceder a cualquier página del conjunto de servidores. Después de iniciar sesión, los usuarios pueden acceder a las páginas de la granja. Consulte [Creación de un grupo](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) de usuarios cerrado para obtener información sobre el uso de esta función con CUG. Además, consulte la lista de comprobación de [seguridad de Dispatcher](/help/using/security-checklist.md) antes de activarla.
 
@@ -530,7 +533,7 @@ Especifica si Dispatcher utiliza la `getaddrinfo` función (para IPv6) o la `get
 
 La función getaddrinfo devuelve una lista de direcciones IP. Dispatcher repite la lista de direcciones hasta que establece una conexión TCP/IP. Por lo tanto, la propiedad ipv4 es importante cuando el nombre de host de procesamiento está asociado con varias direcciones IP y el host, en respuesta a la función getaddrinfo, devuelve una lista de direcciones IP que siempre están en el mismo orden. En este caso, debe utilizar la función gethostbyname de modo que la dirección IP con la que se conecta Dispatcher esté aleatorizada.
 
-El Equilibrio de carga elástica de Amazon (ELB) es un servicio que responde a getaddrinfo con una lista potencialmente similar de direcciones IP.
+El Equilibrio de carga elástica (ELB) de Amazon es un servicio que responde a getaddrinfo con una lista potencialmente similar de direcciones IP.
 
 **/secure**
 
@@ -564,7 +567,7 @@ Utilice la sección `/filter` para especificar las solicitudes HTTP que acepta D
 
 >[!CAUTION]
 >
->Consulte la lista [de comprobación de seguridad de](security-checklist.md) Dispatcher para obtener más información sobre cómo restringir el acceso mediante Dispatcher. Además, lea la lista de comprobación de seguridad de [AEM](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) para obtener más información sobre la seguridad de la instalación de AEM.
+>Consulte la lista [de comprobación de seguridad de](security-checklist.md) Dispatcher para obtener más información sobre cómo restringir el acceso mediante Dispatcher. Además, lea la lista de comprobación de seguridad [AEM](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) para obtener más detalles de seguridad sobre su instalación AEM.
 
 La sección /filter consta de una serie de reglas que deniegan o permiten el acceso al contenido según los patrones de la parte de la línea de solicitud de la solicitud HTTP. Debe utilizar una estrategia de lista de elementos permitidos para la sección /filter:
 
@@ -603,13 +606,13 @@ HTTP/1.1 define la línea [de](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5
 
 *Método Request-URI HTTP-Version*&lt;CRLF>
 
-Los caracteres &lt;CRLF> representan un retorno de carro seguido de una fuente de línea. El siguiente ejemplo es la línea de solicitud que se recibe cuando un cliente solicita la página final del sitio Geometrixx-Outoors:
+Los caracteres &lt;CRLF> representan un retorno de carro seguido de una fuente de línea. El siguiente ejemplo es la línea de solicitud que se recibe cuando un cliente solicita la página final del sitio de Geometrixx externos:
 
 GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF>
 
 Los patrones deben tener en cuenta los caracteres de espacio en la línea de solicitud y los caracteres &lt;CRLF>.
 
-#### Comillas de Doble vs. Comillas simples {#double-quotes-vs-single-quotes}
+#### Comillas de doble vs. Comillas simples {#double-quotes-vs-single-quotes}
 
 Al crear las reglas de filtro, utilice comillas de doble `"pattern"` para patrones sencillos. Si utiliza Dispatcher 4.2.0 o posterior y el patrón incluye una expresión regular, debe incluir el patrón regex `'(pattern1|pattern2)'` entre comillas simples.
 
@@ -633,15 +636,15 @@ Las solicitudes a un área denegada explícitamente resultan en la devolución d
 
 #### Ejemplo de filtro: Denegar acceso a áreas específicas {#example-filter-deny-acess-to-specific-areas}
 
-Las Filtros también permiten denegar el acceso a varios elementos, por ejemplo, páginas ASP y áreas sensibles dentro de una instancia de publicación. El filtro siguiente deniega el acceso a páginas ASP:
+Las filtros también permiten denegar el acceso a varios elementos, por ejemplo, páginas ASP y áreas sensibles dentro de una instancia de publicación. El filtro siguiente deniega el acceso a páginas ASP:
 
 ```xml
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### Ejemplo de filtro: Habilitar solicitudes POST {#example-filter-enable-post-requests}
+#### Ejemplo de filtro: Habilitar solicitudes de POST {#example-filter-enable-post-requests}
 
-El siguiente filtro de ejemplo permite enviar datos de formulario mediante el método POST:
+El siguiente ejemplo de filtro permite enviar datos de formulario mediante el método POST:
 
 ```xml
 /filter {
@@ -785,7 +788,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Los Filtros 0030 y 0031 relativos a Dynamic Media son aplicables a AEM 6.0 y versiones posteriores.
+>Los filtros 0030 y 0031 relativos a los medios dinámicos son aplicables a AEM 6.0 y versiones posteriores.
 
 Tenga en cuenta las siguientes recomendaciones si decide ampliar el acceso:
 
@@ -842,7 +845,7 @@ Una sola entrada puede tener *glob* o alguna combinación de *método*,*url*,*co
 
 ### Comprobación de la seguridad del despachante {#testing-dispatcher-security}
 
-Los filtros de Dispatcher deben bloquear el acceso a las siguientes páginas y secuencias de comandos en las instancias de publicación de AEM. Utilice un explorador Web para intentar abrir las páginas siguientes como lo haría un visitante del sitio y comprobar que se devuelve un código 404. Si se obtiene algún otro resultado, ajuste sus filtros.
+Los filtros de Dispatcher deben bloquear el acceso a las siguientes páginas y secuencias de comandos en AEM instancias de publicación. Utilice un explorador Web para intentar abrir las páginas siguientes como lo haría un visitante del sitio y comprobar que se devuelve un código 404. Si se obtiene algún otro resultado, ajuste sus filtros.
 
 Tenga en cuenta que debe ver el procesamiento normal de la página para /content/add_valid_page.html?debug=layout.
 
@@ -919,7 +922,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-Configure Dispatcher para habilitar el acceso a las direcciones URL personales configuradas para las páginas de CQ o AEM.
+Configure Dispatcher para habilitar el acceso a las direcciones URL de vanidad configuradas para las páginas de CQ o AEM.
 
 Cuando se habilita el acceso a las direcciones URL personales, Dispatcher llama periódicamente a un servicio que se ejecuta en la instancia de procesamiento para obtener una lista de direcciones URL personales. Dispatcher almacena esta lista en un archivo local. Cuando se deniega una solicitud de una página debido a un filtro en la `/filter` sección, Dispatcher consulta la lista de las direcciones URL personales. Si la URL denegada está en la lista, Dispatcher permite el acceso a la URL de vanidad.
 
@@ -942,12 +945,12 @@ La `/vanity_urls` sección contiene las siguientes propiedades:
 
 >[!NOTE]
 >
->Si su procesamiento es una instancia de AEM, debe instalar el paquete [VanityURLS-Components](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/component/vanityurls-components) para instalar el servicio de URL de vanidad. (Consulte [Inicio de sesión en Package Share](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/package-manager.html#SigningIntoPackageShare)).
+>Si su procesamiento es una instancia de AEM, debe instalar el paquete [VanityURLS-Components](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq600/component/vanityurls-components) para instalar el servicio de URL vanity. (Consulte [Inicio de sesión en Package Share](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/package-manager.html#SigningIntoPackageShare)).
 
 Utilice el siguiente procedimiento para habilitar el acceso a las direcciones URL personales.
 
 1. Si el servicio de procesamiento es una instancia de AEM, instale el paquete com.adobe.granite.dispatcher.vanityurl.content en la instancia de publicación (consulte la nota anterior).
-1. Por cada URL de vanidad que haya configurado para una página de AEM o CQ, asegúrese de que la configuración ` [/filter](dispatcher-configuration.md#main-pars_134_32_0009)` deniegue la URL. Si es necesario, agregue un filtro que deniegue la dirección URL.
+1. Para cada URL de vanidad que haya configurado para una página AEM o CQ, asegúrese de que la ` [/filter](dispatcher-configuration.md#main-pars_134_32_0009)` configuración deniegue la dirección URL. Si es necesario, agregue un filtro que deniegue la dirección URL.
 1. Añada la `/vanity_urls` sección siguiente `/farms`.
 1. Reinicie el servidor web Apache.
 
@@ -955,7 +958,7 @@ Utilice el siguiente procedimiento para habilitar el acceso a las direcciones UR
 
 Normalmente, las solicitudes de distribución solo están destinadas a Dispatcher, por lo que de forma predeterminada no se envían al procesador (por ejemplo, una instancia de AEM).
 
-Si es necesario, establezca la propiedad /propagateSyndPost en &quot;1&quot; para reenviar solicitudes de distribución a Dispatcher. Si se establece, debe asegurarse de que las solicitudes POST no se denieguen en la sección de filtros.
+Si es necesario, establezca la propiedad /propagateSyndPost en &quot;1&quot; para reenviar solicitudes de distribución a Dispatcher. Si está configurado, debe asegurarse de que las solicitudes de POST no se denieguen en la sección de filtros.
 
 ## Configuración de la caché de Dispatcher - /cache {#configuring-the-dispatcher-cache-cache}
 
@@ -1029,7 +1032,7 @@ El archivo de estado no tiene contenido. Cuando se actualiza el contenido, Dispa
 
 La `/serveStaleOnError` propiedad controla si Dispatcher devuelve documentos invalidados cuando el servidor de procesamiento devuelve un error. De forma predeterminada, cuando se toca un archivo de estado e invalida el contenido almacenado en caché, Dispatcher elimina el contenido almacenado en caché la próxima vez que se solicite.
 
-Si `/serveStaleOnError` se establece en &quot;1&quot;, Dispatcher no elimina el contenido invalidado de la caché a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 5xx de AEM o un tiempo de espera de conexión hace que Dispatcher proporcione el contenido obsoleto y responda con y HTTP Status de 111 (error de revalidación).
+Si `/serveStaleOnError` se establece en &quot;1&quot;, Dispatcher no elimina el contenido invalidado de la caché a menos que el servidor de procesamiento devuelva una respuesta correcta. Una respuesta 5xx de AEM o un tiempo de espera de conexión hace que Dispatcher proporcione el contenido obsoleto y responda con y HTTP Status de 111 (Error de revalidación).
 
 ### Almacenamiento en caché cuando se utiliza la autenticación {#caching-when-authentication-is-used}
 
@@ -1184,7 +1187,7 @@ Cuando se invalida un archivo en `/content/myWebsite/xx` , todos los archivos `.
 
 La `/invalidate` propiedad define los documentos que se invalidan automáticamente al actualizar el contenido.
 
-Con la invalidación automática, Dispatcher no elimina los archivos en caché después de una actualización de contenido, sino que comprueba su validez cuando se solicitan por primera vez. Los Documentos de la caché que no se invalidan automáticamente permanecerán en la caché hasta que una actualización de contenido los elimine explícitamente.
+Con la invalidación automática, Dispatcher no elimina los archivos en caché después de una actualización de contenido, sino que comprueba su validez cuando se solicitan por primera vez. Los documentos de la caché que no se invalidan automáticamente permanecerán en la caché hasta que una actualización de contenido los elimine explícitamente.
 
 La invalidación automática se utiliza generalmente para las páginas HTML. Las páginas HTML suelen contener vínculos a otras páginas, lo que dificulta la determinación de si una actualización de contenido afecta a una página. Para asegurarse de que todas las páginas relevantes se invalidan cuando se actualiza el contenido, invalide automáticamente todas las páginas HTML. La siguiente configuración invalida todas las páginas HTML:
 
@@ -1216,7 +1219,7 @@ Si oferta archivos PDF y ZIP generados automáticamente para descargarlos, es po
   }
 ```
 
-La integración de AEM con Adobe Analytics ofrece datos de configuración en un archivo analytics.sitecatalyst.js de su sitio web. El archivo dispatcher.any de ejemplo que se proporciona con Dispatcher incluye la siguiente regla de invalidación para este archivo:
+La integración AEM con Adobe Analytics ofrece datos de configuración en un archivo analytics.sitecatalyst.js de su sitio web. El archivo dispatcher.any de ejemplo que se proporciona con Dispatcher incluye la siguiente regla de invalidación para este archivo:
 
 ```xml
 {
@@ -1351,6 +1354,7 @@ A continuación se presenta un ejemplo de la configuración predeterminada:
 >
 >* Añada el nombre del encabezado en la `/cache/headers`sección.
 >* Añada la siguiente directiva [](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) Apache en la sección relacionada con Dispatcher:
+
 >
 
 
@@ -1577,9 +1581,11 @@ Utilice el parámetro /ignoreEINTR si la instancia tiene dicha configuración y 
 
 Internamente, Dispatcher lee la respuesta del servidor remoto (es decir, AEM) utilizando un bucle que puede representarse como:
 
-`while (response not finished) {  
+```
+while (response not finished) {  
 read more data  
-}`
+}
+```
 
 Estos mensajes pueden generarse cuando `EINTR` se producen en la sección &quot; `read more data`&quot; y se deben a la recepción de una señal antes de recibir datos.
 
@@ -1760,12 +1766,12 @@ Y un evento registrado cuando se solicita un archivo que coincide con una regla 
 
 ## Confirmación de la operación básica {#confirming-basic-operation}
 
-Para confirmar el funcionamiento básico y la interacción del servidor web, Dispatcher y la instancia de AEM pueden seguir los pasos siguientes:
+Para confirmar el funcionamiento básico y la interacción del servidor web, Dispatcher y AEM instancia puede seguir estos pasos:
 
 1. Configure el `loglevel` en `3`.
 
 1. Inicio del servidor web; esto también inicio al despachante.
-1. Inicio de la instancia de AEM.
+1. Inicio la instancia de AEM.
 1. Compruebe el registro y los archivos de error del servidor web y del despachante.\
    Según el servidor web, debería ver mensajes como:\
    `[Thu May 30 05:16:36 2002] [notice] Apache/2.0.50 (Unix) configured`\
@@ -1773,7 +1779,7 @@ Para confirmar el funcionamiento básico y la interacción del servidor web, Dis
    `[Fri Jan 19 17:22:16 2001] [I] [19096] Dispatcher initialized (build XXXX)`
 
 1. Navegue por el sitio web a través del servidor web. Confirme que el contenido se muestra según sea necesario.\
-   Por ejemplo, en una instalación local en la que AEM se ejecuta en el puerto `4502` y en el servidor web, `80` acceda a la consola Sitios web mediante:\
+   Por ejemplo, en una instalación local en la que AEM se ejecuta en el puerto `4502` y en el servidor web en `80` acceso a la consola Sitios web mediante:\
    ` https://localhost:4502/libs/wcm/core/content/siteadmin.html  
 https://localhost:80/libs/wcm/core/content/siteadmin.html  
 `Los resultados deberían ser idénticos. Confirme el acceso a otras páginas con el mismo mecanismo.
@@ -1827,14 +1833,15 @@ Debajo hay una lista que contiene los encabezados de respuesta que `X-Dispatcher
 * **almacenamiento en caché**\
    El archivo destinatario no está contenido en la caché y el despachante ha determinado que es válido almacenar en caché la salida y entregarla.
 * **almacenamiento en caché: el archivo stat es más reciente** El archivo destinatario está contenido en la caché, pero se invalida por un archivo stat más reciente. El despachante eliminará el archivo destinatario, lo recreará de la salida y lo entregará.
-* **no se puede almacenar en caché: sin raíz** de documento La configuración de la granja no contiene una raíz de documento (elemento de configuración `cache.docroot`).
+* **no se puede almacenar en caché: sin raíz** de documento La configuración de la granja no contiene una raíz de documento (elemento de configuración) 
+`cache.docroot`).
 * **no se puede almacenar en caché: la ruta del archivo caché es demasiado larga**\
    El archivo destinatario (la concatenación de la raíz del documento y el archivo URL) supera el nombre de archivo más largo posible del sistema.
 * **no se puede almacenar en caché: ruta de archivo temporal demasiado larga**\
    La plantilla de nombre de archivo temporal supera el nombre de archivo más largo posible del sistema. El despachante crea primero un archivo temporal antes de crear o sobrescribir realmente el archivo en caché. El nombre de archivo temporal es el nombre del archivo destinatario con los caracteres `_YYYYXXXXXX` anexados, donde el `Y` `X` y se reemplazará para crear un nombre único.
 * **no se puede almacenar en caché: la dirección URL de solicitud no tiene extensión**\
    La dirección URL de la solicitud no tiene extensión o existe una ruta después de la extensión del archivo, por ejemplo: `/test.html/a/path`.
-* **no se puede almacenar en caché: solicitud no era GET ni HEAD** El método HTTP no es GET ni HEAD. El despachante supone que el resultado contendrá datos dinámicos que no deben almacenarse en caché.
+* **no se puede almacenar en caché: no era un GET o HEAD** El método HTTP no es ni un GET ni un HEAD. El despachante supone que el resultado contendrá datos dinámicos que no deben almacenarse en caché.
 * **no se puede almacenar en caché: la solicitud contenía una cadena de consulta**\
    La solicitud contenía una cadena de consulta. El despachante supone que el resultado depende de la cadena de consulta proporcionada y, por lo tanto, no se almacena en caché.
 * **no se puede almacenar en caché: el administrador de sesiones no se autenticó**\
@@ -1850,5 +1857,6 @@ Debajo hay una lista que contiene los encabezados de respuesta que `X-Dispatcher
 * **no se puede almacenar en caché: acceso denegado del comprobador de autorización**\
    El comprobador de autorización de la granja denegó el acceso al archivo en caché.
 * **no se puede almacenar en caché: sesión no válida** La caché del conjunto de servidores está gobernada por un administrador de sesiones (la configuración contiene un `sessionmanagement` nodo) y la sesión del usuario ya no es válida.
-* **no se puede almacenar en caché: contiene`no_cache `**El servidor remoto devolvió un`Dispatcher: no_cache`encabezado, que prohíbe al despachante almacenar en caché la salida.
+* **no se puede almacenar en caché: contiene`no_cache `** El servidor remoto devolvió un 
+`Dispatcher: no_cache` , que prohíbe al despachante almacenar en caché la salida.
 * **no se puede almacenar en caché: la longitud del contenido de respuesta es cero**. La longitud del contenido de la respuesta es cero; el despachante no creará un archivo de longitud cero.
