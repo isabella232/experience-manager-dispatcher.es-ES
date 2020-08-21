@@ -1,30 +1,33 @@
 ---
-title: Resolución de problemas de Dispatcher
-seo-title: Solución de problemas de AEM Dispatcher
+title: Solución de problemas de Dispatcher
+seo-title: Solución de problemas de Dispatcher AEM
 description: Aprenda a solucionar problemas de Dispatcher.
 seo-description: Aprenda a solucionar problemas de AEM Dispatcher.
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: '1193211344162'
+pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
-contentOwner: Usuario
+contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
-content-type: referencia
+content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 76cffbfb616cd5601aed36b7076f67a2faf3ed3b
+source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+workflow-type: tm+mt
+source-wordcount: '553'
+ht-degree: 7%
 
 ---
 
 
-# Resolución de problemas de Dispatcher {#troubleshooting-dispatcher-problems}
+# Solución de problemas de Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM, pero la documentación de Dispatcher está incrustada en la documentación de AEM. Utilice siempre la documentación de Dispatcher incrustada en la documentación de la versión más reciente de AEM.
+>Las versiones de Dispatcher son independientes de AEM, pero la documentación de Dispatcher está incrustada en la documentación de AEM. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
 >
->Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher incrustada en la documentación de una versión anterior de AEM.
+>Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
 >[!NOTE]
 >
@@ -44,7 +47,7 @@ Como siempre, los primeros pasos son comprobar lo básico:
       * ¿Ha determinado qué Dispatcher está administrando el sitio web o la página que está investigando?
    * ¿Ha implementado filtros?
 
-      * ¿Están estos impactando el asunto que estás investigando?
+      * ¿Están estos impactando en el asunto que estás investigando?
 
 
 ## Herramientas de diagnóstico de IIS {#iis-diagnostic-tools}
@@ -63,13 +66,13 @@ Al utilizar IIS, puede que experimente `404 Not Found` que se le devuelva en var
 * [IIS 6/7: El método POST devuelve 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
 * [IIS 6: Solicitudes a direcciones URL que contienen la ruta de acceso base `/bin` devuelta `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-También debe comprobar que la raíz de la caché del despachante y la raíz del documento de IIS están establecidas en el mismo directorio.
+También debe comprobar que la raíz de la caché del despachante y la raíz del documento IIS están establecidas en el mismo directorio.
 
 ## Problemas al eliminar modelos de flujo de trabajo {#problems-deleting-workflow-models}
 
 **Síntomas**
 
-Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una instancia de autor de AEM mediante Dispatcher.
+Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una instancia de autor AEM a través del despachante.
 
 **Pasos para reproducir:**
 
@@ -80,23 +83,25 @@ Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una inst
 
 1. Haga clic en **Sí** para confirmar.
 1. Aparecerá un cuadro de mensaje de error que muestra:\
-   " `ERROR 'Could not delete workflow model!!`".
+   &quot; `ERROR 'Could not delete workflow model!!`&quot;.
 
 **Resolución**
 
-Agregue los siguientes encabezados a la `/clientheaders` sección del `dispatcher.any` archivo:
+Añada los siguientes encabezados a la `/clientheaders` sección del `dispatcher.any` archivo:
 
 * `x-http-method-override`
 * `x-requested-with`
 
-`{  
+```
+{  
 {  
 /clientheaders  
 {  
 ...  
 "x-http-method-override"  
 "x-requested-with"  
-}`
+}
+```
 
 ## Interferencia con mod_dir (Apache) {#interference-with-mod-dir-apache}
 
@@ -115,12 +120,12 @@ Cuando el despachante está habilitado, procesa dichas solicitudes registrándos
 
 ### Apache 2.x {#apache-x}
 
-En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un `/` anexo.
+En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de direcciones URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un `/` anexo.
 
-Dispatcher no intercepta la `mod_dir` reparación, sino que la gestiona completamente en la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) gestiona las solicitudes de `/a_path` forma distinta a las solicitudes de `/a_path/` (cuando se `/a_path` asigna a un directorio existente).
+Dispatcher no intercepta la `mod_dir` reparación, sino que la gestiona completamente en la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) gestiona las solicitudes de `/a_path` forma diferente a las solicitudes de `/a_path/` (cuando se `/a_path` asigna a un directorio existente).
 
 Si esto sucede, debe:
 
-* deshabilitar `mod_dir` para el `Directory` o `Location` subárbol administrado por el distribuidor
+* deshabilitar `mod_dir` para el `Directory` o `Location` subárbol gestionado por el distribuidor
 
 * use `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
