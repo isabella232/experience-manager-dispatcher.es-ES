@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 31dc02adc1d16ec61d5191b86d0d1276c2e1da46
 workflow-type: tm+mt
-source-wordcount: '8802'
+source-wordcount: '8582'
 ht-degree: 2%
 
 ---
@@ -211,7 +211,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 | [/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost) | Compatibilidad con el reenvío de solicitudes de distribución. |
 | [/cache](#configuring-the-dispatcher-cache-cache) | Configura el comportamiento de almacenamiento en caché. |
 | [/statistics](#configuring-load-balancing-statistics) | Definición de categorías estadísticas para cálculos de equilibrio de carga. |
-| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor) | Carpeta que contiene documentos adhesivos. |
+| [/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor) | La carpeta que contiene documentos adhesivos. |
 | [/health_check](#specifying-a-health-check-page) | Dirección URL que se usará para determinar la disponibilidad del servidor. |
 | [/reintentarDelay](#specifying-the-page-retry-delay) | El retraso antes de volver a intentar una conexión con error. |
 | [/availablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics) | Sanciones que afectan a las estadísticas para cálculos de equilibrio de carga. |
@@ -784,7 +784,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configurar el servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
+>Cuando se utiliza con Apache, diseñe los patrones de URL del filtro según la propiedad DispatcherUseProcessedURL del módulo Dispatcher. (Consulte [Apache Web Server - Configuración del servidor Web Apache para Dispatcher](dispatcher-install.md#main-pars-55-35-1022)).
 
 >[!NOTE]
 >
@@ -847,60 +847,60 @@ Una sola entrada puede tener *glob* o alguna combinación de *método*,*url*,*co
 
 Los filtros de Dispatcher deben bloquear el acceso a las siguientes páginas y secuencias de comandos en AEM instancias de publicación. Utilice un explorador Web para intentar abrir las páginas siguientes como lo haría un visitante del sitio y comprobar que se devuelve un código 404. Si se obtiene algún otro resultado, ajuste sus filtros.
 
-Tenga en cuenta que debe ver el procesamiento normal de la página para /content/add_valid_page.html?debug=layout.
+Tenga en cuenta que debería ver el procesamiento normal de la página para `/content/add_valid_page.html?debug=layout`.
 
 
-* /administrador
-* /system/console
-* /dav/crx.default
-* /crx
-* /bin/crxde/logs
-* /jcr:system/jcr:versionStorage.json
-* /_jcr_system/_jcr_versionStorage.json
-* /libs/wcm/core/content/siteadmin.html
-* /libs/collab/core/content/admin.html
-* /libs/cq/ui/content/dumplibs.html
-* /var/linkchecker.html
-* /etc/linkchecker.html
-* /home/users/a/admin/profile.json
-* /home/users/a/admin/profile.xml
-* /libs/cq/core/content/login.json
-* ../libs/foundation/components/text/text.jsp
-* /content/.{./libs/foundation/components/text/text.jsp
-* /apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata
-* /libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet
-* /content.pages.json
-* /content.languages.json
-* /content.blueprint.json
-* /content.-1.json
-* /content.10.json
-* /content.infinity.json
-* /content.tidy.json
-* /content.tidy.-1.blubber.json
-* /content/dam.tidy.-100.json
-* /content/content/geometrixx.sitemap.txt
-* /content/add_valid_page.query.json?state=//*
-* /content/add_valid_page.qu%65ry.js%6Fn?state=//*
-* /content/add_valid_page.query.json?state=//*[@TransportPassword]/(@TransportPassword%20|%20@transportUri%20|%20@transportUser)
-* /content/add_valid_path_to_a_page/_jcr_content.json
-* /content/add_valid_path_to_a_page/jcr:content.json
-* /content/add_valid_path_to_a_page/_jcr_content.feed
-* /content/add_valid_path_to_a_page/jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename._jcr_content.feed
-* /content/add_valid_path_to_a_page/pagename.jcr:content.feed
-* /content/add_valid_path_to_a_page/pagename.docview.xml
-* /content/add_valid_path_to_a_page/pagename.docview.json
-* /content/add_valid_path_to_a_page/pagename.sysview.xml
-* /etc.xml
-* /content.feed.xml
-* /content.rss.xml
-* /content.feed
-* /content/add_valid_page.html?debug=layout
-* /projects
-* /tagging
-* /etc/replication.html
-* /etc/cloudservices.html
-* /bienvenido
+* `/admin`
+* `/system/console`
+* `/dav/crx.default`
+* `/crx`
+* `/bin/crxde/logs`
+* `/jcr:system/jcr:versionStorage.json`
+* `/_jcr_system/_jcr_versionStorage.json`
+* `/libs/wcm/core/content/siteadmin.html`
+* `/libs/collab/core/content/admin.html`
+* `/libs/cq/ui/content/dumplibs.html`
+* `/var/linkchecker.html`
+* `/etc/linkchecker.html`
+* `/home/users/a/admin/profile.json`
+* `/home/users/a/admin/profile.xml`
+* `/libs/cq/core/content/login.json`
+* `/content/../libs/foundation/components/text/text.jsp`
+* `/content/.{.}/libs/foundation/components/text/text.jsp`
+* `/apps/sling/config/org.apache.felix.webconsole.internal.servlet.OsgiManager.config/jcr%3acontent/jcr%3adata`
+* `/libs/foundation/components/primary/cq/workflow/components/participants/json.GET.servlet`
+* `/content.pages.json`
+* `/content.languages.json`
+* `/content.blueprint.json`
+* `/content.-1.json`
+* `/content.10.json`
+* `/content.infinity.json`
+* `/content.tidy.json`
+* `/content.tidy.-1.blubber.json`
+* `/content/dam.tidy.-100.json`
+* `/content/content/geometrixx.sitemap.txt `
+* `/content/add_valid_page.query.json?statement=//*`
+* `/content/add_valid_page.qu%65ry.js%6Fn?statement=//*`
+* `/content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)`
+* `/content/add_valid_path_to_a_page/_jcr_content.json`
+* `/content/add_valid_path_to_a_page/jcr:content.json`
+* `/content/add_valid_path_to_a_page/_jcr_content.feed`
+* `/content/add_valid_path_to_a_page/jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename._jcr_content.feed`
+* `/content/add_valid_path_to_a_page/pagename.jcr:content.feed`
+* `/content/add_valid_path_to_a_page/pagename.docview.xml`
+* `/content/add_valid_path_to_a_page/pagename.docview.json`
+* `/content/add_valid_path_to_a_page/pagename.sysview.xml`
+* `/etc.xml`
+* `/content.feed.xml`
+* `/content.rss.xml`
+* `/content.feed.html`
+* `/content/add_valid_page.html?debug=layout`
+* `/projects`
+* `/tagging`
+* `/etc/replication.html`
+* `/etc/cloudservices.html`
+* `/welcome`
 
 Ejecute el siguiente comando en un terminal o símbolo del sistema para determinar si el acceso de escritura anónima está habilitado. No debería poder escribir datos en el nodo.
 
@@ -1162,7 +1162,7 @@ Utilice la `/statfileslevel` propiedad para invalidar los archivos en caché seg
 * Dispatcher crea `.stat`archivos en cada carpeta desde la carpeta docroot hasta el nivel especificado. La carpeta docroot es el nivel 0.
 * Los archivos se invalidan tocando el `.stat` archivo. La fecha de la última modificación del `.stat` archivo se compara con la fecha de la última modificación de un documento en caché. El documento se recupera si el `.stat` archivo es más reciente.
 
-* Cuando se invalida un archivo ubicado en un determinado nivel, se tocarán **todos** los archivos desde docroot `.stat` hasta **el nivel del archivo invalidado o el configurado** `statsfilevel` (el que sea más pequeño).
+* Cuando se invalida un archivo ubicado en un determinado nivel, se tocarán **todos** los `.stat` archivos desde docroot **hasta** el nivel del archivo invalidado o el configurado `statsfilevel` (el que sea más pequeño).
 
    * Por ejemplo: si establece la `statfileslevel` propiedad en 6 y se invalida un archivo en el nivel 5, se tocará cada `.stat` archivo de docroot a 5. Continuando con este ejemplo, si un archivo se invalida en el nivel 7, entonces cada . `stat` desde docroot hasta 6 se tocará (desde `/statfileslevel = "6"`).
 
@@ -1189,7 +1189,7 @@ La `/invalidate` propiedad define los documentos que se invalidan automáticamen
 
 Con la invalidación automática, Dispatcher no elimina los archivos en caché después de una actualización de contenido, sino que comprueba su validez cuando se solicitan por primera vez. Los documentos de la caché que no se invalidan automáticamente permanecerán en la caché hasta que una actualización de contenido los elimine explícitamente.
 
-La invalidación automática se utiliza generalmente para las páginas HTML. Las páginas HTML suelen contener vínculos a otras páginas, lo que dificulta la determinación de si una actualización de contenido afecta a una página. Para asegurarse de que todas las páginas relevantes se invalidan cuando se actualiza el contenido, invalide automáticamente todas las páginas HTML. La siguiente configuración invalida todas las páginas HTML:
+La invalidación automática se suele utilizar en páginas HTML. Las páginas HTML suelen contener vínculos a otras páginas, lo que dificulta la determinación de si una actualización de contenido afecta a una página. Para asegurarse de que todas las páginas relevantes se invalidan cuando se actualiza el contenido, invalide automáticamente todas las páginas HTML. La siguiente configuración invalida todas las páginas HTML:
 
 ```xml
   /invalidate
