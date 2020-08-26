@@ -9,7 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: 3bf255c54b46f571fab64f0754b71e050c3bda3f
+source-git-commit: 88ea38c9ad7fe67edbaf68c4882a01c3f9a475d9
+workflow-type: tm+mt
+source-wordcount: '3222'
+ht-degree: 91%
 
 ---
 
@@ -26,15 +29,18 @@ El proceso de implementación de Dispatcher es independiente del servidor web y 
 
 1. Obtenga información sobre Dispatcher (esta página). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
 1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.
-
 1. [Instale el módulo de Dispatcher](dispatcher-install.md) en el servidor web y configure ese servidor web en consecuencia.
 1. [Configure Dispatcher](dispatcher-configuration.md) (mediante el archivo dispatcher.any).
-
 1. [Configure AEM](page-invalidate.md) para que las actualizaciones de contenido invaliden la caché.
 
 >[!NOTE]
 >
->Para comprender mejor cómo funciona Dispatcher con AEM, consulte [Preguntas a los expertos de la comunidad de AEM de julio de 2017](https://bit.ly/ATACE0717).
+>Para comprender mejor cómo funciona Dispatcher con AEM:
+>
+>* Consulte [Preguntar a los expertos de la comunidad AEM para julio de 2017](https://bit.ly/ATACE0717).
+>* Acceda a [este repositorio](https://github.com/adobe/aem-dispatcher-experiments). Contiene una colección de experimentos en un formato de laboratorio &quot;para llevar a casa&quot;.
+
+
 
 Utilice la siguiente información según sea necesario:
 
