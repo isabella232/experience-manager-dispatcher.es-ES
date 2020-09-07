@@ -9,10 +9,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 translation-type: tm+mt
-source-git-commit: 88ea38c9ad7fe67edbaf68c4882a01c3f9a475d9
+source-git-commit: 590a9a2b6005cd48676cf525b0e029e42d1b3ca6
 workflow-type: tm+mt
-source-wordcount: '3222'
-ht-degree: 91%
+source-wordcount: '3199'
+ht-degree: 90%
 
 ---
 
@@ -23,9 +23,9 @@ ht-degree: 91%
 >
 >Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
-Dispatcher es la herramienta de almacenamiento en caché o de equilibrio de carga de Adobe Experience Manager. El uso de Dispatcher de AEM también le permitirá proteger el servidor AEM de ataques. Por lo tanto, puede aumentar la seguridad de su instancia de AEM mediante Dispatcher y un servidor web de clase empresarial.
+Dispatcher es una herramienta de almacenamiento en caché y/o equilibrio de carga de Adobe Experience Manager que se puede utilizar junto con un servidor web de clase empresarial.
 
-El proceso de implementación de Dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
+El proceso de implementación de dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
 
 1. Obtenga información sobre Dispatcher (esta página). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
 1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.
