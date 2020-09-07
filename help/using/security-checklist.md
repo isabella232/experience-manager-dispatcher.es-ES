@@ -14,9 +14,9 @@ index: y
 internal: n
 snippet: y
 translation-type: tm+mt
-source-git-commit: 9ffdc1d85d1a0da45f95e0780227ee6569cd4b3d
+source-git-commit: 7889c025fb8fb29e6f11ea01c5248470556d3160
 workflow-type: tm+mt
-source-wordcount: '672'
+source-wordcount: '653'
 ht-degree: 1%
 
 ---
@@ -35,11 +35,11 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-El despachante como sistema front-end oferta un nivel adicional de seguridad a la infraestructura de Adobe Experience Manager. Adobe recomienda encarecidamente completar la siguiente lista de comprobación antes de continuar con la producción.
+Adobe recomienda encarecidamente que complete la siguiente lista de comprobación antes de continuar con la producción.
 
 >[!CAUTION]
 >
->También debe completar la lista de comprobación de seguridad de su versión de AEM antes de activarla. Consulte la documentación [de](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager correspondiente.
+>También debe completar la lista de comprobación de seguridad de su versión de AEM antes de activarse. Consulte la documentación [correspondiente de](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html)Adobe Experience Manager.
 
 ## Usar la versión más reciente de Dispatcher {#use-the-latest-version-of-dispatcher}
 
@@ -55,7 +55,7 @@ Debe instalar la versión más reciente disponible para su plataforma. Debe actu
 
 ## Restringir clientes que pueden vaciar la caché {#restrict-clients-that-can-flush-your-cache}
 
-Adobe recomienda [limitar los clientes que pueden vaciar la caché.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
+Adobe recomienda que [limite los clientes que pueden vaciar la caché.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
 ## Habilitar HTTPS para la seguridad de capa de transporte {#enable-https-for-transport-layer-security}
 
@@ -80,7 +80,7 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restringir acceso {#restrict-access}
 
-Al configurar el Dispatcher, debe restringir el acceso externo tanto como sea posible. Consulte [Ejemplo de sección](dispatcher-configuration.md#main-pars_184_1_title) /filter en la documentación de Dispatcher.
+Al configurar Dispatcher, debe restringir el acceso externo tanto como sea posible. Consulte la sección [](dispatcher-configuration.md#main-pars_184_1_title) Ejemplo/filtro en la documentación de Dispatcher.
 
 ## Asegúrese de denegar el acceso a las direcciones URL administrativas {#make-sure-access-to-administrative-urls-is-denied}
 
@@ -88,13 +88,13 @@ Asegúrese de utilizar filtros para bloquear el acceso externo a cualquier direc
 
 Consulte [Prueba de seguridad](dispatcher-configuration.md#testing-dispatcher-security) de Dispatcher para obtener una lista de las direcciones URL que deben bloquearse.
 
-## Usar listas permitidas en lugar de listas de bloqueo {#use-allowlists-instead-of-blocklists}
+## Usar Listas de permitidos En Lugar De Listas de bloqueados {#use-allowlists-instead-of-blocklists}
 
-Las listas de permitidos son una mejor manera de proporcionar controles de acceso ya que de manera inherente, suponen que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que podrían no haberse revisado aún o no haberse tenido en cuenta durante una determinada etapa de configuración.
+Las listas de permitidos son una mejor manera de proporcionar controles de acceso ya que, de manera inherente, suponen que todas las solicitudes de acceso deben denegarse a menos que formen parte explícita de la lista de permitidos. Este modelo proporciona un control más restrictivo sobre las nuevas solicitudes que podrían no haberse revisado aún o no haberse tenido en cuenta durante una determinada etapa de configuración.
 
-## Ejecución de Dispatcher con un usuario del sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
+## Ejecutar Dispatcher con un usuario de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Al configurar el Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda otorgar acceso de escritura únicamente a la carpeta de caché del despachante.
+Al configurar Dispatcher, debe asegurarse de que el servidor web lo ejecute un usuario dedicado con menos privilegios. Se recomienda otorgar acceso de escritura únicamente a la carpeta de caché del despachante.
 
 Además, los usuarios de IIS deben configurar su sitio web de la siguiente manera:
 
@@ -153,7 +153,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) para prevenir los ataques de falsificación de solicitudes entre sitios. Para poder utilizar este marco correctamente, debe permitir la inclusión de la compatibilidad con tokens CSRF en el despachante. Puede hacerlo mediante:
+AEM proporciona un [marco](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) para prevenir los ataques de falsificación de solicitudes entre sitios. Para poder utilizar este esquema correctamente, debe lista de permitidos de la compatibilidad de tokens CSRF en el despachante. Puede hacerlo mediante:
 
 1. Creación de un filtro para permitir la `/libs/granite/csrf/token.json` ruta;
 1. Añada el `CSRF-Token` encabezado a la `clientheaders` sección de la configuración de Dispatcher.
@@ -166,5 +166,5 @@ Para obtener más [información sobre el rastreo de clics, consulte el sitio](ht
 
 ## Realizar una prueba de penetración {#perform-a-penetration-test}
 
-Adobe recomienda encarecidamente realizar una prueba de penetración de su infraestructura de AEM antes de continuar con la producción.
+Adobe recomienda encarecidamente realizar una prueba de penetración de su infraestructura AEM antes de continuar con la producción.
 
