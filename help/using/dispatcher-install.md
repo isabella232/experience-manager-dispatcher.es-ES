@@ -4,13 +4,16 @@ seo-title: Instalación de AEM Dispatcher
 description: Obtenga información sobre cómo instalar el módulo Dispatcher en Microsoft Internet Information Server, Apache Web Server y Sun Java Web Server-iPlanet.
 seo-description: Obtenga información sobre cómo instalar el módulo AEM Dispatcher en Microsoft Internet Information Server, Apache Web Server y Sun Java Web Server-iPlanet.
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
-contentOwner: Usuario
-converted: verdadero
+contentOwner: User
+converted: true
 topic-tags: dispatcher
-content-type: referencia
+content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 translation-type: tm+mt
-source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+source-git-commit: ef0fc34cbf2f07090f39613811d6f015ba2305ab
+workflow-type: tm+mt
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
@@ -37,13 +40,13 @@ Se utiliza la siguiente convención de nomenclatura de archivos:
 
 Por ejemplo, el `dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz` archivo contiene Dispatcher versión 4.3.1 para un servidor web Apache 2.4 que se ejecuta en Linux i686 y se empaqueta con el formato **tar** .
 
-En la tabla siguiente se muestra el identificador de servidor Web que se utiliza en los nombres de archivo para cada servidor Web:
+La siguiente tabla lista el identificador del servidor Web que se utiliza en los nombres de archivo para cada servidor Web:
 
 | Servidor web | Kit de instalación |
 |--- |--- |
-| Apache 2.4 | dispatcher-apache **2.4**-&lt;otros parámetros&gt; |
-| Microsoft Internet Information Server 7.5, 8, 8.5 | dispatcher-**iis**-&lt;otros parámetros&gt; |
-| Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;otros parámetros&gt; |
+| Apache 2.4 | dispatcher-apache **2.4**-&lt;otros parámetros> |
+| Microsoft Internet Information Server 7.5, 8, 8.5 | dispatcher-**iis**-&lt;otros parámetros> |
+| Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;otros parámetros> |
 
 >[!NOTE]
 >
@@ -54,7 +57,7 @@ Cada archivo contiene los siguientes archivos:
 * los módulos Dispatcher
 * un archivo de configuración de ejemplo
 * el archivo README que contiene instrucciones de instalación e información de última hora
-* el archivo CHANGES que enumera los problemas solucionados en las versiones actuales y anteriores
+* el archivo CHANGES que lista problemas solucionados en versiones actuales y anteriores
 
 >[!NOTE]
 >
@@ -89,11 +92,11 @@ Comment Type: draft
 Para obtener información sobre cómo instalar este servidor web, consulte los siguientes recursos:
 
 * Documentación propia de Microsoft en Internet Information Server
-* ["El sitio oficial de Microsoft IIS"](https://www.iis.net/)
+* [&quot;El sitio oficial de Microsoft IIS&quot;](https://www.iis.net/)
 
 ### Componentes IIS necesarios {#required-iis-components}
 
-Las versiones 8.5 y 10 de IIS requieren que estén instalados los siguientes componentes de IIS:
+Las versiones 8.5 y 10 de IIS requieren que se instalen los siguientes componentes de IIS:
 
 * Extensiones ISAPI
 
@@ -114,7 +117,7 @@ El archivo ZIP contiene los siguientes archivos:
 | `dispatcher.any` | Un archivo de configuración de ejemplo para Dispatcher. |
 | `author_dispatcher.any` | Un archivo de configuración de ejemplo para Dispatcher que trabaja con la instancia de creación. |
 | README | Archivo Léame que contiene instrucciones de instalación e información de última hora. **Nota**: Verifique este archivo antes de iniciar la instalación. |
-| CAMBIOS | Archivo de cambios que enumera los problemas corregidos en las versiones actuales y anteriores. |
+| CAMBIOS | Cambia el archivo que lista los problemas corregidos en las versiones actuales y pasadas. |
 
 Utilice el siguiente procedimiento para copiar los archivos de Dispatcher en la ubicación correcta.
 
@@ -145,10 +148,10 @@ En la tabla siguiente se describe cada propiedad.
 | Parámetro | Descripción |
 |--- |--- |
 | configpath | Ubicación de `dispatcher.any` dentro del sistema de archivos local (ruta absoluta). |
-| archivo de registro | Ubicación del `dispatcher.log` archivo. Si no se establece, los mensajes de registro se dirigen al registro de eventos de Windows. |
+| archivo de registro | Ubicación del `dispatcher.log` archivo. Si no se ha configurado, los mensajes de registro se dirigen al registro de eventos de Windows. |
 | loglevel | Define el nivel de registro utilizado para enviar mensajes al registro de eventos. Se pueden especificar los siguientes valores:nivel de registro para el archivo de registro: <br/>0 - solo mensajes de error. <br/>1 - errores y advertencias. <br/>2 - errores, advertencias y mensajes informativos <br/>3 - errores, advertencias, mensajes informativos y de depuración. <br/>**Nota**: Se recomienda establecer el nivel de registro en 3 durante la instalación y la prueba y, a continuación, en 0 cuando se ejecute en un entorno de producción. |
-| replacepermission | Especifica cómo se administran los encabezados de autorización en la solicitud HTTP. Los siguientes valores son válidos:<br/>0 - Los encabezados de autorización no se modifican. <br/>1 - Reemplaza cualquier encabezado llamado "Autorización" que no sea "Básico" por su `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
-| servervariables | Define cómo se procesan las variables de servidor.<br/>0: las variables de servidor IIS no se envían ni al despachante ni a AEM. <br/>1: todas las variables de servidor IIS (como `LOGON\_USER, QUERY\_STRING, ...`) se envían al despachante, junto con los encabezados de solicitud (y también a la instancia de AEM si no se almacenan en caché).  <br/>Las variables de servidor incluyen `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` y muchas otras. Consulte la documentación de IIS para ver la lista completa de variables, con detalles. |
+| replacepermission | Especifica cómo se administran los encabezados de autorización en la solicitud HTTP. Los siguientes valores son válidos:<br/>0 - Los encabezados de autorización no se modifican. <br/>1 - Reemplaza cualquier encabezado llamado &quot;Autorización&quot; que no sea &quot;Básico&quot; por su `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
+| servervariables | Define cómo se procesan las variables de servidor.<br/>0: las variables de servidor IIS no se envían ni al despachante ni al AEM. <br/>1: todas las variables de servidor IIS (como `LOGON\_USER, QUERY\_STRING, ...`) se envían al despachante, junto con los encabezados de solicitud (y también a la instancia de AEM si no se almacenan en caché).  <br/>Las variables de servidor incluyen `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` y muchas otras. Consulte la documentación de IIS para ver la lista completa de las variables, con detalles. |
 | enable_chunked_transfer | Define si se debe habilitar (1) o deshabilitar (0) la transferencia fragmentada para la respuesta del cliente. El valor predeterminado es 0. |
 
 Una configuración de ejemplo:
@@ -172,7 +175,7 @@ El agente de replicación de vaciado predeterminado de la instancia de Autor est
 Si su sitio Web utiliza un método de autenticación, el agente de replicación de vaciado debe configurarse en consecuencia.
 
 1. Abra el Administrador de IIS y seleccione el sitio Web que está utilizando como caché de Disptcher.
-1. Con el modo de vista de características, en la sección IIS, haga doble clic en Autenticación.
+1. Mediante el modo de Vista Funciones, en la sección IIS, doble haga clic en Autenticación.
 1. Si la autenticación anónima no está habilitada, seleccione Autenticación anónima y, en el área Acciones, haga clic en Habilitar.
 
 ### Integración del módulo ISAPI de Dispatcher - IIS 8.5 y 10 {#integrating-the-dispatcher-isapi-module-iis-and}
@@ -181,14 +184,14 @@ Utilice el siguiente procedimiento para agregar el módulo ISAPI de Dispatcher a
 
 1. Abra el Administrador de IIS.
 1. Seleccione el sitio Web que está utilizando como caché de despachante.
-1. Con el modo de vista de características, en la sección IIS, haga doble clic en Asignaciones de controladores.
-1. En el panel Acciones de la página Asignaciones de controladores, haga clic en Agregar mapa de secuencias de comandos de comodines, agregue los siguientes valores de propiedad y, a continuación, haga clic en Aceptar:
+1. Mediante el modo de Vista Funciones, en la sección IIS, doble hacer clic en Asignaciones de controladores.
+1. En el panel Acciones de la página Asignaciones de controladores, haga clic en Añadir mapa de secuencias de comandos de comodines, agregue los siguientes valores de propiedad y, a continuación, haga clic en Aceptar:
 
    * Ruta de solicitud: *
    * Ejecutable: Ruta absoluta del archivo disp_iis.dll, por ejemplo `C:\inetpub\Scripts\disp_iis.dll`.
    * Nombre: Un nombre descriptivo para la asignación de controladores, por ejemplo `Dispatcher`.
 
-1. En el cuadro de diálogo que aparece, para agregar la biblioteca disp_iis.dll a la lista Restricciones ISAPI y CGI, haga clic en Sí.
+1. En el cuadro de diálogo que aparece, para agregar la biblioteca disp_iis.dll a la lista de restricciones ISAPI y CGI, haga clic en Sí.
 
    Para IIS 7.0 y 7.5, la configuración se ha completado. Continúe con los pasos restantes si va a configurar IIS 8.0.
 
@@ -202,25 +205,25 @@ Utilice el siguiente procedimiento para agregar el módulo ISAPI de Dispatcher a
 Proporcione al usuario predeterminado del grupo de aplicaciones acceso de escritura a la carpeta que se está utilizando como caché de Dispatcher.
 
 1. Haga clic con el botón secundario en la carpeta raíz del sitio Web que está utilizando como caché de Dispatcher y, a continuación, haga clic en Propiedades, como `C:\inetpub\wwwroot`.
-1. En la ficha Seguridad, haga clic en Editar y, a continuación, en el cuadro de diálogo Permisos, haga clic en Agregar. Se abre un cuadro de diálogo para seleccionar cuentas de usuario. Haga clic en el botón Ubicaciones, seleccione el nombre del equipo y, a continuación, haga clic en Aceptar.
+1. En la ficha Seguridad, haga clic en Editar y, a continuación, en el cuadro de diálogo Permisos, haga clic en Añadir. Se abre un cuadro de diálogo para seleccionar cuentas de usuario. Haga clic en el botón Ubicaciones, seleccione el nombre del equipo y, a continuación, haga clic en Aceptar.
 
    Mantenga este cuadro de diálogo abierto mientras completa el paso siguiente.
 
 1. en el Administrador de IIS, seleccione el sitio de IIS que está utilizando para la caché de Dispatcher y, en la parte derecha de la ventana, haga clic en Configuración avanzada.
 1. Seleccione el valor de la propiedad Grupo de aplicaciones y cópielo en el portapapeles.
-1. Vuelva al cuadro de diálogo abierto. En el cuadro Escriba los nombres de los objetos que se deben seleccionar, escriba `IIS AppPool\` y pegue el contenido del portapapeles. El valor debe tener el aspecto siguiente:
+1. Vuelva al cuadro de diálogo abierto. En el cuadro Introduzca los nombres de los objetos que se van a seleccionar, escriba `IIS AppPool\` y pegue el contenido del portapapeles. El valor debe tener el aspecto siguiente:
 
    `IIS AppPool\DefaultAppPool`
 
 1. Haga clic en el botón Comprobar nombres. Cuando Windows resuelva la cuenta de usuario, haga clic en Aceptar.
-1. En el cuadro de diálogo Permisos de la carpeta del distribuidor, seleccione la cuenta que acaba de agregar, habilite todos los permisos de la cuenta **excepto Control** total y haga clic en Aceptar. Haga clic en Aceptar para cerrar el cuadro de diálogo Propiedades de la carpeta.
+1. En el cuadro de diálogo Permisos de la carpeta del despachante, seleccione la cuenta que acaba de agregar, habilite todos los permisos de la cuenta **excepto Control** total y haga clic en Aceptar. Haga clic en Aceptar para cerrar el cuadro de diálogo Propiedades de la carpeta.
 
 ### Registro del tipo de MIME JSON: IIS 8.5 y 10 {#registering-the-json-mime-type-iis-and}
 
 Utilice el siguiente procedimiento para registrar el tipo MIME JSON, cuando desee que Dispatcher permita llamadas JSON.
 
-1. En el Administrador de IIS, seleccione el sitio web y, mediante la vista de características, haga doble clic en Tipos de MIME.
-1. Si la extensión JSON no está en la lista, en el panel Acciones haga clic en Agregar, introduzca los siguientes valores de propiedad y, a continuación, haga clic en Aceptar:
+1. En el Administrador de IIS, seleccione el sitio web y, mediante la Vista Funciones, haga clic con el doble en Tipos de MIME.
+1. Si la extensión JSON no está en la lista, en el panel Acciones haga clic en Añadir, introduzca los siguientes valores de propiedad y, a continuación, haga clic en Aceptar:
 
    * Extensión de nombre de archivo: `.json`
    * Tipo MIME: `application/json`
@@ -229,30 +232,30 @@ Utilice el siguiente procedimiento para registrar el tipo MIME JSON, cuando dese
 
 Utilice el procedimiento siguiente para eliminar el segmento `bin` oculto. Los sitios Web que no son nuevos pueden contener este segmento oculto.
 
-1. En el Administrador de IIS, seleccione el sitio web y, mediante la vista de características, haga doble clic en Filtrado de solicitudes.
+1. En el Administrador de IIS, seleccione el sitio web y, mediante la Vista Funciones, haga clic con el doble Filtrar solicitudes.
 1. Seleccione el `bin` segmento, haga clic en Eliminar y, en el cuadro de diálogo de confirmación, haga clic en Sí.
 
 ### Registro de mensajes IIS en un archivo - IIS 8.5 y 10 {#logging-iis-messages-to-a-file-iis-and}
 
-Utilice el siguiente procedimiento para escribir los mensajes de registro de Dispatcher en un archivo de registro en lugar de en el registro de eventos de Windows. Debe configurar Dispatcher para que utilice el archivo de registro y proporcionar a IIS acceso de escritura al archivo.
+Utilice el siguiente procedimiento para escribir los mensajes de registro de Dispatcher en un archivo de registro en lugar de en el registro de Evento de Windows. Debe configurar Dispatcher para que utilice el archivo de registro y proporcionar a IIS acceso de escritura al archivo.
 
 1. Utilice el Explorador de Windows para crear una carpeta con el nombre `dispatcher` debajo de la carpeta de registros de la instalación de IIS. La ruta de esta carpeta para una instalación típica es `C:\inetpub\logs\dispatcher`.
 
 1. Haga clic con el botón secundario en la carpeta del despachante y haga clic en Propiedades.
-1. En la ficha Seguridad, haga clic en Editar y, a continuación, en el cuadro de diálogo Permisos, haga clic en Agregar. Se abre un cuadro de diálogo para seleccionar cuentas de usuario. Haga clic en el botón Ubicaciones, seleccione el nombre del equipo y, a continuación, haga clic en Aceptar.
+1. En la ficha Seguridad, haga clic en Editar y, a continuación, en el cuadro de diálogo Permisos, haga clic en Añadir. Se abre un cuadro de diálogo para seleccionar cuentas de usuario. Haga clic en el botón Ubicaciones, seleccione el nombre del equipo y, a continuación, haga clic en Aceptar.
 
    Mantenga este cuadro de diálogo abierto mientras completa el paso siguiente.
 
 1. en el Administrador de IIS, seleccione el sitio de IIS que está utilizando para la caché de Dispatcher y, en la parte derecha de la ventana, haga clic en Configuración avanzada.
 1. Seleccione el valor de la propiedad Grupo de aplicaciones y cópielo en el portapapeles.
-1. Vuelva al cuadro de diálogo abierto. En el cuadro Escriba los nombres de los objetos que se deben seleccionar, escriba `IIS AppPool\` y pegue el contenido del portapapeles. El valor debe tener el aspecto siguiente:
+1. Vuelva al cuadro de diálogo abierto. En el cuadro Introduzca los nombres de los objetos que se van a seleccionar, escriba `IIS AppPool\` y pegue el contenido del portapapeles. El valor debe tener el aspecto siguiente:
 
    `IIS AppPool\DefaultAppPool`
 
 1. Haga clic en el botón Comprobar nombres. Cuando Windows resuelva la cuenta de usuario, haga clic en Aceptar.
 1. En el cuadro de diálogo Permisos de la carpeta del despachante, seleccione la cuenta que acaba de agregar, habilite todos los permisos de la cuenta **excepto Control total,** y haga clic en Aceptar. Haga clic en Aceptar para cerrar el cuadro de diálogo Propiedades de la carpeta.
 1. Utilice un editor de texto para abrir el `disp_iis.ini` archivo.
-1. Agregue una línea de texto similar al siguiente ejemplo para configurar la ubicación del archivo de registro y, a continuación, guarde el archivo:
+1. Añada una línea de texto similar al siguiente ejemplo para configurar la ubicación del archivo de registro y, a continuación, guardar el archivo:
 
    ```xml
    logfile=C:\inetpub\logs\dispatcher\dispatcher.log
@@ -260,10 +263,10 @@ Utilice el siguiente procedimiento para escribir los mensajes de registro de Dis
 
 ### Próximos pasos {#next-steps}
 
-Antes de empezar a usar Dispatcher, debe saber:
+Antes de poder realizar el inicio con Dispatcher, debe saber:
 
 * [Configurar](dispatcher-configuration.md) Dispatcher
-* [Configure AEM](page-invalidate.md) para que funcione con Dispatcher.
+* [Configurar AEM](page-invalidate.md) para trabajar con Dispatcher.
 
 ## Apache Web Server {#apache-web-server}
 
@@ -283,7 +286,7 @@ Para obtener información sobre cómo instalar un servidor web Apache, lea el ma
 
 Consulte también las Sugerencias [de](https://httpd.apache.org/docs/2.4/misc/security_tips.html) seguridad y los informes [de seguridad del servidor HTTP Apache](https://httpd.apache.org/security_report.html).
 
-### Servidor Web Apache - Agregar el módulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
+### Servidor web Apache: Añadir el módulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
 
 El despachante viene como:
 
@@ -294,27 +297,27 @@ Los archivos del archivo de instalación contienen los siguientes archivos, seg�
 
 | Archivo | Descripción |
 |--- |--- |
-| disp_apache&lt;x.y&gt;.dll | Windows:Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
-| dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so | Unix: El archivo de biblioteca de objetos compartidos Dispatcher. |
+| disp_apache&lt;x.y>.dll | Windows: Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
+| dispatcher-apache&lt;x.y>-&lt;rel-nr>.so | Unix: El archivo de biblioteca de objetos compartidos Dispatcher. |
 | mod_dispatcher.so | Unix: Un vínculo de ejemplo. |
-| http.conf.disp&lt;x&gt; | Un archivo de configuración de ejemplo para el servidor Apache. |
+| http.conf.disp&lt;x> | Un archivo de configuración de ejemplo para el servidor Apache. |
 | dispatcher.any | Un archivo de configuración de ejemplo para Dispatcher. |
 | README | Archivo Léame que contiene instrucciones de instalación e información de última hora. **Nota**: Verifique este archivo antes de iniciar la instalación. |
-| CAMBIOS | Archivo de cambios que enumera los problemas corregidos en las versiones actual y pasada. |
+| CAMBIOS | Cambia el archivo que lista los problemas corregidos en las versiones actual y pasada. |
 
 Siga estos pasos para agregar Dispatcher a su servidor Web Apache:
 
 1. Coloque el archivo Dispatcher en el directorio del módulo Apache correspondiente:
 
-   * **Windows**: Colocar `disp_apache<x.y>.dll``<APACHE_ROOT>/modules`
-   * **Unix**: Busque el `<APACHE_ROOT>/libexec` directorio o el `<APACHE_ROOT>/modules`directorio según la instalación.\
+   * **Windows**: Colocar `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
+   * **Unix**: Localice el `<APACHE_ROOT>/libexec` directorio o el `<APACHE_ROOT>/modules`directorio según la instalación.\
       Copie `dispatcher-apache<options>.so` en este directorio.\
       Para simplificar el mantenimiento a largo plazo también puede crear un vínculo simbólico denominado `mod_dispatcher.so` al despachante:\
       `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
 
 1. Copie el archivo dispatcher.any en el `<APACHE_ROOT>/conf` directorio.
 
-   **** Nota: Puede colocar este archivo en una ubicación diferente, siempre y cuando la propiedad DispatcherLog del módulo Dispatcher esté configurada en consecuencia. (Consulte a continuación las entradas de configuración específicas del despachante).
+   **Nota:** Puede colocar este archivo en una ubicación diferente, siempre y cuando la propiedad DispatcherLog del módulo Dispatcher esté configurada en consecuencia. (Consulte a continuación las entradas de configuración específicas del despachante).
 
 ### Servidor web Apache - Configurar propiedades de SELinux {#apache-web-server-configure-selinux-properties}
 
@@ -322,7 +325,7 @@ Si está ejecutando Dispatcher en RedHat Linux Kernel 2.6 con SELinux habilitado
 
 `Mon Jun 30 00:03:59 2013] [E] [16561(139642697451488)] Unable to connect to backend rend01 (10.122.213.248:4502): Permission denied`
 
-Esto se debe probablemente a una seguridad SELinux habilitada. A continuación, debe realizar las siguientes tareas:
+Esto se debe probablemente a una seguridad de SELinux habilitada. A continuación, debe realizar las siguientes tareas:
 
 * Configure el contexto SELinux del archivo del módulo dispatcher.
 * Habilite los módulos y secuencias de comandos HTTPD para realizar conexiones de red.
@@ -347,14 +350,14 @@ Estos pasos son obligatorios:
 1. Abra `httpd.conf`para editar.
 1. Deben agregarse las siguientes entradas de configuración, en el orden indicado:
 
-   * **LoadModule** para cargar el módulo al iniciar.
+   * **LoadModule** para cargar el módulo en el inicio.
    * Entradas de configuración específicas del despachante, incluidas **DispatcherConfig, DispatcherLog** y **DispatcherLogLevel**.
    * **SetHandler** para activar Dispatcher. **LoadModule**.
    * **ModMimeUsePathInfo** para configurar el comportamiento de **mod_mime**.
 
 1. (Opcional) Se recomienda cambiar el propietario del directorio htdocs:
 
-   * El servidor apache se inicia como raíz, aunque los procesos secundarios se inician como daemon (por motivos de seguridad). DocumentRoot (`<APACHE_ROOT>/htdocs`) debe pertenecer al demonio de usuario:
+   * El servidor apache inicio como raíz, aunque el secundario procesa el inicio como demonio (por motivos de seguridad). DocumentRoot (`<APACHE_ROOT>/htdocs`) debe pertenecer al demonio de usuario:
 
       ```xml
       cd <APACHE_ROOT>  
@@ -363,7 +366,7 @@ Estos pasos son obligatorios:
 
 **LoadModule**
 
-En la tabla siguiente se enumeran los ejemplos que se pueden utilizar; las entradas exactas están según el servidor web Apache específico:
+En la tabla siguiente se listas ejemplos que se pueden utilizar; las entradas exactas están según el servidor web Apache específico:
 
 |  |  |
 |--- |--- |
@@ -378,7 +381,7 @@ En la tabla siguiente se enumeran los ejemplos que se pueden utilizar; las entra
 
 **Entradas de configuración específicas del despachante**
 
-Las entradas de configuración específicas del despachante se colocan después de la entrada LoadModule. En la tabla siguiente se muestra un ejemplo de configuración aplicable tanto a Unix como a Windows:
+Las entradas de configuración específicas de Dispatcher se colocan después de la entrada LoadModule. En la tabla siguiente se lista una configuración de ejemplo aplicable tanto para Unix como para Windows:
 
 **Windows y Unix**
 
@@ -401,11 +404,11 @@ Parámetros de configuración individuales:
 |--- |--- |
 | DispatcherConfig | Ubicación y nombre del archivo de configuración de Dispatcher. <br/>Cuando esta propiedad se encuentra en la configuración del servidor principal, todos los hosts virtuales heredan el valor de la propiedad. Sin embargo, los hosts virtuales pueden incluir una propiedad DispatcherConfig para anular la configuración del servidor principal. |
 | DispatcherLog | Ubicación y nombre del archivo de registro. |
-| DispatcherLogLevel | Nivel de registro del archivo de registro: <br/>0 - Errores <br/>1 - Advertencias <br/>2 - Información <br/>3 - <br/>**Nota** de depuración: Se recomienda establecer el nivel de registro en 3 durante la instalación y la prueba y, a continuación, en 0 cuando se ejecute en un entorno de producción. |
-| DispatcherNoServerHeader | *Este parámetro está en desuso y ya no tiene ningún efecto.*<br/><br/> Define el encabezado del servidor que se va a utilizar: <br/><ul><li>undefined o 0: el encabezado del servidor HTTP contiene la versión de AEM. </li><li>1 - se utiliza el encabezado del servidor Apache.</li></ul> |
-| DispatcherDeclineRoot | Define si se rechazan las solicitudes a la raíz "/": <br/>**0** - aceptar solicitudes a / <br/>**1** - solicitudes a / no son manejadas por el despachante; use mod_alias para la asignación correcta. |
-| DispatcherUseProcessedURL | Define si se usarán direcciones URL preprocesadas para todo el procesamiento posterior de Dispatcher: <br/>**0** : utilice la dirección URL original que se pasa al servidor web. <br/>**1** : el despachante utiliza la dirección URL ya procesada por los controladores que preceden al despachante (por ejemplo: `mod_rewrite`) en lugar de la dirección URL original que se pasa al servidor web.  Por ejemplo, la dirección URL original o procesada coincide con los filtros de Dispatcher. La dirección URL también se utiliza como base para la estructura de archivos de caché.   Consulte la documentación del sitio Web de Apache para obtener información sobre mod_rewrite; por ejemplo, Apache 2.4. Al utilizar mod_rewrite, es aconsejable utilizar el indicador 'pass-through | PT' (pasar al siguiente controlador) para forzar al motor de reescritura a establecer el campo uri de la estructura request_rec interna en el valor del campo de nombre de archivo. |
-| DispatcherPassError | Define cómo se admiten los códigos de error para la gestión de ErrorDocument: <br/>**0** : Dispatcher detecta todas las respuestas de error al cliente. <br/>**1** - Dispatcher no genera una respuesta de error al cliente (donde el código de estado es mayor o igual que 400), pero pasa el código de estado a Apache, lo cual, por ejemplo, permite que una directiva ErrorDocument procese dicho código de estado. <br/>**Intervalo** de código: especifique un rango de códigos de error para los que la respuesta se pasa a Apache. Se pasan otros códigos de error al cliente. Por ejemplo, la siguiente configuración envía al cliente las respuestas del error 412 y todos los demás errores se pasan a Apache: DispatcherPassError 400-411,413-417 |
+| DispatcherLogLevel | Nivel de registro para el archivo de registro: <br/>0 - Errores <br/>1 - Advertencias <br/>2 - Información <br/>3 - <br/>**Nota** de depuración: Se recomienda establecer el nivel de registro en 3 durante la instalación y la prueba y, a continuación, en 0 cuando se ejecute en un entorno de producción. |
+| DispatcherNoServerHeader | *Este parámetro está en desuso y ya no tiene ningún efecto.*<br/><br/> Define el encabezado del servidor que se va a utilizar: <br/><ul><li>undefined o 0: el encabezado del servidor HTTP contiene la versión AEM. </li><li>1 - se utiliza el encabezado del servidor Apache.</li></ul> |
+| DispatcherDeclineRoot | Define si se rechazan las solicitudes a la raíz &quot;/&quot;: <br/>**0** - aceptar solicitudes a / <br/>**1** - solicitudes a / no son manejadas por el despachante; use mod_alias para la asignación correcta. |
+| DispatcherUseProcessedURL | Define si se usarán direcciones URL preprocesadas para todo el procesamiento posterior por parte de Dispatcher: <br/>**0** : utilice la dirección URL original que se pasa al servidor web. <br/>**1** : el despachante utiliza la dirección URL ya procesada por los controladores que preceden al despachante (por ejemplo: `mod_rewrite`) en lugar de la dirección URL original que se pasa al servidor web.  Por ejemplo, la dirección URL original o procesada coincide con los filtros de Dispatcher. La dirección URL también se utiliza como base para la estructura de archivos de caché.   Consulte la documentación del sitio Web de Apache para obtener información sobre mod_rewrite; por ejemplo, Apache 2.4. Al utilizar mod_rewrite, es aconsejable utilizar el indicador &#39;pass-through | PT&#39; (pasar al siguiente controlador) para forzar al motor de reescritura a establecer el campo uri de la estructura request_rec interna en el valor del campo de nombre de archivo. |
+| DispatcherPassError | Define cómo se admiten los códigos de error para la gestión de ErrorDocument: <br/>**0** : Dispatcher detecta todas las respuestas de error al cliente. <br/>**1** - Dispatcher no genera una respuesta de error al cliente (donde el código de estado es bueno o igual a 400), pero pasa el código de estado a Apache, lo cual, por ejemplo, permite que una directiva ErrorDocument procese dicho código de estado. <br/>**Intervalo** de código: especifique un rango de códigos de error para los que la respuesta se pasa a Apache. Se pasan otros códigos de error al cliente. Por ejemplo, la siguiente configuración envía al cliente las respuestas del error 412 y todos los demás errores se pasan a Apache: DispatcherPassError 400-411,413-417 |
 | DispatcherKeepAliveTimeout | Especifica el tiempo de espera de mantenimiento, en segundos. A partir de la versión 4.2.0 de Dispatcher, el valor predeterminado es 60. Un valor de 0 deshabilita el mantenimiento vivo. |
 | DispatcherNoCanonURL | Si se establece este parámetro en Activado, se pasará la dirección URL sin procesar al servidor en lugar del canonicalizado y se anulará la configuración de DispatcherUseProcessedURL. El valor predeterminado es Desactivado. <br/>**Nota**: Las reglas de filtro de la configuración de Dispatcher siempre se evaluarán con respecto a la dirección URL saneada, no con respecto a la dirección URL sin procesar. |
 
@@ -421,13 +424,13 @@ Parámetros de configuración individuales:
 >La configuración predeterminada para el encabezado del servidor es: `  
 ServerTokens Full` `  
 DispatcherNoServerHeader 0`\
-Muestra la versión de AEM (con fines estadísticos). Si desea desactivar que dicha información esté disponible en el encabezado, puede establecer: `  
+Que muestra la versión AEM (con fines estadísticos). Si desea desactivar que dicha información esté disponible en el encabezado, puede establecer: `  
 ServerTokens Prod`\
 Consulte la Documentación de [Apache sobre la Directiva ServerTokens (por ejemplo, para Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) para obtener más información.
 
 **SetHandler**
 
-Después de estas entradas, debe agregar una **instrucción SetHandler** al contexto de la configuración ( `<Directory>`, `<Location>`) para que Dispatcher pueda gestionar las solicitudes entrantes. El ejemplo siguiente configura Dispatcher para que gestione las solicitudes del sitio web completo:
+Después de estas entradas, debe agregar una **instrucción SetHandler** al contexto de la configuración ( `<Directory>`, `<Location>`) para que Dispatcher pueda gestionar las solicitudes entrantes. En el ejemplo siguiente se configura Dispatcher para que gestione las solicitudes del sitio web completo:
 
 **Windows y Unix**
 
@@ -540,15 +543,15 @@ Si utiliza una versión personalizada de Apache, asegúrese de que Apache y Disp
 
 ### Próximos pasos {#next-steps-1}
 
-Antes de empezar a usar Dispatcher, debe:
+Antes de poder realizar el inicio con Dispatcher, debe:
 
 * [Configurar](dispatcher-configuration.md) Dispatcher
-* [Configure AEM](page-invalidate.md) para que funcione con Dispatcher.
+* [Configurar AEM](page-invalidate.md) para trabajar con Dispatcher.
 
 ## Sun Java System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
 
 >[!NOTE]
-Las instrucciones para los entornos Windows y Unix se tratan aquí.
+Las instrucciones para los entornos de Windows y Unix se tratan aquí.
 Tenga cuidado al seleccionar qué ejecutar.
 
 ### Sun Java System Web Server / iPlanet - Instalación del servidor Web {#sun-java-system-web-server-iplanet-installing-your-web-server}
@@ -558,7 +561,7 @@ Para obtener información completa sobre cómo instalar estos servidores Web, co
 * Sun Java System Web Server
 * iPlanet Web Server
 
-### Sun Java System Web Server / iPlanet - Agregar el módulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java System Web Server / iPlanet - Añadir el módulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 El despachante viene como:
 
@@ -569,15 +572,15 @@ Los archivos del archivo de instalación contienen los siguientes archivos, seg�
 
 | Archivo | Descripción |
 |---|---|
-| `disp_ns.dll` | Windows:Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
+| `disp_ns.dll` | Windows: Archivo de biblioteca de vínculos dinámicos de Dispatcher. |
 | `dispatcher.so` | Unix: El archivo de biblioteca de objetos compartidos Dispatcher. |
 | `dispatcher.so` | Unix: Un vínculo de ejemplo. |
 | `obj.conf.disp` | Un archivo de configuración de ejemplo para el servidor web iPlanet/Sun Java System. |
 | `dispatcher.any` | Un archivo de configuración de ejemplo para Dispatcher. |
 | README | Archivo Léame que contiene instrucciones de instalación e información de última hora. Nota: Verifique este archivo antes de iniciar la instalación. |
-| CAMBIOS | Archivo de cambios que enumera los problemas corregidos en las versiones actual y pasada. |
+| CAMBIOS | Cambia el archivo que lista los problemas corregidos en las versiones actual y pasada. |
 
-Siga estos pasos para agregar Dispatcher a su servidor web:
+Siga los pasos siguientes para agregar Dispatcher a su servidor web:
 
 1. Coloque el archivo Dispatcher en el directorio `plugin` del servidor web:
 
@@ -587,13 +590,13 @@ Es necesario configurar el servidor web mediante `obj.conf`. En el kit de instal
 
 1. Ir a `<WEBSERVER_ROOT>/config`.
 1. Abra `obj.conf`para editar.
-1. Copie la línea que empieza:\
+1. Copie la línea que inicio:\
    `Service fn="dispService"`\
    desde `obj.conf.disp` a la sección de inicialización de `obj.conf`.
 
 1. Guarde los cambios.
 1. Abrir `magnus.conf` para edición.
-1. Copie las dos líneas que comienzan:\
+1. Copie las dos líneas que inicio:\
    `Init funcs="dispService, dispInit"`\
    y\
    `Init fn="dispInit"`\
@@ -606,7 +609,7 @@ Las siguientes configuraciones deben estar todas en una línea y `$(SERVER_ROOT)
 
 **Init**
 
-En la tabla siguiente se enumeran los ejemplos que se pueden utilizar; las entradas exactas se ajustan a su servidor web específico:
+En la tabla siguiente se listas ejemplos que se pueden utilizar; las entradas exactas se ajustan a su servidor web específico:
 
 **Windows y Unix**
 
@@ -624,7 +627,7 @@ donde:
 |--- |--- |
 | config | Ubicación y nombre del archivo de configuración `dispatcher.any.` |
 | archivo de registro | Ubicación y nombre del archivo de registro. |
-| loglevel | <br/> Nivel de registro para cuando se escriben mensajes en el archivo de registro: Errores **** 0<br/> **** 1<br/> Advertencias **** 2<br/> Infos **** 3<br/> Depuración **** Nota: Se recomienda establecer el nivel de registro en 3 durante la instalación y la prueba y en 0 cuando se ejecuta en un entorno de producción. |
+| loglevel | Nivel de registro para cuando se escriben mensajes en el archivo de registro: <br/>**0** Errores <br/>**1** Advertencias <br/>**2** Infos <br/>**3** Depuración <br/>**Nota:** Se recomienda establecer el nivel de registro en 3 durante la instalación y la prueba y en 0 cuando se ejecute en un entorno de producción. |
 | keepalivetimeout | Especifica el tiempo de espera de mantenimiento, en segundos. A partir de la versión 4.2.0 de Dispatcher, el valor predeterminado es 60. Un valor de 0 deshabilita el mantenimiento vivo. |
 
 Según sus necesidades, puede definir Dispatcher como un servicio para los objetos. Para configurar Dispatcher para todo el sitio web, modifique el objeto predeterminado:
@@ -652,7 +655,7 @@ Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"
 
 ### Próximos pasos {#next-steps-2}
 
-Antes de empezar a usar Dispatcher, debe:
+Antes de poder realizar el inicio con Dispatcher, debe:
 
 * [Configurar](dispatcher-configuration.md) Dispatcher
-* [Configure AEM](page-invalidate.md) para que funcione con Dispatcher.
+* [Configurar AEM](page-invalidate.md) para trabajar con Dispatcher.
