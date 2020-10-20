@@ -9,8 +9,8 @@ user-guide-description: Aprenda a utilizar Dispatcher para almacenar en caché, 
 translation-type: tm+mt
 source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
 workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+source-wordcount: '87'
+ht-degree: 85%
 
 ---
 
