@@ -13,7 +13,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 translation-type: tm+mt
-source-git-commit: 5734e601379fda9a62eda46bded493b8dbd49a4c
+source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
 workflow-type: tm+mt
 source-wordcount: '553'
 ht-degree: 7%
@@ -37,10 +37,10 @@ ht-degree: 7%
 
 Como siempre, los primeros pasos son comprobar lo básico:
 
-* [Confirmar operación básica](#ConfirmBasicOperation)
-* Compruebe todos los archivos de registro del servidor web y del distribuidor. Si es necesario, aumente el `loglevel` utilizado para el [registro](#Logging)del despachante.
+* [Confirmar operación básica](/help/using/dispatcher-configuration.md#confirming-basic-operation)
+* Compruebe todos los archivos de registro del servidor web y del distribuidor. Si es necesario, aumente el `loglevel` utilizado para el [registro](/help/using/dispatcher-configuration.md#logging)del despachante.
 
-* [Compruebe la configuración](#ConfiguringtheDispatcher):
+* [Compruebe la configuración](/help/using/dispatcher-configuration.md):
 
    * ¿Tiene varios despachantes?
 
@@ -122,10 +122,10 @@ Cuando el despachante está habilitado, procesa dichas solicitudes registrándos
 
 En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de direcciones URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un `/` anexo.
 
-Dispatcher no intercepta la `mod_dir` reparación, sino que la gestiona completamente en la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) gestiona las solicitudes de `/a_path` forma diferente a las solicitudes de `/a_path/` (cuando se `/a_path` asigna a un directorio existente).
+Dispatcher no intercepta la `mod_dir` reparación, sino que la gestiona completamente en la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) maneja las solicitudes de `/a_path` forma diferente a las solicitudes a `/a_path/` (cuando se `/a_path` asigna a un directorio existente).
 
 Si esto sucede, debe:
 
-* deshabilitar `mod_dir` para el `Directory` o `Location` subárbol gestionado por el distribuidor
+* deshabilitar `mod_dir` para el `Directory` o `Location` subárbol administrado por el distribuidor
 
 * use `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
