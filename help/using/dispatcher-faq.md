@@ -5,6 +5,9 @@ description: Problemas principales de AEM Dispatcher
 seo-description: Problemas principales de Adobe AEM Dispatcher
 translation-type: tm+mt
 source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
+workflow-type: tm+mt
+source-wordcount: '1644'
+ht-degree: 14%
 
 ---
 
@@ -17,33 +20,33 @@ source-git-commit: eed7c3f77ec64f2e7c5cfff070ef96108886a059
 
 ### ¿Qué es el despachante?
 
-Dispatcher es la herramienta de almacenamiento en caché o equilibrio de carga de Adobe Experience Manager que ayuda a crear un entorno de creación web rápido y dinámico. Para almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache, con el objetivo de almacenar (o "almacenar en caché") la mayor parte del contenido del sitio web estático posible y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre distintas instancias de AEM (procesamientos).
+Dispatcher es una herramienta de almacenamiento en caché y/o equilibrio de carga de Adobe Experience Manager que ayuda a realizar un entorno de creación de Web rápido y dinámico. Para almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache, con el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor parte del contenido del sitio web estático posible y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre distintas instancias de AEM (procesamientos).
 
-Para el almacenamiento en caché, el módulo Dispatcher utiliza la capacidad del servidor Web para proporcionar contenido estático. El despachante coloca los documentos en caché en la raíz del documento del servidor Web.
+Para el almacenamiento en caché, el módulo Dispatcher utiliza la capacidad del servidor Web para proporcionar contenido estático. Dispatcher coloca los documentos en caché en la raíz de documento del servidor Web.
 
 ### ¿Cómo realiza el despachante el almacenamiento en caché?
 
-Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz del documento del servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
+Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz de documento del servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
 
 * **Las actualizaciones de contenido** eliminan las páginas que han cambiado, así como los archivos que están directamente asociados a ellas.
 * **La invalidación automática** invalida automáticamente las partes de la caché que pueden estar desactualizadas tras una actualización. Por ejemplo, marca efectivamente las páginas relevantes como obsoletas, sin eliminar nada.
 
-### ¿Cuáles son los beneficios del equilibrio de carga?
+### ¿Cuáles son los beneficios del balanceo de carga?
 
-Equilibrio de carga distribuye solicitudes de usuario (carga) en varias instancias de AEM.En la siguiente lista se describen las ventajas del equilibrio de carga:
+Equilibrio de carga distribuye solicitudes de usuario (carga) en varias instancias de AEM.La siguiente lista describe las ventajas del equilibrio de carga:
 
 * **Mayor potencia** de procesamiento: En la práctica, esto significa que Dispatcher comparte solicitudes de documento entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
 * **Mayor cobertura** de seguridad contra fallos: Si el despachante no recibe respuestas de una instancia, reenviará automáticamente solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida.
 
 >[!NOTE]
 >
->Para obtener más información, consulte la página Información general de [despachante](dispatcher.md)
+>Para obtener más información, consulte la [página Información general del despachante](dispatcher.md)
 
 ## Instalar y configurar
 
 ### ¿De dónde puedo descargar el módulo Dispatcher?
 
-Puede descargar el módulo Dispatcher más reciente desde la página Notas [de revisión de](release-notes.md) Dispatcher.
+Puede descargar el módulo Dispatcher más reciente desde la página [Notas de revisión de Dispatcher](release-notes.md).
 
 ### ¿Cómo instalo el módulo Dispatcher?
 
@@ -51,26 +54,26 @@ Consulte la página [Instalación de Dispatcher](dispatcher-install.md)
 
 ### ¿Cómo configuro el módulo Dispatcher?
 
-Consulte la página [Configuración de Dispatcher](dispatcher-configuration.md) .
+Consulte la página [Configuración de Dispatcher](dispatcher-configuration.md).
 
 ### ¿Cómo configuro Dispatcher para la instancia de creación?
 
-Consulte [Uso de Dispatcher con una instancia](dispatcher.md#using-a-dispatcher-with-an-author-server) de autor para ver los pasos detallados.
+Consulte [Uso de Dispatcher con una instancia de autor](dispatcher.md#using-a-dispatcher-with-an-author-server) para ver los pasos detallados.
 
 ### ¿Cómo configuro Dispatcher con varios dominios?
 
 Puede configurar CQ Dispatcher con varios dominios, siempre que los dominios cumplan las siguientes condiciones:
 
-* El contenido web de ambos dominios se almacena en un único repositorio de AEM
+* El contenido web de ambos dominios se almacena en un único repositorio AEM
 * Los archivos de la caché de Dispatcher se pueden invalidar por separado para cada dominio
 
-Lea [Uso de Dispatcher con varios dominios](dispatcher-domains.md) para obtener más información.
+Lea [Uso de Dispatcher con varios dominios](dispatcher-domains.md) para obtener más detalles.
 
 ### ¿Cómo configuro Dispatcher para que todas las solicitudes de un usuario se dirijan a la misma instancia de Publish?
 
-Puede utilizar la función de conexiones [](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) fijas, que garantiza que todos los documentos de un usuario se procesen en la misma instancia de AEM. Esta función es importante si se utilizan páginas personalizadas y datos de sesión. Los datos se almacenan en la instancia. Por lo tanto, las solicitudes posteriores del mismo usuario deben volver a esa instancia o se pierden los datos.
+Puede utilizar la función [conexiones adhesivas](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor), que garantiza que todos los documentos de un usuario se procesen en la misma instancia de AEM. Esta función es importante si se utilizan páginas personalizadas y datos de sesión. Los datos se almacenan en la instancia. Por lo tanto, las solicitudes posteriores del mismo usuario deben volver a esa instancia o se pierden los datos.
 
-Debido a que las conexiones adhesivas restringen la capacidad del despachante para optimizar las solicitudes, debe utilizar este método solo cuando sea necesario. Puede especificar la carpeta que contiene los documentos "adhesivos", asegurándose así de que todos los documentos de esa carpeta se procesen en la misma instancia para un usuario.
+Debido a que las conexiones adhesivas restringen la capacidad del despachante para optimizar las solicitudes, debe utilizar este método solo cuando sea necesario. Puede especificar la carpeta que contiene los documentos &quot;adhesivos&quot;, asegurándose así de que todos los documentos de esa carpeta se procesen en la misma instancia para un usuario.
 
 ### ¿Puedo utilizar conexiones adhesivas y almacenamiento en caché en tándem?
 
@@ -101,25 +104,27 @@ CQ-Handle: path-pattern
 Content-Length: 0
 ```
 
-Dispatcher elimina los archivos en caché y las carpetas que tienen nombres que coinciden con el valor del encabezado CQ-Handle. Por ejemplo, un control CQ de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
+Dispatcher elimina los archivos en caché y las carpetas que tienen nombres que coinciden con el valor del encabezado CQ-Handle. Por ejemplo, un CQ-Handle de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
 
-Todos los archivos (de cualquier extensión de archivo) nombrados en en el directorio geometrixx-outdoorsCualquier directorio llamado `_jcr_content` debajo del directorio en (que, si existe, contiene representaciones en caché de los subnodos de la página)El directorio en sólo se eliminará si `CQ-Action` es `Delete` o `Deactivate`.
+Todos los archivos (de cualquier extensión de archivo) nombrados en en en el directorio geometrixx-outdoors
+Cualquier directorio denominado `_jcr_content` debajo del directorio en (que, si existe, contiene representaciones en caché de subnodos de la página)
+El directorio en sólo se eliminará si `CQ-Action` es `Delete` o `Deactivate`.
 
-Para obtener más información sobre este tema, consulte Invalidación [manual de la caché](page-invalidate.md)del despachante.
+Para obtener más información sobre este tema, consulte [Invalidación manual de la caché del despachante](page-invalidate.md).
 
 ### ¿Cómo se implementa el almacenamiento en caché que distingue permisos?
 
-Consulte la página [Almacenamiento en caché de contenido](permissions-cache.md) seguro.
+Consulte la página [Almacenamiento en caché de contenido seguro](permissions-cache.md).
 
 ### ¿Cómo puedo asegurar las comunicaciones entre las instancias de Dispatcher y CQ?
 
-Consulte la lista [de comprobación de seguridad de](security-checklist.md) Dispatcher y las páginas de la lista [de comprobación de seguridad de](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) AEM.
+Consulte las [páginas Lista de comprobación de seguridad del despachante](security-checklist.md) y [Lista de comprobación de seguridad de AEM](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html).
 
-### Problema de Dispatcher `jcr:content` cambiado a `jcr%3acontent`
+### El problema del despachante `jcr:content` cambió a `jcr%3acontent`
 
-**Pregunta**: Recientemente hemos enfrentado un problema en el nivel de despachante, donde una de las llamadas ajax que recibía algunos datos del repositorio de CQ tenía `jcr:content` en él y que se codificó para `jcr%3acontent` resultar en un resultado incorrecto.
+**Pregunta**: Recientemente hemos enfrentado un problema en el nivel de despachante en el que una de las llamadas ajax que recibía algunos datos del repositorio de CQ tenía  `jcr:content` en él y que se codificó para  `jcr%3acontent` resultar en un resultado incorrecto.
 
-**Respuesta**: Utilice `ResourceResolver.map()` el método para obtener una URL 'fácil de usar' o emitir para obtener solicitudes de y también para resolver el problema de almacenamiento en caché con Dispatcher. El método map() codifica los `:` dos puntos en caracteres de subrayado y el método resolve() los decodifica de nuevo en formato legible JCR SLING.Debe utilizar el método map() para generar la URL que se utiliza en la llamada de Ajax.
+**Respuesta**: Utilice  `ResourceResolver.map()` el método para obtener una URL &#39;fácil de usar&#39; o emitir para obtener solicitudes y también para resolver el problema de almacenamiento en caché con Dispatcher. El método map() codifica los `:` dos puntos en caracteres de subrayado y el método resolve() los decodifica de nuevo en el formato legible JCR SLING.Debe utilizar el método map() para generar la dirección URL que se utiliza en la llamada Ajax.
 
 Más información: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
@@ -127,26 +132,26 @@ Más información: [https://sling.apache.org/documentation/the-sling-engine/mapp
 
 ### ¿Cómo configuro los agentes de vaciado de Dispatcher en una instancia de Publish?
 
-Consulte la página [Replicación](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents) .
+Consulte la página [Replicación](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents).
 
 ### ¿Cómo se solucionan los problemas de vaciado de Dispatcher?
 
-[Consulte este artículo](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) de solución de problemas que responde a las siguientes preguntas:
+[Consulte este ](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) artículo de solución de problemas que responde a las siguientes preguntas:
 
 * ¿Cómo debo depurar una situación en la que no se está guardando contenido en la caché de Dispatcher?
 * ¿Cómo se depura una situación en la que los archivos de caché no se actualizan?
 * ¿Cómo se depura una situación en la que no funciona nada relacionado con el vaciado de Dispatcher?
 
-Si las operaciones de eliminación están causando que el despachante se vacíe, [utilice la solución alternativa en esta publicación de blog de la comunidad de Sensei Martin](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
+Si las operaciones de eliminación están ocasionando que el despachante se vacíe, [utilice la solución alternativa de esta publicación de blog de la comunidad de Sensei Martin](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
 
 ### ¿Cómo vacio los recursos DAM de la caché de Dispatcher?
 
-Puede utilizar la función de "replicación en cadena".  Con esta función habilitada, el agente de vaciado del despachante envía una solicitud de vaciado cuando se recibe una replicación del autor.
+Puede utilizar la función de &quot;replicación en cadena&quot;.  Con esta función habilitada, el agente de vaciado del despachante envía una solicitud de vaciado cuando se recibe una replicación del autor.
 
 Para habilitarlo:
 
-1. [Siga estos](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) pasos para crear agentes de vaciado al publicar
-1. Vaya a la configuración de cada uno de esos agentes y, en la ficha **Activadores** , marque la casilla **Al recibir** .
+1. [Siga los pasos ](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) aquí para crear agentes de vaciado al publicar
+1. Vaya a la configuración de cada uno de esos agentes y, en la ficha **Desencadenadores**, marque la casilla **Al recibir**.
 
 ## Varios
 
@@ -156,11 +161,11 @@ Para determinar si un documento está actualizado, el despachante realiza estas 
 Comprueba si el documento depende de la invalidación automática. Si no depende de ello, considera que el documento está actualizado.
 Si el documento está configurado para la invalidación automática, Dispatcher comprueba si es anterior o posterior a la fecha del último cambio disponible. Si es anterior, Dispatcher solicita la versión actual a la instancia de AEM y reemplaza la versión en la caché.
 
-### ¿Cómo devuelve el despachante los documentos?
+### ¿Cómo devuelve el despachante documentos?
 
-Puede definir si Dispatcher almacena en caché un documento mediante el [archivo de configuración](dispatcher-configuration.md) de Dispatcher `dispatcher.any`. Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
+Puede definir si Dispatcher almacena en caché un documento mediante el archivo [configuración de Dispatcher](dispatcher-configuration.md), `dispatcher.any`. Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
 
-La `/rules` propiedad controla qué documentos se almacenan en caché según la ruta del documento. Independientemente de la `/rules` propiedad, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
+La propiedad `/rules` controla qué documentos se almacenan en caché según la ruta de documento. Independientemente de la propiedad `/rules`, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
 
 * Si el URI de la solicitud contiene el signo de interrogación `(?)`.
 * Esto generalmente indica una página dinámica, como un resultado de búsqueda que no necesita almacenarse en caché.
@@ -172,11 +177,11 @@ La `/rules` propiedad controla qué documentos se almacenan en caché según la 
    * sin almacén
    * must-revalidate
 
-Dispatcher almacena archivos en caché en el servidor web como si formaran parte de un sitio web estático. Si un usuario solicita un documento en caché, el despachante comprueba si el documento existe en el sistema de archivos del servidor web. Si es así, Dispatcher devuelve los documentos. En caso contrario, Dispatcher solicita el documento a la instancia de AEM.
+Dispatcher almacena archivos en caché en el servidor web como si formaran parte de un sitio web estático. Si un usuario solicita un documento en caché, Dispatcher comprueba si el documento existe en el sistema de archivos del servidor web. Si es así, Dispatcher devuelve los documentos. Si no es así, Dispatcher solicita el documento desde la instancia de AEM.
 
 >[!NOTE]
 >
->Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#caching-http-response-headers) section.
+>Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre el procesamiento en caché de encabezados de respuesta, consulte la sección [Encabezados de respuesta HTTP en caché](dispatcher-configuration.md#caching-http-response-headers).
 
 ### ¿Puedo implementar varios despachantes en una configuración?
 
