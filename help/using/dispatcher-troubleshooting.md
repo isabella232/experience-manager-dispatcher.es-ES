@@ -31,14 +31,14 @@ ht-degree: 7%
 
 >[!NOTE]
 >
->Consulte también la Base [de conocimiento de](https://helpx.adobe.com/cq/kb/index/dispatcher.html)Dispatcher, [Resolución de problemas](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) de vaciado de despachantes y las Preguntas más frecuentes [sobre problemas principales de](dispatcher-faq.md) Dispatcher para obtener más información.
+>Consulte también [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), [Resolución de problemas de vaciado de despachante](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) y las [Preguntas más frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
 
-## Comprobar la configuración básica {#check-the-basic-configuration}
+## Compruebe la Configuración básica {#check-the-basic-configuration}
 
 Como siempre, los primeros pasos son comprobar lo básico:
 
 * [Confirmar operación básica](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Compruebe todos los archivos de registro del servidor web y del distribuidor. Si es necesario, aumente el `loglevel` utilizado para el [registro](/help/using/dispatcher-configuration.md#logging)del despachante.
+* Compruebe todos los archivos de registro del servidor web y del distribuidor. Si es necesario, aumente el `loglevel` utilizado para el despachante [registro](/help/using/dispatcher-configuration.md#logging).
 
 * [Compruebe la configuración](/help/using/dispatcher-configuration.md):
 
@@ -59,12 +59,12 @@ IIS proporciona varias herramientas de seguimiento, según la versión real:
 
 Esto puede ayudarle a supervisar la actividad.
 
-## No se encontraron IIS y 404 {#iis-and-not-found}
+## IIS y 404 no encontrados {#iis-and-not-found}
 
-Al utilizar IIS, puede que experimente `404 Not Found` que se le devuelva en varios casos. Si es así, consulte los siguientes artículos de la Base de conocimiento.
+Al utilizar IIS, puede que experimente que `404 Not Found` se devuelve en varios escenarios. Si es así, consulte los siguientes artículos de la Base de conocimiento.
 
 * [IIS 6/7: El método POST devuelve 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Solicitudes a direcciones URL que contienen la ruta de acceso base `/bin` devuelta `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6: Solicitudes a direcciones URL que contienen el  `/bin` retorno de ruta base  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 También debe comprobar que la raíz de la caché del despachante y la raíz del documento IIS están establecidas en el mismo directorio.
 
@@ -79,7 +79,7 @@ Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una inst
 1. Inicie sesión en la instancia de autor (confirme que las solicitudes se dirigen a través del despachante).
 1. Crear un nuevo flujo de trabajo; por ejemplo, con el Título establecido en workflowToDelete.
 1. Confirme que el flujo de trabajo se creó correctamente.
-1. Seleccione el flujo de trabajo y haga clic con el botón secundario en él y, a continuación, haga clic en **Eliminar**.
+1. Seleccione el flujo de trabajo y haga clic con el botón secundario en él, luego haga clic en **Eliminar**.
 
 1. Haga clic en **Sí** para confirmar.
 1. Aparecerá un cuadro de mensaje de error que muestra:\
@@ -87,7 +87,7 @@ Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una inst
 
 **Resolución**
 
-Añada los siguientes encabezados a la `/clientheaders` sección del `dispatcher.any` archivo:
+Añada los siguientes encabezados a la sección `/clientheaders` del archivo `dispatcher.any`:
 
 * `x-http-method-override`
 * `x-requested-with`
@@ -109,23 +109,23 @@ Esto describe cómo el despachante interactúa con `mod_dir` dentro del servidor
 
 ### Apache 1.3 {#apache}
 
-En Apache 1.3 `mod_dir` gestiona todas las solicitudes en las que la URL se asigna a un directorio del sistema de archivos.
+En Apache 1.3 `mod_dir` gestiona todas las solicitudes en las que la dirección URL se asigna a un directorio del sistema de archivos.
 
 O bien:
 
-* redirigir la solicitud a un `index.html` archivo existente
+* redirigir la solicitud a un archivo `index.html` existente
 * generar una lista de directorios
 
 Cuando el despachante está habilitado, procesa dichas solicitudes registrándose como un controlador para el tipo de contenido `httpd/unix-directory`.
 
 ### Apache 2.x {#apache-x}
 
-En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de direcciones URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un `/` anexo.
+En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de direcciones URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un  `/` anexo.
 
-Dispatcher no intercepta la `mod_dir` reparación, sino que la gestiona completamente en la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) maneja las solicitudes de `/a_path` forma diferente a las solicitudes a `/a_path/` (cuando se `/a_path` asigna a un directorio existente).
+Dispatcher no intercepta la reparación `mod_dir`, pero la gestiona completamente a la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) maneja las solicitudes a `/a_path` de manera diferente a las solicitudes a `/a_path/` (cuando `/a_path` se asigna a un directorio existente).
 
 Si esto sucede, debe:
 
-* deshabilitar `mod_dir` para el `Directory` o `Location` subárbol administrado por el distribuidor
+* deshabilitar `mod_dir` para el subárbol `Directory` o `Location` manejado por el despachante
 
 * use `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
