@@ -4,32 +4,35 @@ seo-title: Notas de la versión de Dispatcher de AEM
 description: Notas de la versión específicas de Adobe Experience Manager Dispatcher
 seo-description: Notas de la versión específicas de Adobe Experience Manager Dispatcher
 uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
-topic-tags: notas de la versión
-content-type: referencia
+topic-tags: release-notes
+content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 translation-type: tm+mt
 source-git-commit: 328bc82673783b4a2df2d68481fa7eec88b74b01
+workflow-type: tm+mt
+source-wordcount: '805'
+ht-degree: 9%
 
 ---
 
 
 # Notas de la versión de Dispatcher de AEM{#aem-dispatcher-release-notes}
 
-## Información de versión {#release-information}
+## Información de la versión {#release-information}
 
 |  |  |
 |--- |--- |
-| Productos | Distribuidor de Adobe Experience Manager (AEM) |
+| Productos | Adobe Experience Manager (AEM) Dispatcher |
 | Versión | 4.3.3 |
 | Tipo | Versión menor |
 | Fecha | 18 de octubre de 2019 |
-| Descargar URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
+| Descargar URL | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Servicios informativos de Internet de Microsoft (IIS)](release-notes.md#iis)</li></ul> |
 | Compatibilidad | AEM 6.1 o superior |
 
 ## Requisitos y requisitos previos del sistema {#system-requirements-and-prerequisites}
 
-Consulte la página Plataformas [](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) admitidas para obtener más información sobre los requisitos y requisitos previos.
+Consulte la página [Plataformas admitidas](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) para obtener más información sobre los requisitos y requisitos previos.
 
 Adobe recomienda encarecidamente utilizar la versión más reciente de AEM Dispatcher para aprovechar la funcionalidad más reciente, las correcciones de errores más recientes y el mejor rendimiento posible.
 
@@ -41,7 +44,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ### Versión 4.3.3 (2019-Oct-18) {#october}
 
-**Corrección** de errores:
+**Corrección de errores**:
 
 * DISP-739 - Distribuidor LogLevel: **level** no funciona
 * DISP-749 - El despachante Alpine Linux se bloquea con el nivel de registro de seguimiento
@@ -54,7 +57,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 * DISP-821 - No almacenar el contexto de registro en el socket
 * DISP-822 - Dispatcher debe utilizar ppoll en lugar de pselect
 * DISP-824 - Secure DispatcherUseForwardedHost
-* DISP-825: registrar un mensaje especial cuando ya no hay espacio en disco
+* DISP-825: registrar un mensaje especial cuando ya no haya más espacio en disco
 * DISP-826 - Compatibilidad con URI de devolución con una cadena de consulta
 
 **Nuevas funciones**:
@@ -65,7 +68,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ### Versión 4.3.2 (2019-Ene-31) {#jan}
 
-**Corrección** de errores:
+**Corrección de errores**:
 
 * DISP-734 - Dispatcher provoca un bloqueo en insert_output_filter si no se establece como controlador
 * DISP-735 - Las REs no funcionan en Alpine Linux
@@ -82,14 +85,14 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ### Versión 4.3.1 (2018-Oct-16) {#oct}
 
-**Corrección** de errores:
+**Corrección de errores**:
 
 * DISP-656 - Dispatcher presenta un encabezado ETag incorrecto
 * DISP-694 - Suprimir las advertencias cuando las conexiones de mantenimiento se mantengan antiguas
 * DISP-714: la administración de sesiones basada en cookies no funciona en IIS
 * DISP-715 - Indicador seguro para cookie renderid
 * DISP-720 - Los archivos temporales no cerrados pueden provocar agotamiento (demasiados archivos abiertos)
-* DISP-721 - Dispatcher interrumpe la función poll() cuando Apache reinicia correctamente el elemento secundario
+* DISP-721 - Dispatcher interrumpe la función de encuesta cuando Apache reinicia correctamente su función secundaria
 * DISP-722 - Los archivos de caché se crean con el modo octal 0600
 * DISP-723: tiempo de espera implícito de 10 minutos (y reintento) cuando los tiempos de espera de procesamiento se establecen en 0
 * DISP-725 - Los caracteres finales después de que las cadenas se conviertan silenciosamente en valores sin nombre
@@ -110,11 +113,11 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ### Versión 4.3.0 (2018-Jun-13) {#jun}
 
-**Corrección** de errores:
+**Corrección de errores**:
 
 * DISP-682: nivel de registro numérico aplicado incorrectamente
 * DISP-685 - Los binarios Solaris SPARC de 32 bits tienen una referencia indefinida a __divdi3
-* DISP-688 - Dispatcher no devuelve el encabezado "X-Cache-Info" en la respuesta 404
+* DISP-688 - Dispatcher no devuelve el encabezado &quot;X-Cache-Info&quot; en la respuesta 404
 * DISP-690 - El encabezado de última modificación no se puede almacenar en caché
 * DISP-691 - Violaciones de acceso en w3wp.exe
 * DISP-693 - Necesidad de actualizar los detalles arquitectónicos de los servidores solaris en la página de descarga del despachante
@@ -122,7 +125,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 * DISP-698 - Dispatcher TTL necesita admitir el s-maxage y las directivas privadas
 * DISP-700 - El módulo no funciona correctamente en Alpine Linux
 * DISP-704 - Las solicitudes de explorador que contienen %2b se envían al Editor sin codificar
-* DISP-705 - Bloqueo de Dispatcher debido a doble gratuita o corrupción (tapa rápida)
+* DISP-705 - Bloqueo de Dispatcher debido a doble libre o corrupción (tapa rápida)
 * DISP-706 - Durante la invalidación, dispatcher sigue los enlaces simbólicos de referencia inversa que pueden provocar un bucle infinito
 * DISP-709 - Bloquee algunas extensiones de URL personales
 * DISP-710 - Compilaciones para Linux no utilizables en Cent OS 6
