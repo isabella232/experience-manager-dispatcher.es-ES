@@ -27,8 +27,8 @@ Dispatcher es una herramienta de almacenamiento en caché y/o equilibrio de carg
 
 El proceso de implementación de dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
 
-1. Obtenga información sobre Dispatcher (esta página). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
-1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.
+1. Obtenga información sobre Dispatcher (esta página). Consulte también [preguntas más frecuentes sobre el despachante](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
+1. Instale un [servidor web compatible](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) de acuerdo con la documentación del servidor web.
 1. [Instale el módulo de Dispatcher](dispatcher-install.md) en el servidor web y configure ese servidor web en consecuencia.
 1. [Configure Dispatcher](dispatcher-configuration.md) (mediante el archivo dispatcher.any).
 1. [Configure AEM](page-invalidate.md) para que las actualizaciones de contenido invaliden la caché.
@@ -159,7 +159,7 @@ Cabe señalar también algunos puntos:
 
 ### Determinar si un documento está sujeto al almacenamiento en caché
 
-You can [define which documents the Dispatcher caches in the configuration file](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
+Puede [definir qué documentos almacena en caché el despachante en el archivo de configuración](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
 
 Dispatcher *siempre* solicita el documento directamente desde la instancia de AEM en los siguientes casos:
 
@@ -169,7 +169,7 @@ Dispatcher *siempre* solicita el documento directamente desde la instancia de AE
 
 >[!NOTE]
 >
->Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). For additional information on response header caching, see the [Caching HTTP Response Headers](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html) section.
+>Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre el procesamiento en caché de encabezados de respuesta, consulte la sección [Encabezados de respuesta HTTP en caché](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html).
 
 ### Determinar si un documento está almacenado en la caché
 
@@ -270,7 +270,7 @@ Existen varias formas de controlar durante cuánto tiempo una CDN almacenará en
    Configure el tiempo durante el que se retienen recursos concretos en la caché de CDN, según el tipo de MIME, la extensión, el tipo de solicitud, etc.
 
 1. Caducidad y encabezados de control de caché\
-   La mayoría de las CDN respetarán los encabezados HTTP `Expires:` y `Cache-Control:` si es el servidor de flujo ascendente el que los envía. This can be achieved e.g. by using the [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache Module.
+   La mayoría de las CDN respetarán los encabezados HTTP `Expires:` y `Cache-Control:` si es el servidor de flujo ascendente el que los envía. Esto se puede lograr, por ejemplo, utilizando el módulo Apache [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html).
 
 1. Invalidación manual\
    Las CDN permiten que los recursos se eliminen de la caché a través de interfaces web.
@@ -281,17 +281,17 @@ En una configuración típica de AEM, la configuración por extensión o ruta, q
 
 Si este método se utiliza para almacenar en caché el contenido administrado, implica que los cambios de contenido solo son visibles para los usuarios finales una vez que el período de almacenamiento en caché configurado haya caducado y se recupere el documento de Dispatcher.
 
-Para un control más preciso, la invalidación basada en API permite invalidar la caché de una CDN, ya que la caché de Dispatcher se invalida a su vez. Based on the CDNs API, you can implement your own [ContentBuilder](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) and [TransportHandler](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) (if the API is not REST-based) and set up a Replication Agent that will use these to invalidate the CDN&#39;s cache.
+Para un control más preciso, la invalidación basada en API permite invalidar la caché de una CDN, ya que la caché de Dispatcher se invalida a su vez. Según la API de CDN, puede implementar su propio [ContentBuilder](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/ContentBuilder.html) y [TransportHandler](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/reference-materials/javadoc/com/day/cq/replication/TransportHandler.html) (si la API no está basada en REST) y configurar un agente de replicación que los use para invalidar la caché de CDN.
 
 >[!NOTE]
 >
->See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html).
+>Consulte también [AEM (CQ) Dispatcher Security y CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) y presentación grabada en [Dispatcher Caching](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html).
 
 ## Uso de Dispatcher con un servidor de creación {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->if you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) you should **not** cache author instance content. Si el almacenamiento en caché estaba habilitado para la instancia de creación, debe deshabilitarlo y eliminar el contenido del directorio de caché. Para deshabilitar el almacenamiento en caché, debe editar el archivo `author_dispatcher.any` y modificar la propiedad `/rule` de la sección `/cache` de la siguiente manera:
+>si utiliza [AEM con IU táctil](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) debe **no** almacenar en caché el contenido de la instancia de creación. Si el almacenamiento en caché estaba habilitado para la instancia de creación, debe deshabilitarlo y eliminar el contenido del directorio de caché. Para deshabilitar el almacenamiento en caché, debe editar el archivo `author_dispatcher.any` y modificar la propiedad `/rule` de la sección `/cache` de la siguiente manera:
 
 ```xml
 /rules
@@ -310,7 +310,7 @@ Dispatcher se puede utilizar delante de una instancia de autor para mejorar el r
 1. Abra `author_dispatcher.any` en un editor de texto y realice los siguientes cambios:
 
    1. Cambie `/hostname` y `/port` de la sección `/renders` para que apunte a la instancia de autor.
-   1. Cambie `/docroot` de la sección `/cache` para que apunte a un directorio de caché. In case you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html), see the warning above.
+   1. Cambie `/docroot` de la sección `/cache` para que apunte a un directorio de caché. Si utiliza [AEM con IU táctil](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html), consulte la advertencia anterior.
    1. Guarde los cambios.
 
 1. Elimine todos los archivos existentes en el directorio `/cache` > `/docroot` que configuró anteriormente.
