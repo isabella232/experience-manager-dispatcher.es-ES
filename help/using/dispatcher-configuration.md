@@ -1312,7 +1312,7 @@ Para obtener más información sobre las propiedades de gloob, consulte [Diseño
 >
 >Esta función está disponible con la versión **4.1.11** del despachante.
 
-La propiedad `/headers` permite definir los tipos de encabezados HTTP que el despachante va a almacenar en caché. En la primera solicitud a un recurso sin almacenar en caché, todos los encabezados que coincidan con uno de los valores configurados (consulte el ejemplo de configuración que se muestra a continuación) se almacenarán en un archivo independiente, junto al archivo de caché. En solicitudes posteriores al recurso almacenado en caché, los encabezados almacenados se agregan a la respuesta.
+La propiedad `/headers` permite definir los tipos de encabezados HTTP que el despachante va a almacenar en caché. En la primera solicitud a un recurso sin almacenar en caché, todos los encabezados que coincidan con uno de los valores configurados (consulte el ejemplo de configuración siguiente) se almacenan en un archivo independiente, junto al archivo de caché. En solicitudes posteriores al recurso almacenado en caché, los encabezados almacenados se agregan a la respuesta.
 
 A continuación se presenta un ejemplo de la configuración predeterminada:
 
