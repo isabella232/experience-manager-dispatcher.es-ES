@@ -151,7 +151,7 @@ Puede utilizar la función de &quot;replicación en cadena&quot;.  Con esta func
 Para habilitarlo:
 
 1. [Siga los pasos ](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) aquí para crear agentes de vaciado al publicar
-1. Vaya a la configuración de cada uno de esos agentes y, en la ficha **Desencadenadores**, marque la casilla **Al recibir**.
+1. Vaya a la configuración de cada uno de esos agentes y, en la ficha **Déclencheur**, marque la casilla **Al recibir**.
 
 ## Varios
 
