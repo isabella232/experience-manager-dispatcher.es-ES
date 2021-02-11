@@ -781,7 +781,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->Los filtros `0030` y `0031` relativos a Dynamic Media son aplicables a AEM 6.0 y posterior.
+>Los filtros `0030` y `0031` relativos a Dynamic Media son aplicables a la AEM 6.0 y posterior.
 
 Tenga en cuenta las siguientes recomendaciones si decide ampliar el acceso:
 
