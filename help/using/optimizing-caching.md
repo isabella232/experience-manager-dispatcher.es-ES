@@ -51,7 +51,7 @@ Dispatcher oferta una serie de mecanismos integrados que puede utilizar para opt
 >
 En general, muchas estrategias de almacenamiento en caché implican seleccionar buenas direcciones URL y no depender de estos datos adicionales.
 
-## Uso de Codificación de Página Coherente {#using-consistent-page-encoding}
+## Uso de Codificación de página consistente {#using-consistent-page-encoding}
 
 Los encabezados de solicitud HTTP no se almacenan en la caché, por lo que pueden producirse problemas si almacena información de codificación de página en el encabezado. En este caso, cuando Dispatcher envía una página desde la caché, se utiliza la codificación predeterminada del servidor web para la página. Existen dos formas de evitar este problema:
 
