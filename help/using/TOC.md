@@ -6,10 +6,14 @@ archetype: Administrator
 user-guide-title: Ayuda de Dispatcher de Experience Manager
 breadcrumb-title: Guía de Dispatcher
 user-guide-description: Aprenda a utilizar Dispatcher para almacenar en caché, equilibrar la carga y mejorar la seguridad de su servidor de AEM.
+feature-set: Experience Manager
+feature: Dispatcher
+topic: Administración
+role: Administrador
 translation-type: tm+mt
-source-git-commit: 5765970c0335df084b5d49efae60997b3a021c47
+source-git-commit: d03518767918288f03d289f19253f15803a313c7
 workflow-type: tm+mt
-source-wordcount: '87'
+source-wordcount: '90'
 ht-degree: 85%
 
 ---
