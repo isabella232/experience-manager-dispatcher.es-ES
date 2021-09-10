@@ -11,9 +11,9 @@ feature: Dispatcher
 topic: Administración
 role: Admin
 source-git-commit: 4439a4f0adfb8e2e0d08636225d2399638d27af3
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '89'
-ht-degree: 85%
+ht-degree: 100%
 
 ---
 
@@ -22,17 +22,17 @@ ht-degree: 85%
 
 + [Información general](dispatcher.md)
 + Introducción {#getting-started}
-   + [Instalación de Dispatcher](dispatcher-install.md)
+   + [Instalar Dispatcher](dispatcher-install.md)
    + [Lista de comprobación de seguridad de Dispatcher](security-checklist.md)
    + [Notas de la versión de Dispatcher de AEM](release-notes.md)
-+ Configuración {#configuring}
-   + [Configuración de Dispatcher](dispatcher-configuration.md)
-   + [Invalidación de páginas en la caché de AEM](page-invalidate.md)
-   + [Optimización de un sitio web para el rendimiento de la caché](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
-   + [Almacenamiento en caché de contenido seguro](permissions-cache.md)
-   + [Uso de Dispatcher con varios dominios ](dispatcher-domains.md)
-   + [Uso de SSL con Dispatcher](dispatcher-ssl.md)
-   + [Configuración de Dispatcher para prevenir ataques de tipo CSRF](configuring-dispatcher-to-prevent-csrf.md)
++ Configurar {#configuring}
+   + [Configurar Dispatcher](dispatcher-configuration.md)
+   + [Invalidar páginas en la caché de AEM](page-invalidate.md)
+   + [Optimizar un sitio web para el rendimiento de la caché](https://helpx.adobe.com/es/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
+   + [Almacenar contenido seguro en la caché](permissions-cache.md)
+   + [Utilizar Dispatcher con varios dominios ](dispatcher-domains.md)
+   + [Utilizar SSL con Dispatcher](dispatcher-ssl.md)
+   + [Configurar Dispatcher para prevenir ataques de tipo CSRF](configuring-dispatcher-to-prevent-csrf.md)
 + Solución de problemas {#troubleshooting}
    + [Solución de problemas de Dispatcher](dispatcher-troubleshooting.md)
    + [Preguntas más frecuentes sobre los problemas principales de Dispatcher](dispatcher-faq.md)
