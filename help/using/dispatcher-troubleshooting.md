@@ -1,6 +1,6 @@
 ---
 title: Solución de problemas de Dispatcher
-seo-title: Solución de problemas de Dispatcher AEM
+seo-title: Solución de problemas AEM Dispatcher
 description: Aprenda a solucionar problemas de Dispatcher.
 seo-description: Aprenda a solucionar problemas de AEM Dispatcher.
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
@@ -12,82 +12,81 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-translation-type: tm+mt
-source-git-commit: 9af0dc22d32f1176b84c28a70b1a4701414d434e
-workflow-type: tm+mt
+exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
+source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+workflow-type: ht
 source-wordcount: '553'
-ht-degree: 7%
+ht-degree: 100%
 
 ---
-
 
 # Solución de problemas de Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
->Las versiones de Dispatcher son independientes de AEM, pero la documentación de Dispatcher está incrustada en la documentación de AEM. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
+>Las versiones de Dispatcher son independientes de AEM, pero la documentación de Dispatcher está incrustada en la de AEM. Utilice siempre la documentación de Dispatcher incrustada en la documentación para la versión más reciente de AEM.
 >
 >Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
 >[!NOTE]
 >
->Consulte también [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), [Resolución de problemas de vaciado de despachante](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) y las [Preguntas más frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
+>Consulte también la [Base de conocimientos de Dispatcher](https://helpx.adobe.com/es/experience-manager/kb/index/dispatcher.html), la [Solución de problemas de vaciado de Dispatcher](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) y las [Preguntas frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
 
-## Compruebe la Configuración básica {#check-the-basic-configuration}
+## Comprobar la configuración básica {#check-the-basic-configuration}
 
-Como siempre, los primeros pasos son comprobar lo básico:
+Como siempre, los primeros pasos son comprobar los conceptos básicos:
 
 * [Confirmar operación básica](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Compruebe todos los archivos de registro del servidor web y del distribuidor. Si es necesario, aumente el `loglevel` utilizado para el despachante [registro](/help/using/dispatcher-configuration.md#logging).
+* Comprobar todos los archivos de registro de su servidor web y Dispatcher. Si es necesario, aumente el `loglevel` utilizado para el [registro](/help/using/dispatcher-configuration.md#logging) de Dispatcher.
 
-* [Compruebe la configuración](/help/using/dispatcher-configuration.md):
+* [Comprobar la configuración](/help/using/dispatcher-configuration.md):
 
-   * ¿Tiene varios despachantes?
+   * ¿Tiene varias instancias de Dispatcher?
 
       * ¿Ha determinado qué Dispatcher está administrando el sitio web o la página que está investigando?
    * ¿Ha implementado filtros?
 
-      * ¿Están estos impactando en el asunto que estás investigando?
+      * ¿Están afectando al asunto que está investigando?
 
 
 ## Herramientas de diagnóstico de IIS {#iis-diagnostic-tools}
 
-IIS proporciona varias herramientas de seguimiento, según la versión real:
+IIS proporciona varias herramientas de seguimiento, en función de la versión real:
 
 * IIS 6: las herramientas de diagnóstico de IIS se pueden descargar y configurar
-* IIS 7: el seguimiento está completamente integrado
+* IIS 7: el seguimiento está totalmente integrado
 
 Esto puede ayudarle a supervisar la actividad.
 
-## IIS y 404 no encontrados {#iis-and-not-found}
+## IIS y 404 no encontrado {#iis-and-not-found}
 
-Al utilizar IIS, puede que experimente que `404 Not Found` se devuelve en varios escenarios. Si es así, consulte los siguientes artículos de la Base de conocimiento.
+Al utilizar IIS, es posible que `404 Not Found` aparezca en varias ocasiones. Si es así, consulte los siguientes artículos de la Base de conocimientos.
 
-* [IIS 6/7: El método POST devuelve 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Solicitudes a direcciones URL que contienen el  `/bin` retorno de ruta base  `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: el método POST devuelve el valor 404](https://helpx.adobe.com/es/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: las solicitudes a direcciones URL que contienen la ruta base `/bin` devuelven `404 Not Found`](https://helpx.adobe.com/es/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-También debe comprobar que la raíz de la caché del despachante y la raíz del documento IIS están establecidas en el mismo directorio.
+También debe comprobar que la raíz de la caché de Dispatcher y la del documento de IIS estén configuradas en el mismo directorio.
 
 ## Problemas al eliminar modelos de flujo de trabajo {#problems-deleting-workflow-models}
 
 **Síntomas**
 
-Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una instancia de autor AEM a través del despachante.
+Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una instancia de autor de AEM a través de Dispatcher.
 
-**Pasos para reproducir:**
+**Pasos a seguir:**
 
-1. Inicie sesión en la instancia de autor (confirme que las solicitudes se dirigen a través del despachante).
-1. Crear un nuevo flujo de trabajo; por ejemplo, con el Título establecido en workflowToDelete.
-1. Confirme que el flujo de trabajo se creó correctamente.
-1. Seleccione el flujo de trabajo y haga clic con el botón secundario en él, luego haga clic en **Eliminar**.
+1. Inicie sesión en la instancia de autor (confirme que las solicitudes se enrutan a través de Dispatcher).
+1. Cree un nuevo flujo de trabajo; por ejemplo, con el título workflowToDelete.
+1. Confirme que el flujo de trabajo se ha creado correctamente.
+1. Seleccione y haga clic con el botón derecho en el flujo de trabajo y, a continuación, haga clic en **Eliminar**.
 
 1. Haga clic en **Sí** para confirmar.
-1. Aparecerá un cuadro de mensaje de error que muestra:\
-   &quot; `ERROR 'Could not delete workflow model!!`&quot;.
+1. Aparecerá un mensaje de error que muestra:\
+   “`ERROR 'Could not delete workflow model!!`”.
 
 **Resolución**
 
-Añada los siguientes encabezados a la sección `/clientheaders` del archivo `dispatcher.any`:
+Agregue los siguientes encabezados a la sección `/clientheaders` del archivo `dispatcher.any`:
 
 * `x-http-method-override`
 * `x-requested-with`
@@ -105,27 +104,27 @@ Añada los siguientes encabezados a la sección `/clientheaders` del archivo `di
 
 ## Interferencia con mod_dir (Apache) {#interference-with-mod-dir-apache}
 
-Esto describe cómo el despachante interactúa con `mod_dir` dentro del servidor web Apache, ya que esto puede producir varios efectos potencialmente inesperados:
+Esto describe cómo interactúa Dispatcher con `mod_dir` dentro del servidor web Apache, ya que puede producir varios efectos inesperados:
 
 ### Apache 1.3 {#apache}
 
-En Apache 1.3 `mod_dir` gestiona todas las solicitudes en las que la dirección URL se asigna a un directorio del sistema de archivos.
+En Apache 1.3 `mod_dir` administra cada solicitud donde la URL se asigna a un directorio en el sistema de archivos.
 
-O bien:
+Puede:
 
 * redirigir la solicitud a un archivo `index.html` existente
 * generar una lista de directorios
 
-Cuando el despachante está habilitado, procesa dichas solicitudes registrándose como un controlador para el tipo de contenido `httpd/unix-directory`.
+Cuando Dispatcher esté habilitado, procesará dichas solicitudes registrándose como controlador para el tipo de contenido `httpd/unix-directory`.
 
 ### Apache 2.x {#apache-x}
 
-En Apache 2.x las cosas son diferentes. Un módulo puede gestionar diferentes etapas de la solicitud, como la reparación de direcciones URL. `mod_dir` controla esta etapa redirigiendo una solicitud (cuando la URL se asigna a un directorio) a la URL con un  `/` anexo.
+En Apache 2.x las cosas son diferentes. Un módulo puede administrar diferentes etapas de la solicitud, como la corrección de URL. `mod_dir` administra este paso redireccionando una solicitud (cuando la dirección URL se asigna a un directorio) a la dirección URL con un `/` anexo.
 
-Dispatcher no intercepta la reparación `mod_dir`, pero la gestiona completamente a la dirección URL redireccionada (es decir, con `/` anexado). Esto podría plantear un problema si el servidor remoto (por ejemplo, AEM) maneja las solicitudes a `/a_path` de manera diferente a las solicitudes a `/a_path/` (cuando `/a_path` se asigna a un directorio existente).
+Dispatcher no intercepta la corrección `mod_dir`, pero administra completamente la solicitud a la dirección URL redirigida (es decir, con `/` anexado). Esto puede suponer un problema si el servidor remoto (por ejemplo, AEM) administra las solicitudes a `/a_path` de forma diferente a las solicitudes a `/a_path/` (cuando `/a_path` se asigna a un directorio existente).
 
 Si esto sucede, debe:
 
-* deshabilitar `mod_dir` para el subárbol `Directory` o `Location` manejado por el despachante
+* deshabilitar `mod_dir` para el subárbol `Directory` o `Location` que administra Dispatcher
 
-* use `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
+* utilizar `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
