@@ -1,8 +1,8 @@
 ---
-title: Optimización de un sitio web para el rendimiento de la caché
-seo-title: Optimización de un sitio web para el rendimiento de la caché
-description: Aprenda a diseñar su sitio Web para maximizar los beneficios del almacenamiento en caché.
-seo-description: Dispatcher oferta una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Aprenda a diseñar su sitio Web para maximizar los beneficios del almacenamiento en caché.
+title: Optimizar un sitio web para el rendimiento de la caché
+seo-title: Optimizar un sitio web para el rendimiento de la caché
+description: Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
+seo-description: Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
 uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -13,16 +13,15 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-translation-type: tm+mt
 source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1167'
-ht-degree: 3%
+ht-degree: 100%
 
 ---
 
 
-# Optimización de un sitio Web para el rendimiento de la caché {#optimizing-a-website-for-cache-performance}
+# Optimizar un sitio web para el rendimiento de la caché {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -38,25 +37,25 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 >
 >Las versiones de Dispatcher son independientes de AEM. Es posible que se le haya redirigido a esta página si ha seguido un vínculo a la documentación de Dispatcher insertado en la documentación de una versión anterior de AEM.
 
-Dispatcher oferta una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio Web para maximizar los beneficios del almacenamiento en caché.
+Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Esta sección le explica cómo diseñar su sitio web para maximizar los beneficios del almacenamiento en caché.
 
 >[!NOTE]
 >
 >Puede ayudarle a recordar que Dispatcher almacena la caché en un servidor web estándar. Esto significa que:
 >
->* puede almacenar en caché todo lo que pueda almacenar como página y solicitar mediante una dirección URL
->* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formulario.
+>* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
+>* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
 
 >
 >
-En general, muchas estrategias de almacenamiento en caché implican seleccionar buenas direcciones URL y no depender de estos datos adicionales.
+En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
-## Uso de Codificación de página consistente {#using-consistent-page-encoding}
+## Utilizar una codificación de página coherente {#using-consistent-page-encoding}
 
-Los encabezados de solicitud HTTP no se almacenan en la caché, por lo que pueden producirse problemas si almacena información de codificación de página en el encabezado. En este caso, cuando Dispatcher envía una página desde la caché, se utiliza la codificación predeterminada del servidor web para la página. Existen dos formas de evitar este problema:
+Los encabezados de solicitud HTTP no se almacenan en caché, por lo que pueden producirse problemas si almacena información de codificación de páginas en el encabezado. En este caso, cuando Dispatcher sirve una página desde la caché, se utiliza la codificación predeterminada del servidor web para esa página. Existen dos formas de evitar este problema:
 
-* Si solo utiliza una codificación, asegúrese de que la codificación utilizada en el servidor web sea la misma que la codificación predeterminada del sitio web AEM.
-* Utilice una etiqueta `<META>` en la sección HTML `head` para establecer la codificación, como en el ejemplo siguiente:
+* Si solo utiliza una codificación, asegúrese de que la utilizada en el servidor web sea la misma que la predeterminada del sitio web de AEM.
+* Utilice una etiqueta `<META>` en la sección HTML `head` para configurar la codificación, como en el siguiente ejemplo:
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
@@ -64,13 +63,13 @@ Los encabezados de solicitud HTTP no se almacenan en la caché, por lo que puede
 
 ## Evitar parámetros de URL {#avoid-url-parameters}
 
-Si es posible, evite los parámetros de URL para las páginas que desee almacenar en caché. Por ejemplo, si tiene una galería de imágenes, la siguiente URL nunca se almacena en caché (a menos que Dispatcher [esté configurado en consecuencia](dispatcher-configuration.md#main-pars_title_24)):
+Si es posible, evite los parámetros de URL para las páginas que desee almacenar en caché. Por ejemplo, si tiene una galería de imágenes, la siguiente URL nunca se almacenará en caché (a menos que Dispatcher esté [configurado así](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
 ```
 
-Sin embargo, puede colocar estos parámetros en la dirección URL de la página, como se indica a continuación:
+Sin embargo, puede colocar estos parámetros en la dirección URL de la página de la siguiente manera:
 
 ```xml
 www.myCompany.com/pictures/gallery.christmas.1.html
@@ -78,15 +77,15 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 
 >[!NOTE]
 >
->Esta URL llama a la misma página y a la misma plantilla que Gallery.html. En la definición de plantilla, puede especificar qué secuencia de comandos procesa la página o puede utilizar la misma secuencia de comandos para todas las páginas.
+>Esta URL llama a la misma página y a la misma plantilla que gallery.html. En la definición de la plantilla, puede especificar qué secuencia de comandos procesa la página o puede utilizar la misma secuencia de comandos para todas las páginas.
 
 ## Personalizar por dirección URL {#customize-by-url}
 
-Si permite que los usuarios cambien el tamaño de fuente (o cualquier otra personalización del diseño), asegúrese de que las diferentes personalizaciones se reflejan en la dirección URL.
+Si permite a los usuarios cambiar el tamaño de la fuente (o cualquier otra personalización del diseño), asegúrese de que las diferentes personalizaciones se reflejen en la dirección URL.
 
-Por ejemplo, las cookies no se almacenan en caché, por lo que si almacena el tamaño de fuente en una cookie (o mecanismo similar), el tamaño de fuente no se conserva para la página en caché. Como resultado, Dispatcher devuelve documentos de cualquier tamaño de fuente al azar.
+Por ejemplo, las cookies no se almacenan en caché, por lo que si almacena el tamaño de la fuente en una cookie (o mecanismo similar), no se conservará para la página en caché. Como resultado, Dispatcher devuelve aleatoriamente documentos con cualquier tamaño de la fuente.
 
-Si se incluye el tamaño de fuente en la URL como selector, se evita este problema:
+Incluir el tamaño de la fuente en la URL como selector evita este problema:
 
 ```xml
 www.myCompany.com/news/main.large.html
@@ -94,83 +93,83 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->En la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo y/o secuencias de comandos del lado del cliente. Normalmente, funcionan muy bien con el almacenamiento en caché.
+>Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan muy bien con el almacenamiento en caché.
 >
->Esto también es útil para una versión de impresión, donde puede utilizar una URL como: &quot;
+>Esto también es útil en la versión impresa, donde puede usar una URL como: ``
 >
 >`www.myCompany.com/news/main.print.html`
 >
->Al utilizar la secuencia de comandos de la definición de plantilla, puede especificar una secuencia de comandos independiente que procese las páginas de impresión.
+>Utilizando el script globbing de la definición de la plantilla, puede especificar un script separado que procese las páginas imprimidas.
 
-## Invalidación de archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
+## Invalidar archivos de imagen utilizados como títulos {#invalidating-image-files-used-as-titles}
 
-Si procesa títulos de página u otro texto como imágenes, se recomienda almacenar los archivos para que se eliminen al actualizar el contenido de la página:
+Si procesa títulos de páginas u otros textos como imágenes, se recomienda almacenar los archivos para que se eliminen tras actualizar el contenido de la página:
 
 1. Coloque el archivo de imagen en la misma carpeta que la página.
-1. Utilice el siguiente formato de nombre para el archivo de imagen:
+1. Utilice el siguiente formato de nomenclatura para el archivo de imagen:
 
    `<page file name>.<image file name>`
 
-Por ejemplo, puede almacenar el título de la página myPage.html en el archivo myPage.title.gif. Este archivo se elimina automáticamente si se actualiza la página, por lo que cualquier cambio en el título de la página se refleja automáticamente en la caché.
+Por ejemplo, puede almacenar el título de la página myPage.html en el archivo myPage.title.gif. Este archivo se eliminará automáticamente si se actualiza la página, por lo que cualquier cambio en el título de la página se reflejará automáticamente en la caché.
 
 >[!NOTE]
 >
->El archivo de imagen no existe necesariamente físicamente en la instancia de AEM. Puede utilizar una secuencia de comandos que cree dinámicamente el archivo de imagen. A continuación, Dispatcher almacena el archivo en el servidor web.
+>El archivo de imagen no existe necesariamente físicamente en la instancia de AEM. Puede utilizar un script que cree dinámicamente el archivo de imagen. A continuación, Dispatcher almacenará el archivo en el servidor web.
 
-## Invalidación de archivos de imagen utilizados para la navegación {#invalidating-image-files-used-for-navigation}
+## Invalidar archivos de imagen utilizados para la navegación {#invalidating-image-files-used-for-navigation}
 
-Si utiliza imágenes para las entradas de navegación, el método es básicamente el mismo que con los títulos, un poco más complejo. Almacene todas las imágenes de navegación con las páginas de destinatario. Si utiliza dos imágenes para normal y activo, puede utilizar los siguientes scripts:
+Si utiliza imágenes para las entradas de navegación, el método es básicamente el mismo que con los títulos, un poco más complejo. Almacene todas las imágenes de navegación con las páginas de destino. Si utiliza dos imágenes para la normal y la activa, puede utilizar los siguientes scripts:
 
-* Secuencia de comandos que muestra la página, como de costumbre.
-* Una secuencia de comandos que procesa solicitudes &quot;.normal&quot; y devuelve la imagen normal.
-* Una secuencia de comandos que procesa solicitudes &quot;.active&quot; y devuelve la imagen activada.
+* Scripts que muestra la página normal.
+* Scripts que procesa las solicitudes &quot;.normal&quot; y devuelve la imagen normal.
+* Scripts que procesa las solicitudes &quot;.active&quot; y devuelve la imagen activa.
 
-Es importante crear estas imágenes con el mismo nombre que la página para asegurarse de que una actualización de contenido elimina estas imágenes, así como la página.
+Es importante crear estas imágenes con el mismo nombre que la página, para garantizar que una actualización de contenido elimine estas imágenes, así como la página.
 
-En el caso de las páginas que no se modifican, las imágenes permanecen en la caché, aunque las páginas mismas suelen invalidarse automáticamente.
+En las páginas que no se modifiquen, las imágenes permanecerán en la caché, aunque las páginas en sí suelen invalidarse automáticamente.
 
 ## Personalización {#personalization}
 
-El despachante no puede almacenar en caché datos personalizados, por lo que se recomienda limitar la personalización a donde sea necesaria. Para ilustrar por qué:
+Dispatcher no puede almacenar en caché los datos personalizados, por lo que se recomienda limitar la personalización a donde sea necesario. Para explicar por qué:
 
-* Si utiliza una página de inicio personalizable libremente, esa página debe estar compuesta cada vez que un usuario la solicite.
-* Si, por el contrario, oferta una selección de 10 páginas de inicio diferentes, puede almacenar en caché cada una de ellas, lo que mejora el rendimiento.
+* Si utiliza una página de inicio personalizable libremente, esa página deberá estar compuesta cada vez que un usuario la solicite.
+* Si, por el contrario, ofrece una opción de 10 páginas de inicio diferentes, puede almacenar en caché cada una de ellas, mejorando el rendimiento.
 
 >[!NOTE]
 >
->Si personaliza cada página (por ejemplo, colocando el nombre del usuario en la barra de título), no podrá almacenarla en caché, lo que puede causar un gran impacto en el rendimiento.
+>Si personaliza cada página (por ejemplo, colocando el nombre del usuario en la barra de título), no puede almacenarla en caché, lo que afectar de manera importante al rendimiento.
 >
 >Sin embargo, si tiene que hacer esto, puede:
 >
->* utilice iFrames para dividir la página en una parte que sea la misma para todos los usuarios y una parte que sea la misma para todas las páginas del usuario. A continuación, puede almacenar en caché ambas partes.
->* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se siga mostrando correctamente si un usuario desactiva JavaScript.
+>* utilizar iFrames para dividir la página en una parte que sea la misma para todos los usuarios y otra que sea la misma para todas las páginas del usuario. A continuación, puede almacenar en caché ambas partes.
+>* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se muestre correctamente si un usuario desactiva JavaScript.
 
 >
 
 
 
-## Conexiones adhesivas {#sticky-connections}
+## Conexiones fijas {#sticky-connections}
 
-[Conexión fija ](dispatcher.md#TheBenefitsofLoadBalancing) Asegúrese de que los documentos de un usuario están compuestos en el mismo servidor. Si un usuario abandona esta carpeta y luego regresa a ella, la conexión se mantendrá. Defina una carpeta para albergar todos los documentos que requieran conexiones adhesivas para el sitio web. Trata de no tener otros documentos. Esto afecta al equilibrio de carga si utiliza páginas personalizadas y datos de sesión.
+[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para guardar todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto es importante si utiliza páginas personalizadas y datos de sesión.
 
 ## Tipos MIME {#mime-types}
 
-Existen dos maneras en que un explorador puede determinar el tipo de archivo:
+Existen dos maneras en las que un explorador puede determinar el tipo de archivo:
 
 1. Por su extensión (p. ej. .html, .gif, .jpg, etc.)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
-Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. i.e.:
+Para la mayoría de los archivos, el tipo MIME está implícito en la extensión del archivo. es decir:
 
 1. Por su extensión (p. ej. .html, .gif, .jpg, etc.)
 1. Por el tipo MIME que el servidor envía con el archivo.
 
-Si el nombre del archivo no tiene extensión, se muestra como texto sin formato.
+Si el nombre del archivo no tiene extensión, se mostrará como texto sin formato.
 
-El tipo MIME forma parte del encabezado HTTP y, como tal, Dispatcher no lo almacena en la caché. Si la aplicación AEM devuelve archivos que no tienen un final de archivo reconocido pero dependen del tipo MIME en su lugar, es posible que estos archivos se muestren incorrectamente.
+El tipo MIME forma parte del encabezado HTTP y, como tal, Dispatcher no lo almacena en caché. Si la aplicación de AEM devuelve archivos que no tienen un final de archivo reconocido, pero dependen del tipo MIME, estos archivos podrían mostrarse incorrectamente.
 
-Para asegurarse de que los archivos se almacenan correctamente en la caché, siga estas directrices:
+Para asegurarse de que los archivos se almacenan en caché correctamente, siga estas directrices:
 
 * Asegúrese de que los archivos siempre tengan la extensión adecuada.
-* Evite las secuencias de comandos genéricas del servidor de archivos, que tienen direcciones URL como download.jsp?file=2214. Vuelva a escribir la secuencia de comandos para utilizar las direcciones URL que contengan la especificación del archivo; para el ejemplo anterior, sería download.2214.pdf.
+* Evite los scripts genéricos del servidor de archivos, que tienen direcciones URL como download.jsp?file=2214. Vuelva a escribir el script para utilizar las direcciones URL que contengan la especificación del archivo; para el ejemplo anterior esto sería download.2214.pdf.
 
