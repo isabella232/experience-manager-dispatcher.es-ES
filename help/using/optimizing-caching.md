@@ -45,10 +45,8 @@ Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para opt
 >
 >* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
 >* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
-
 >
->
-En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
+>En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
 ## Utilizar una codificación de página coherente {#using-consistent-page-encoding}
 
@@ -95,7 +93,7 @@ www.myCompany.com/news/main.large.html
 >
 >Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan muy bien con el almacenamiento en caché.
 >
->Esto también es útil en la versión impresa, donde puede usar una URL como: ``
+>Esto también es útil en la versión impresa, donde puede usar una URL como: &grave;&grave;
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -143,7 +141,6 @@ Dispatcher no puede almacenar en caché los datos personalizados, por lo que se 
 >
 >* utilizar iFrames para dividir la página en una parte que sea la misma para todos los usuarios y otra que sea la misma para todas las páginas del usuario. A continuación, puede almacenar en caché ambas partes.
 >* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se muestre correctamente si un usuario desactiva JavaScript.
-
 >
 
 

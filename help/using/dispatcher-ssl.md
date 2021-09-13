@@ -30,7 +30,7 @@ Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 >[!NOTE]
 >
 >Las operaciones relacionadas con los certificados SSL están vinculadas a productos de terceros. No están cubiertos por el Contrato de Mantenimiento y 
-Soporte Platino de Adobe.
+>Soporte Platino de Adobe.
 
 ## Usar SSL cuando Dispatcher se conecta a AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
