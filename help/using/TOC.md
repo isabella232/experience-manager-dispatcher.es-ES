@@ -1,18 +1,18 @@
 ---
 cloud: Experience Cloud
 product: experience manager
-sub-product: dispatcher de experience manager
+sub-product: experience manager dispatcher
 archetype: Administrator
 user-guide-title: Ayuda de Dispatcher de Experience Manager
 breadcrumb-title: Guía de Dispatcher
 user-guide-description: Aprenda a utilizar Dispatcher para almacenar en caché, equilibrar la carga y mejorar la seguridad de su servidor de AEM.
 feature-set: Experience Manager
 feature: Dispatcher
-topic: Administración
+topic: Administration
 role: Admin
 source-git-commit: 4439a4f0adfb8e2e0d08636225d2399638d27af3
 workflow-type: ht
-source-wordcount: '89'
+source-wordcount: '84'
 ht-degree: 100%
 
 ---
