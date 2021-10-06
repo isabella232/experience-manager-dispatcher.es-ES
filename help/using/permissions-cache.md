@@ -1,8 +1,8 @@
 ---
 title: Almacenar contenido seguro en la caché
-seo-title: Almacenar contenido seguro en la caché de AEM Dispatcher
+seo-title: Caching Secured Content in AEM Dispatcher
 description: Descubra cómo funciona el almacenamiento en caché con permisos confidenciales en Dispatcher.
-seo-description: Descubra cómo funciona el almacenamiento en caché con permisos confidenciales en AEM Dispatcher.
+seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
 uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -12,7 +12,7 @@ discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '762'
+source-wordcount: '748'
 ht-degree: 100%
 
 ---
@@ -67,7 +67,6 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 >[!NOTE]
 >
 >Normalmente, los recursos seguros se almacenan en una carpeta separada de los archivos no seguros. Por ejemplo, /content/secure/
-
 
 ## Cree del servlet de autorización {#create-the-authorization-servlet}
 
