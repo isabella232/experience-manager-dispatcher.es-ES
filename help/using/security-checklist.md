@@ -1,8 +1,8 @@
 ---
 title: Lista de comprobación de seguridad de Dispatcher
-seo-title: Lista de comprobación de seguridad de Dispatcher
+seo-title: The Dispatcher Security Checklist
 description: Lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
-seo-description: Lista de comprobación de seguridad que debe completarse antes de continuar con la producción.
+seo-description: A security checklist that should be completed before going on production.
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -16,7 +16,7 @@ snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '653'
+source-wordcount: '638'
 ht-degree: 100%
 
 ---
