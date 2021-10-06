@@ -1,17 +1,17 @@
 ---
 title: Problemas principales de Dispatcher
-seo-title: Problemas principales de AEM Dispatcher
-description: Problemas principales de AEM Dispatcher
-seo-description: Problemas principales de Adobe AEM Dispatcher
+seo-title: Top issues for AEM Dispatcher
+description: Problemas principales de Dispatcher de AEM
+seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '1644'
+source-wordcount: '1633'
 ht-degree: 100%
 
 ---
 
-# Preguntas más frecuentes sobre los problemas principales de AEM Dispatcher
+# Preguntas más frecuentes sobre los problemas principales de Dispatcher de AEM
 
 ![Configurar Dispatcher](assets/CQDispatcher_workflow_v2.png)
 
@@ -34,7 +34,7 @@ Dispatcher utiliza la capacidad del servidor web para proporcionar contenido est
 
 Equilibrio de carga distribuye las solicitudes de usuarios (carga) entre varias instancias de AEM. La siguiente lista describe las ventajas del equilibrio de carga:
 
-* **Mayor potencia de procesamiento**: en la práctica, esto significa que Dispatcher comparte solicitudes de documentos entre varias instancias de AEM. Dado que cada instancia tiene ahora menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
+* **Mayor potencia de procesamiento**: en la práctica, esto significa que Dispatcher comparte solicitudes de documentos entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
 * **Aumento de la cobertura de seguridad contra fallos**: si Dispatcher no recibe respuestas de una instancia, reenviará automáticamente las solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida.
 
 >[!NOTE]
