@@ -1,8 +1,8 @@
 ---
-title: Configurar Dispatcher para prevenir ataques de tipo CSRF
-seo-title: Configurar Adobe AEM Dispatcher para prevenir ataques de tipo CSRF
-description: Aprenda cómo configurar AEM Dispatcher para evitar ataques de falsificación de solicitud entre sitios.
-seo-description: Aprenda cómo configurar Adobe AEM Dispatcher para evitar ataques de falsificación de solicitudes entre sitios.
+title: 'Configurar Dispatcher para prevenir ataques de tipo CSRF '
+seo-title: Configuring Adobe AEM Dispatcher to Prevent CSRF Attacks
+description: Aprenda a configurar Dispatcher de AEM para evitar ataques de falsificación de solicitud entre sitios.
+seo-description: Learn how to configure Adobe AEM Dispatcher to prevent Cross-Site Request Forgery attacks.
 uuid: f290bdeb-54e2-4649-b0fc-6257b422af2d
 topic-tags: dispatcher
 content-type: reference
@@ -10,7 +10,7 @@ discoiquuid: d61d021e-b338-4a1d-91ee-55427557e931
 exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '246'
+source-wordcount: '225'
 ht-degree: 100%
 
 ---
