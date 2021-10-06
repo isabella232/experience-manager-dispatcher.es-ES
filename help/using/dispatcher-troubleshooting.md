@@ -1,8 +1,8 @@
 ---
 title: Solución de problemas de Dispatcher
-seo-title: Solución de problemas AEM Dispatcher
+seo-title: Troubleshooting AEM Dispatcher Problems
 description: Aprenda a solucionar problemas de Dispatcher.
-seo-description: Aprenda a solucionar problemas de AEM Dispatcher.
+seo-description: Learn to troubleshoot AEM Dispatcher issues.
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -15,7 +15,7 @@ discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '553'
+source-wordcount: '543'
 ht-degree: 100%
 
 ---
