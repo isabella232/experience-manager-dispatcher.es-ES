@@ -1,8 +1,8 @@
 ---
 title: 'Utilizar Dispatcher con varios dominios '
-seo-title: 'Utilizar Dispatcher con varios dominios '
+seo-title: Using Dispatcher with Multiple Domains
 description: Aprenda a utilizar Dispatcher para procesar solicitudes de páginas en varios dominios web.
-seo-description: Aprenda a utilizar Dispatcher para procesar solicitudes de páginas en varios dominios web.
+seo-description: Learn how to use Dispatcher to process page requests in multiple web domains.
 uuid: 7342a1c2-fe61-49be-a240-b487d53c7ec1
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -13,7 +13,7 @@ discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '2983'
+source-wordcount: '2965'
 ht-degree: 100%
 
 ---
