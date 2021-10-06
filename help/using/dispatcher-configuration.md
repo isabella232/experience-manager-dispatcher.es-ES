@@ -825,7 +825,6 @@ Una sola entrada puede tener `glob` o alguna combinación de `method`, `url`, `q
 >
 >En el ejemplo anterior, si las solicitudes a `/etc` que no tienen una cadena de consulta deben ser permitidas también, se requerirían las siguientes reglas:
 
-
 ```xml
 /filter {  
 >/0001 { /type "deny" /method “*" /url "/path/*" }  
@@ -1153,7 +1152,7 @@ Utilice la propiedad `/statfileslevel` para invalidar los archivos en caché seg
 
 * Cuando se invalida un archivo ubicado en un nivel específico, se tocarán **todos** los archivos `.stat` desde docroot **hasta** el nivel del archivo invalidado o el `statsfilevel` configurado (el que sea menor).
 
-   * Por ejemplo: si establece la propiedad `statfileslevel` en 6 y un archivo se invalida en el nivel 5, todos los archivos `.stat` de docroot a 5 se tocarán. Siguiendo con este ejemplo, si un archivo se invalida en el nivel 7, entonces se tocará cada archivo `stat` desde el docroot al 6 (desde `/statfileslevel = "6"`).
+   * Por ejemplo: si establece la propiedad `statfileslevel` en 6 y un archivo se invalida en el nivel 5, todos los archivos `.stat` de docroot a 5 se tocarán. Siguiendo con este ejemplo, si un archivo se invalida en el nivel 7, entonces se tocará cada archivo .`stat` desde el docroot al 6 (desde `/statfileslevel = "6"`).
 
 Solo se ven afectados los recursos **de la ruta** al archivo invalidado. Consideremos el siguiente ejemplo: un sitio web utiliza la estructura `/content/myWebsite/xx/.`. Si establece `statfileslevel` como 3, se crea un archivo `.stat` de la siguiente manera:
 
@@ -1340,6 +1339,7 @@ A continuación se muestra un ejemplo de la configuración predeterminada:
 >
 >* Agregue el nombre del encabezado a la sección `/cache/headers`.
 >* Agregue la siguiente [directiva de Apache](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) a la sección relacionada con Dispatcher:
+
 >
 >```xml
 >FileETag none
