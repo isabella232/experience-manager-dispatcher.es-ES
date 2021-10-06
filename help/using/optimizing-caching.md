@@ -1,8 +1,8 @@
 ---
 title: Optimizar un sitio web para el rendimiento de la caché
-seo-title: Optimizar un sitio web para el rendimiento de la caché
+seo-title: Optimizing a Website for Cache Performance
 description: Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
-seo-description: Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para optimizar el rendimiento. Aprenda a diseñar un sitio web para maximizar las ventajas del almacenamiento en caché.
+seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
 uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -15,7 +15,7 @@ internal: n
 snippet: y
 source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
 workflow-type: ht
-source-wordcount: '1167'
+source-wordcount: '1134'
 ht-degree: 100%
 
 ---
@@ -45,6 +45,7 @@ Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para opt
 >
 >* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
 >* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
+
 >
 >En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
@@ -93,7 +94,7 @@ www.myCompany.com/news/main.large.html
 >
 >Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan muy bien con el almacenamiento en caché.
 >
->Esto también es útil en la versión impresa, donde puede usar una URL como: &grave;&grave;
+>Esto también es útil en la versión impresa, donde puede usar una URL como: ``
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -141,13 +142,13 @@ Dispatcher no puede almacenar en caché los datos personalizados, por lo que se 
 >
 >* utilizar iFrames para dividir la página en una parte que sea la misma para todos los usuarios y otra que sea la misma para todas las páginas del usuario. A continuación, puede almacenar en caché ambas partes.
 >* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se muestre correctamente si un usuario desactiva JavaScript.
->
 
+>
 
 
 ## Conexiones fijas {#sticky-connections}
 
-[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para guardar todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto es importante si utiliza páginas personalizadas y datos de sesión.
+[Las conexiones fijas](dispatcher.md#TheBenefitsofLoadBalancing) garantizan que todos los documentos de un usuario se compongan en el mismo servidor. Si un usuario abandona esta carpeta y más tarde vuelve a ella, la conexión se mantiene. Defina una carpeta para guardar todos los documentos que requieran conexiones fijas para el sitio web. Intente no meter otros documentos en ella. Esto afecta al equilibrio de cargas si utiliza páginas personalizadas y datos de sesión.
 
 ## Tipos MIME {#mime-types}
 
