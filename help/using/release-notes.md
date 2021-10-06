@@ -1,8 +1,8 @@
 ---
 title: Notas de la versión de Dispatcher de AEM
-seo-title: Notas de la versión de Dispatcher de AEM
+seo-title: AEM Dispatcher Release Notes
 description: Notas de versión específicas de Adobe Experience Manager Dispatcher
-seo-description: Notas de versión específicas de Adobe Experience Manager Dispatcher
+seo-description: Release notes specific to Adobe Experience Manager Dispatcher
 uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
 topic-tags: release-notes
 content-type: reference
@@ -11,7 +11,7 @@ discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
 workflow-type: ht
-source-wordcount: '805'
+source-wordcount: '793'
 ht-degree: 100%
 
 ---
@@ -33,7 +33,7 @@ ht-degree: 100%
 
 Consulte la página [Plataformas admitidas](https://helpx.adobe.com/es/experience-manager/6-4/sites/deploying/using/technical-requirements.html) para obtener más información sobre los requisitos y prerrequisitos.
 
-Adobe recomienda encarecidamente utilizar la última versión de AEM Dispatcher para disponer de las últimas funciones, las correcciones de errores más recientes y el mejor rendimiento posible.
+Adobe recomienda encarecidamente utilizar la última versión de Dispatcher de AEM para disponer de las últimas funciones, las correcciones de errores más recientes y el mejor rendimiento posible.
 
 ## Instrucciones de instalación {#installation-instructions}
 
