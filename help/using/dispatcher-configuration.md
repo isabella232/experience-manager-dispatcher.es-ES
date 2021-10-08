@@ -1339,7 +1339,6 @@ A continuación se muestra un ejemplo de la configuración predeterminada:
 >
 >* Agregue el nombre del encabezado a la sección `/cache/headers`.
 >* Agregue la siguiente [directiva de Apache](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) a la sección relacionada con Dispatcher:
-
 >
 >```xml
 >FileETag none
