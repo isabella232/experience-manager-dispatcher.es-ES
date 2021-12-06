@@ -2,10 +2,10 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
-workflow-type: ht
-source-wordcount: '8512'
-ht-degree: 100%
+source-git-commit: 9ad35121bde90916a0376b33853e190b382ce5cd
+workflow-type: tm+mt
+source-wordcount: '8528'
+ht-degree: 99%
 
 ---
 
@@ -565,6 +565,10 @@ La sección `/filter` consta de una serie de reglas que deniegan o permiten el a
 
 * Primero, deniegue el acceso a todo.
 * Permita el acceso al contenido según sea necesario.
+
+>[!NOTE]
+>
+>Se recomienda purgar la caché siempre que haya algún cambio en las reglas de filtro.
 
 ### Definir un filtro {#defining-a-filter}
 
@@ -1339,6 +1343,7 @@ A continuación se muestra un ejemplo de la configuración predeterminada:
 >
 >* Agregue el nombre del encabezado a la sección `/cache/headers`.
 >* Agregue la siguiente [directiva de Apache](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) a la sección relacionada con Dispatcher:
+
 >
 >```xml
 >FileETag none
