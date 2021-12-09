@@ -10,13 +10,13 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 4f37bc2571c3272beeb1764ca0bf0347e086cc07
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '852'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
-# Notas de la versión de Dispatcher de AEM{#aem-dispatcher-release-notes}
+# Notas de la versión de Dispatcher de AEM {#aem-dispatcher-release-notes}
 
 ## Información de la versión {#release-information}
 
@@ -41,20 +41,20 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ## Historial de versiones {#release-history}
 
-### Versión 4.3.4 (2021-Nov-29) {#nov}
+### Versión 4.3.4 (29 de noviembre de 2021) {#nov}
 
 **Corrección de errores**:
 
-* DISP-833 - Los encabezados X-Forwarded-Host pueden contener una lista de nombres de host separados por coma
-* DISP-835 - DispatcherUseForwardedHost muestra el encabezado del host si se llega por última vez
+* DISP-833: los encabezados X-Forwarded-Host pueden contener una lista de nombres de host separados por coma
+* DISP-835: DispatcherUseForwardedHost absorve el encabezado Host si viene en último lugar
 
 
 **Mejoras**:
 
-* DISP-841 - Dispatcher no respeta /serverStaleOnError para el código de respuesta 504
-* DISP-874: Cree una configuración de Dispatcher para activar o desactivar la implementación de DISP-818
-* DISP-883 - Seguimiento que muestra la descomposición de la solicitud de URL en Dispatcher
-* DISP-944: direcciones URL mnemónicas precargadas
+* DISP-841: Dispatcher no respeta /serverStaleOnError para el código de respuesta 504
+* DISP-874: cree una configuración de Dispatcher para activar o desactivar la implementación de DISP-818
+* DISP-883: el seguimiento muestra la descomposición de la solicitud de URL en Dispatcher
+* DISP-944: URL de vanidad precargadas
 
 ### Versión 4.3.3 (18-Oct-2019) {#october}
 
@@ -72,7 +72,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 * DISP-822: Dispatcher debe utilizar ppoll en lugar de pselect
 * DISP-824: Secure DispatcherUseForwardedHost
 * DISP-825: registrar mensaje especial cuando no hay más espacio en el disco
-* DISP-826: admite URI de recuperación con una cadena de consulta
+* DISP-826: admite URL de recuperación con una cadena de consulta
 
 **Nuevas funciones**:
 
@@ -162,8 +162,8 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 | Linux | i686 (32 bits) | 1.0 | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.4.tar.gz) |
 | Linux | i686 (32 bits) | 1.1 | [dispatcher-apache2.4-linux-i686-ssl1.1-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.1-4.3.4.tar.gz) |
 | Linux | x86_64 (64 bits) | Ninguna | [dispatcher-apache2.4-linux-x86_64-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.4.tar.gz) |
-| Linux | x86_64 (64 bits) | 1,0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.4.tar.gz) |
-| Linux | x86_64 (64 bits) | 1,1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.4.tar.gz) |
+| Linux | x86_64 (64 bits) | 1.0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.4.tar.gz) |
+| Linux | x86_64 (64 bits) | 1.1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.4.tar.gz) |
 | macOS | x86_64 (64 bits) | Ninguna | [dispatcher-apache2.4-darwin-x86_64-4.3.4.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.4.tar.gz) |
 
 ### IIS {#iis}
@@ -171,8 +171,8 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 | Plataforma | Arquitectura | Compatibilidad con OpenSSL | Descargar |
 |---|---|---|---|
 | Windows | x86 (32 bits) | Ninguna | [dispatcher-iis-windows-x86-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.4.zip) |
-| Windows | x86 (32 bits) | 1,0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.4.zip) |
-| Windows | x86 (32 bits) | 1,1 | [dispatcher-iis-windows-x86-ssl1.1-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.4.zip) |
+| Windows | x86 (32 bits) | 1.0 | [dispatcher-iis-windows-x86-ssl1.0-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.4.zip) |
+| Windows | x86 (32 bits) | 1.1 | [dispatcher-iis-windows-x86-ssl1.1-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.4.zip) |
 | Windows | x64 (64 bits) | Ninguna | [dispatcher-iis-windows-x64-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.4.zip) |
-| Windows | x64 (64 bits) | 1,0 | [dispatcher-iis-windows-x64-ssl1.0-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.4.zip) |
-| Windows | x64 (64 bits) | 1,1 | [dispatcher-iis-windows-x64-ssl1.1-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.4.zip) |
+| Windows | x64 (64 bits) | 1.0 | [dispatcher-iis-windows-x64-ssl1.0-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.4.zip) |
+| Windows | x64 (64 bits) | 1.1 | [dispatcher-iis-windows-x64-ssl1.1-4.3.4.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.4.zip) |
