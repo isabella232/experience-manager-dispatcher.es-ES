@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 35739785aa835a0b995fab4710a0e37bd0ff62b4
-workflow-type: ht
-source-wordcount: '3660'
-ht-degree: 100%
+source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
+workflow-type: tm+mt
+source-wordcount: '3693'
+ht-degree: 99%
 
 ---
 
@@ -50,6 +50,10 @@ La siguiente tabla muestra el identificador del servidor web que se utiliza en l
 >[!CAUTION]
 >
 >Debe instalar la versión más reciente de Dispatcher que esté disponible para su plataforma. Anualmente, debe actualizar la instancia de Dispatcher para utilizar la versión más reciente y aprovechar las mejoras del producto.
+
+>[!NOTE]
+>
+>Los clientes que actualicen de forma específica de la versión 4.3.3 a la versión 4.3.4 notarán un comportamiento diferente en la forma en que se establecen los encabezados de caché para el contenido que no se puede almacenar en caché. Para obtener más información sobre este cambio, consulte la [Notas de la versión](/help/using/release-notes.md#nov) página.
 
 Cada archivo contiene los siguientes archivos:
 
