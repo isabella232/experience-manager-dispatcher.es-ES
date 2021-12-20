@@ -3,9 +3,9 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 9ad35121bde90916a0376b33853e190b382ce5cd
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8528'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -190,7 +190,7 @@ El valor puede incluir cualquier carácter alfanumérico (a-z, 0-9). El siguient
 
 Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 
-| Nombre de la propiedad  | Descripción |
+| Nombre de la propiedad | Descripción |
 |--- |--- |
 | [/homepage](#specify-a-default-page-iis-only-homepage) | Página principal predeterminada (opcional) (solo IIS) |
 | [/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders) | Encabezados de la solicitud HTTP del cliente para pasar.los |
