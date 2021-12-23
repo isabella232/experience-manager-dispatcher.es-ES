@@ -13,10 +13,10 @@ redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/u
 index: y
 internal: n
 snippet: y
-source-git-commit: 2ca816ac0776d72be651b76ff4f45e0c3ed1450f
-workflow-type: ht
-source-wordcount: '1134'
-ht-degree: 100%
+source-git-commit: 762f575a58f53d25565fb9f67537e372c760674f
+workflow-type: tm+mt
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
@@ -45,6 +45,7 @@ Dispatcher ofrece una serie de mecanismos integrados que puede utilizar para opt
 >
 >* puede almacenar en caché todo lo que se pueda almacenar como página y solicitar mediante una dirección URL
 >* no puede almacenar otros elementos, como encabezados HTTP, cookies, datos de sesión y datos de formularios.
+
 >
 >En general, muchas estrategias de almacenamiento en caché implican la selección de buenas direcciones URL y no depender de estos datos adicionales.
 
@@ -93,7 +94,7 @@ www.myCompany.com/news/main.large.html
 >
 >Para la mayoría de los aspectos del diseño, también es posible utilizar hojas de estilo o secuencias de comandos del lado del cliente. Normalmente funcionan muy bien con el almacenamiento en caché.
 >
->Esto también es útil en la versión impresa, donde puede usar una URL como: &grave;&grave;
+>Esto también es útil en la versión impresa, donde puede usar una URL como:
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -141,6 +142,7 @@ Dispatcher no puede almacenar en caché los datos personalizados, por lo que se 
 >
 >* utilizar iFrames para dividir la página en una parte que sea la misma para todos los usuarios y otra que sea la misma para todas las páginas del usuario. A continuación, puede almacenar en caché ambas partes.
 >* utilice JavaScript del lado del cliente para mostrar información personalizada. Sin embargo, debe asegurarse de que la página se muestre correctamente si un usuario desactiva JavaScript.
+
 >
 
 
