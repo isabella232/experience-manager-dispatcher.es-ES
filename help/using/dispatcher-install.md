@@ -11,9 +11,9 @@ content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: bd03499fae4096fe5642735eb466276f1a179dec
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3693'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -53,7 +53,7 @@ La siguiente tabla muestra el identificador del servidor web que se utiliza en l
 
 >[!NOTE]
 >
->Los clientes que actualicen de forma específica de la versión 4.3.3 a la versión 4.3.4 notarán un comportamiento diferente en la forma en que se establecen los encabezados de caché para el contenido que no se puede almacenar en caché. Para obtener más información sobre este cambio, consulte la [Notas de la versión](/help/using/release-notes.md#nov) página.
+>Los clientes que actualicen de forma específica de la versión 4.3.3 a la 4.3.4 notarán un comportamiento diferente en la forma en que se establecen los encabezados de caché para el contenido que no se puede almacenar en caché. Para obtener más información acerca de este cambio, consulte la página [Notas de la versión](/help/using/release-notes.md#nov).
 
 Cada archivo contiene los siguientes archivos:
 
