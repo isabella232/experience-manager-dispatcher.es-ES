@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
-source-wordcount: '748'
-ht-degree: 100%
+source-git-commit: 753f9fc35968996ee83d5947585fd52f2b981632
+workflow-type: tm+mt
+source-wordcount: '827'
+ht-degree: 85%
 
 ---
 
@@ -21,7 +21,7 @@ ht-degree: 100%
 
 El almacenamiento en caché con permisos confidenciales le permite almacenar en caché las páginas seguras. Dispatcher comprueba los permisos de acceso del usuario para una página antes de enviar la página en caché.
 
-Dispatcher incluye el módulo AuthChecker que implementa el almacenamiento en caché con permisos confidenciales. Cuando se activa el módulo, el procesamiento llama a un servlet de AEM para realizar la autenticación del usuario y la autorización del contenido solicitado. La respuesta del servlet determina si el contenido se envía al explorador web.
+Dispatcher incluye el módulo AuthChecker que implementa el almacenamiento en caché con permisos confidenciales. Cuando se activa el módulo, Dispatcher llama a un servlet AEM para realizar la autenticación de usuario y la autorización del contenido solicitado. La respuesta del servlet determina si el contenido se envía al explorador web desde la caché o no.
 
 Como los métodos de autenticación y autorización son específicos de la implementación de AEM, es necesario crear el servlet.
 
@@ -37,7 +37,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher determina que el contenido solicitado se almacena en caché y es válido.
 1. Dispatcher envía un mensaje de solicitud al procesador. La sección HEAD incluye todas las líneas de encabezado de la solicitud del explorador.
-1. El procesador llama al autorizador para realizar la comprobación de seguridad y responde a Dispatcher. El mensaje de respuesta incluye un código de estado HTTP de 200 para indicar que el usuario está autorizado.
+1. El render llama al servlet auth checker para realizar la comprobación de seguridad y responde a Dispatcher. El mensaje de respuesta incluye un código de estado HTTP de 200 para indicar que el usuario está autorizado.
 1. Dispatcher envía un mensaje de respuesta al explorador que consta de las líneas de encabezado de la respuesta de procesamiento y el contenido almacenado en caché.
 
 ## La página no se almacena en caché y el usuario está autorizado {#page-is-not-cached-and-user-is-authorized}
@@ -46,7 +46,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher determina que el contenido no se almacena en caché o que requiere una actualización.
 1. Dispatcher reenvía la solicitud original al procesador.
-1. El procesador llama al servlet del autorizador para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. El renderizado llama al servlet AEM autorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
 ## El usuario no está autorizado {#user-is-not-authorized}
@@ -55,7 +55,11 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher comprueba la caché.
 1. Dispatcher envía un mensaje de solicitud al procesador que incluye todas las líneas de encabezado de la solicitud del explorador.
-1. El procesador llama al servlet del autorizador para realizar una comprobación de seguridad que falla y el procesador reenvía la solicitud original a Dispatcher.
+1. El render llama al servlet Auth Checker para realizar una comprobación de seguridad que falla y el render reenvía la solicitud original a Dispatcher.
+1. Dispatcher reenvía la solicitud original al procesador.
+1. El renderizado llama al servlet AEM autorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
+
 
 ## Implementar el almacenamiento en caché con permisos confidenciales {#implementing-permission-sensitive-caching}
 
@@ -68,7 +72,7 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 >
 >Normalmente, los recursos seguros se almacenan en una carpeta separada de los archivos no seguros. Por ejemplo, /content/secure/
 
-## Cree del servlet de autorización {#create-the-authorization-servlet}
+## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 
 Cree e implemente un servlet que realice la autenticación y la autorización del usuario que solicita el contenido web. El servlet puede utilizar cualquier método de autenticación y autorización, como la cuenta de usuario AEM y las ACL del repositorio, o un servicio de búsqueda LDAP. El servlet se implementa en la instancia de AEM que Dispatcher utiliza como procesador.
 
