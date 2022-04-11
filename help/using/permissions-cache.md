@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 753f9fc35968996ee83d5947585fd52f2b981632
+source-git-commit: 11c3d7d627c96bb6ef647b5a067d3926eca347fc
 workflow-type: tm+mt
-source-wordcount: '827'
+source-wordcount: '829'
 ht-degree: 85%
 
 ---
@@ -46,7 +46,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 
 1. Dispatcher determina que el contenido no se almacena en caché o que requiere una actualización.
 1. Dispatcher reenvía la solicitud original al procesador.
-1. El renderizado llama al servlet AEM autorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. El render llama al servlet AEM authorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
 ## El usuario no está autorizado {#user-is-not-authorized}
@@ -57,7 +57,7 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 1. Dispatcher envía un mensaje de solicitud al procesador que incluye todas las líneas de encabezado de la solicitud del explorador.
 1. El render llama al servlet Auth Checker para realizar una comprobación de seguridad que falla y el render reenvía la solicitud original a Dispatcher.
 1. Dispatcher reenvía la solicitud original al procesador.
-1. El renderizado llama al servlet AEM autorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
+1. El render llama al servlet AEM authorizer (no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
 
