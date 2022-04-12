@@ -9,7 +9,7 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: 3f040a4150bc398d25ffa2426f9dd9de99a0b8fc
+source-git-commit: 377a104f7e8e506e2f61002d90851a38657e8fe5
 workflow-type: tm+mt
 source-wordcount: '977'
 ht-degree: 94%
@@ -41,7 +41,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 ## Historial de versiones {#release-history}
 
-### Versión 4.3.5 (2022-Abr-29) {#apr}
+### Versión 4.3.5 (2022-Abr-04) {#apr}
 
 **Mejoras**:
 
