@@ -12,7 +12,7 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 5430d53571414cf3bf764bb8523c252bb77a3bf2
 workflow-type: tm+mt
 source-wordcount: '1037'
-ht-degree: 92%
+ht-degree: 94%
 
 ---
 
@@ -33,7 +33,7 @@ ht-degree: 92%
 
 Consulte la página [Plataformas admitidas](https://helpx.adobe.com/es/experience-manager/6-4/sites/deploying/using/technical-requirements.html) para obtener más información sobre los requisitos y prerrequisitos.
 
-Adobe recomienda encarecidamente utilizar la última versión de AEM Dispatcher para beneficiarse de las últimas funciones, las correcciones de errores más recientes y el mejor rendimiento posible.
+Adobe recomienda encarecidamente utilizar la última versión de Dispatcher de AEM para beneficiarse de las últimas funcionalidades, las correcciones de errores más recientes y el mejor rendimiento posible.
 
 ## Instrucciones de instalación {#installation-instructions}
 
