@@ -3,7 +3,7 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: deb232be3c4c5e3d11d13cbccb282409d90b93bb
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8528'
 ht-degree: 100%
 
