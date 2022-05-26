@@ -12,9 +12,9 @@ content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 9d168ab7139e46b0c768fc3bab37245459eca002
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '2965'
+ht-degree: 100%
 
 ---
 
@@ -310,11 +310,11 @@ En la siguiente tabla se enumeran los nodos que implementan la asignación de re
 
 | Ruta del nodo | Tipo | Propiedad |
 |--- |--- |--- |
-| `/etc/map/http/branda.com` | sling:Asignar | Nombre: sling:internalRedirect Type: Valor de la cadena: /content/sitea |
-| `/etc/map/http/branda.com/libs` | sling:Asignar | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
-| `/etc/map/http/branda.com/etc` | sling:Asignar |  |
-| `/etc/map/http/branda.com/etc/designs` | sling:Asignar | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Asignar | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
+| `/etc/map/http/branda.com` | sling:Mapping | Nombre: sling:internalRedirect Type: Valor de la cadena: /content/sitea |
+| `/etc/map/http/branda.com/libs` | sling:Mapping | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
+| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
 
 ## Configurar el agente de replicación de vaciado de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
@@ -504,7 +504,7 @@ Como de costumbre, la raíz del documento de la caché es la misma que la raíz 
 
 Para reescribir referencias a archivos que tengan extensiones distintas de .html o .htm, cree un componente transformador de reescritura de Sling y agréguelo a la canalización de reescritura predeterminada.
 
-Reescriba referencias cuando las rutas de recursos no se resuelven correctamente en el contexto del servidor web. Por ejemplo, se necesita un transformador cuando los componentes que generan imágenes crean vínculos como /content/sitea/en/products.navimage.png. El componente de navegación superior del [Cómo crear un sitio web de Internet con todas las funciones](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/the-basics.html) crea estos vínculos.
+Reescriba referencias cuando las rutas de recursos no se resuelven correctamente en el contexto del servidor web. Por ejemplo, se necesita un transformador cuando los componentes que generan imágenes crean vínculos como /content/sitea/en/products.navimage.png. El componente de navegación superior del [Cómo crear un sitio web de Internet con todas las funciones](https://helpx.adobe.com/es/experience-manager/6-5/sites/developing/using/the-basics.html) crea estos vínculos.
 
 El [reescritor Sling](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) es un módulo que postprocesa la salida de Sling. Las implementaciones de canalización SAX del reescritor consisten en un generador, uno o más transformadores y un serializador:
 
