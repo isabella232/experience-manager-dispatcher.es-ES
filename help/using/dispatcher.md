@@ -9,7 +9,7 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 76f7a3fc8d98657c5f46912f452c05fce1b5be61
+source-git-commit: 85a7f38ecb5f5fe620ff51a7cdbe29f546559288
 workflow-type: tm+mt
 source-wordcount: '3190'
 ht-degree: 99%
@@ -27,7 +27,7 @@ Dispatcher es una herramienta de equilibrio de carga o almacenamiento en caché 
 El proceso de implementación de Dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
 
 1. Obtenga información sobre Dispatcher (esta página). Consulte también las [preguntas más frecuentes sobre Dispatcher](https://helpx.adobe.com/es/experience-manager/using/dispatcher-faq.html).
-1. Instale un [servidor web admitido](https://helpx.adobe.com/es/experience-manager/6-3/sites/deploying/using/technical-requirements.html) según la documentación del servidor web.
+1. Instale un [servidor web admitido](https://helpx.adobe.com/es/experience-manager/6-5/sites/deploying/using/technical-requirements.html) según la documentación del servidor web.
 1. [Instale el módulo de Dispatcher](dispatcher-install.md) en el servidor web y configure ese servidor web en consecuencia.
 1. [Configure Dispatcher](dispatcher-configuration.md) (mediante el archivo dispatcher.any).
 1. [Configure AEM](page-invalidate.md) para que las actualizaciones de contenido invaliden la caché.
