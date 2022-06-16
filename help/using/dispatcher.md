@@ -10,7 +10,7 @@ content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 85a7f38ecb5f5fe620ff51a7cdbe29f546559288
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3190'
 ht-degree: 100%
 
@@ -58,7 +58,7 @@ Utilice la siguiente información según sea necesario:
 >
 >Sin embargo, Dispatcher también puede utilizarse para aumentar la capacidad de respuesta de la **instancia de autor**, especialmente si tiene un gran número de usuarios editando y actualizando el sitio web. Para obtener detalles específicos sobre este caso, consulte a continuación [Uso de Dispatcher con un servidor de autor](#using-a-dispatcher-with-an-author-server).
 
-## ¿Por qué utilizar Dispatcher para implementar el almacenamiento en caché?  {#why-use-dispatcher-to-implement-caching}
+## ¿Por qué utilizar Dispatcher para implementar el almacenamiento en caché? {#why-use-dispatcher-to-implement-caching}
 
 Existen dos enfoques básicos para la publicación web:
 
@@ -158,7 +158,7 @@ Cabe señalar también algunos puntos:
 
 ### Determinar si un documento está sujeto al almacenamiento en caché
 
-Puede [definir qué documentos almacena en caché Dispatcher en el archivo de configuración](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
+Puede [definir qué documentos almacena en caché Dispatcher en el archivo de configuración](https://helpx.adobe.com/es/experience-manager/dispatcher/using/dispatcher-configuration.html). Dispatcher comprueba la solicitud con la lista de documentos que se pueden almacenar en caché. Si el documento no está en esta lista, Dispatcher solicita el documento a la instancia de AEM.
 
 Dispatcher *siempre* solicita el documento directamente desde la instancia de AEM en los siguientes casos:
 
@@ -168,7 +168,7 @@ Dispatcher *siempre* solicita el documento directamente desde la instancia de AE
 
 >[!NOTE]
 >
->Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre el almacenamiento en caché de encabezados de respuesta, consulte la sección [Almacenamiento en caché de encabezados de respuesta HTTP](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html).
+>Dispatcher puede almacenar en caché los métodos GET o HEAD (para el encabezado HTTP). Para obtener información adicional sobre el almacenamiento en caché de encabezados de respuesta, consulte la sección [Almacenamiento en caché de encabezados de respuesta HTTP](https://helpx.adobe.com/es/experience-manager/dispatcher/using/dispatcher-configuration.html).
 
 ### Determinar si un documento está almacenado en la caché
 
@@ -309,7 +309,7 @@ Dispatcher se puede utilizar delante de una instancia de autor para mejorar el r
 1. Abra `author_dispatcher.any` en un editor de texto y realice los siguientes cambios:
 
    1. Cambie `/hostname` y `/port` de la sección `/renders` para que apunte a la instancia de autor.
-   1. Cambie `/docroot` de la sección `/cache` para que apunte a un directorio de caché. Si utiliza [AEM con la interfaz táctil de usuario](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html), consulte la advertencia anterior.
+   1. Cambie `/docroot` de la sección `/cache` para que apunte a un directorio de caché. Si utiliza [AEM con la interfaz táctil de usuario](https://helpx.adobe.com/es/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html), consulte la advertencia anterior.
    1. Guarde los cambios.
 
 1. Elimine todos los archivos existentes en el directorio `/cache` > `/docroot` que configuró anteriormente.
