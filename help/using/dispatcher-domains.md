@@ -12,7 +12,7 @@ content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
-workflow-type: ht
+workflow-type: tm+mt
 source-wordcount: '2965'
 ht-degree: 100%
 
@@ -313,10 +313,10 @@ En la siguiente tabla se enumeran los nodos que implementan la asignación de re
 | Ruta del nodo | Tipo | Propiedad |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | Nombre: sling:internalRedirect Type: Valor de la cadena: /content/sitea |
-| `/etc/map/http/branda.com/libs` | sling:Mapping | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
-| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
-| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
+| `/etc/map/http/branda.com/libs` | sling:Asignación | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
+| `/etc/map/http/branda.com/etc` | sling:Asignación |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Asignación | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Asignación | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
 
 ## Configurar el agente de replicación de vaciado de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
