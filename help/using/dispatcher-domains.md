@@ -11,10 +11,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
+source-git-commit: c7af1a042b0106fa0a559448398a8dd636d920c2
 workflow-type: tm+mt
-source-wordcount: '2965'
-ht-degree: 100%
+source-wordcount: '2968'
+ht-degree: 98%
 
 ---
 
@@ -62,11 +62,9 @@ Cuando los agentes de replicación de vaciado de Dispatcher solicitan que Dispat
 
 ![](assets/chlimage_1-9.png)
 
-<ol type="a">
-  <li>Se activará una página en la instancia de autor de AEM y el contenido se duplicará en la instancia de publicación.</li>
-  <li>El agente de vaciado de Dispatcher llama a Dispatcher para invalidar la caché del contenido replicado.</li>
-  <li>Dispatcher toca uno o más archivos .stat para invalidar los archivos en caché.</li>
-</ol>
+* a: Se activa una página en la instancia de autor de AEM y el contenido se replica en la instancia de publicación.
+* b - El agente de vaciado de Dispatcher llama a Dispatcher para invalidar la caché para el contenido replicado.
+* c - Dispatcher toca uno o más archivos .stat para invalidar los archivos en caché.
 
 Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y el servidor web. Las soluciones descritas en esta página son generales y se aplican a la mayoría de los entornos. Debido a la complejidad de algunas topologías de AEM, su solución puede requerir más configuraciones personalizadas para resolver problemas específicos. Es probable que necesite adaptar los ejemplos para satisfacer sus políticas de administración e infraestructura de TI.
 
