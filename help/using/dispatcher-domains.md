@@ -11,8 +11,8 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2aed8101766363834c2fb5b27e0dbd004fc5daf9
-workflow-type: tm+mt
+source-git-commit: 7d2d1cbbb2fb444769239d48c9fbff4cfd2373a2
+workflow-type: ht
 source-wordcount: '2965'
 ht-degree: 100%
 
@@ -62,9 +62,11 @@ Cuando los agentes de replicación de vaciado de Dispatcher solicitan que Dispat
 
 ![](assets/chlimage_1-9.png)
 
-1. Se activará una página en la instancia de autor de AEM y el contenido se duplicará en la instancia de publicación.
-1. El agente de vaciado de Dispatcher llama a Dispatcher para invalidar la caché del contenido replicado.
-1. Dispatcher toca uno o más archivos .stat para invalidar los archivos en caché.
+<ol type="a">
+  <li>Se activará una página en la instancia de autor de AEM y el contenido se duplicará en la instancia de publicación.</li>
+  <li>El agente de vaciado de Dispatcher llama a Dispatcher para invalidar la caché del contenido replicado.</li>
+  <li>Dispatcher toca uno o más archivos .stat para invalidar los archivos en caché.</li>
+</ol>
 
 Para utilizar Dispatcher con varios dominios, debe configurar AEM, Dispatcher y el servidor web. Las soluciones descritas en esta página son generales y se aplican a la mayoría de los entornos. Debido a la complejidad de algunas topologías de AEM, su solución puede requerir más configuraciones personalizadas para resolver problemas específicos. Es probable que necesite adaptar los ejemplos para satisfacer sus políticas de administración e infraestructura de TI.
 
@@ -311,10 +313,10 @@ En la siguiente tabla se enumeran los nodos que implementan la asignación de re
 | Ruta del nodo | Tipo | Propiedad |
 |--- |--- |--- |
 | `/etc/map/http/branda.com` | sling:Mapping | Nombre: sling:internalRedirect Type: Valor de la cadena: /content/sitea |
-| `/etc/map/http/branda.com/libs` | sling:Asignación | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
-| `/etc/map/http/branda.com/etc` | sling:Asignación |  |
-| `/etc/map/http/branda.com/etc/designs` | sling:Asignación | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
-| `/etc/map/http/branda.com/etc/clientlibs` | sling:Asignación | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
+| `/etc/map/http/branda.com/libs` | sling:Mapping | Nombre: sling:internalRedirect <br/>Tipo: Cadena <br/>Valor: /libs |
+| `/etc/map/http/branda.com/etc` | sling:Mapping |  |
+| `/etc/map/http/branda.com/etc/designs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/designs |
+| `/etc/map/http/branda.com/etc/clientlibs` | sling:Mapping | Nombre: sling:internalRedirect <br/>VType: Cadena <br/>VValor: /etc/clientlibs |
 
 ## Configurar el agente de replicación de vaciado de Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
