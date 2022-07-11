@@ -13,10 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
-source-wordcount: '1404'
-ht-degree: 100%
+source-git-commit: 25f8569bdeb6b675038bea02637900e9d0fc1f27
+workflow-type: tm+mt
+source-wordcount: '0'
+ht-degree: 0%
 
 ---
 
@@ -67,7 +67,7 @@ Utilice el siguiente procedimiento para configurar un agente de replicación en 
 1. Configure otros parámetros según sea necesario.
 1. Haga clic en Aceptar para activar el agente.
 
-También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=es).
+También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent).
 
 Para obtener más información sobre cómo habilitar el acceso a las URL personales, consulte [Habilitar el acceso a las URL de vanidad](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
