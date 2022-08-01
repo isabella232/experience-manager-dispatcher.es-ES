@@ -14,9 +14,9 @@ content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 25f8569bdeb6b675038bea02637900e9d0fc1f27
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '1404'
+ht-degree: 100%
 
 ---
 
@@ -28,7 +28,7 @@ Al utilizar Dispatcher con AEM, la interacción debe configurarse para garantiza
 
 La cuenta de usuario predeterminada `admin` se utiliza para autenticar los agentes de replicación instalados de forma predeterminada. Debe crear una cuenta de usuario dedicada para utilizarla con agentes de replicación.
 
-Para obtener más información, consulte la sección [Configurar usuarios de replicación y transporte](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=es) de la lista de comprobación de seguridad de AEM.
+Para obtener más información, consulte la sección [Configurar usuarios de replicación y transporte](https://helpx.adobe.com/es/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) de la lista de comprobación de seguridad de AEM.
 
 ## Invalidar la caché de Dispatcher desde el entorno de creación {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -67,7 +67,7 @@ Utilice el siguiente procedimiento para configurar un agente de replicación en 
 1. Configure otros parámetros según sea necesario.
 1. Haga clic en Aceptar para activar el agente.
 
-También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent).
+También puede acceder y configurar el agente de vaciado de Dispatcher desde la [interfaz de usuario táctil de AEM](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=es#configuring-a-dispatcher-flush-agent).
 
 Para obtener más información sobre cómo habilitar el acceso a las URL personales, consulte [Habilitar el acceso a las URL de vanidad](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
@@ -141,7 +141,7 @@ Content-Length: 0
 
 Dispatcher descarga (elimina) los archivos en caché y las carpetas que tienen nombres que coinciden con el valor del encabezado `CQ-Handler`. Por ejemplo, un `CQ-Handle` de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
 
-* Todos los archivos (de cualquier extensión) llamados `en` en el directorio `geometrixx-outdoors` 
+* Todos los archivos (de cualquier extensión) llamados `en` en el directorio `geometrixx-outdoors`
 
 * Cualquier directorio llamado &quot;`_jcr_content`&quot; debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página)
 
