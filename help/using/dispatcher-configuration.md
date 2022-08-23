@@ -2,9 +2,9 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información sobre la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 385495c76cd770409e9a002c685e8d375b159207
+source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
 workflow-type: tm+mt
-source-wordcount: '8573'
+source-wordcount: '8572'
 ht-degree: 99%
 
 ---
@@ -1374,7 +1374,7 @@ Para obtener más información, lea las secciones anteriores `/invalidate` y `/s
 
 ### Configuración de la invalidación de caché basada en tiempo - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-Si se establece en 1 (/enableTTL &quot;1&quot;), la variable `/enableTTL` evaluará los encabezados de respuesta del servidor y si contienen un `Cache-Control` max-age o `Expires` fecha, se crea un archivo auxiliar vacío junto al archivo caché, con una hora de modificación igual a la fecha de caducidad. Cuando se solicita el archivo en caché pasado el tiempo de modificación, se vuelve a solicitar automáticamente desde el backend.
+Si se configura en 1 (`/enableTTL "1"`), el `/enableTTL` evaluará los encabezados de respuesta del servidor y si contienen un `Cache-Control` max-age o `Expires` fecha, se crea un archivo auxiliar vacío junto al archivo caché, con una hora de modificación igual a la fecha de caducidad. Cuando se solicita el archivo en caché pasado el tiempo de modificación, se vuelve a solicitar automáticamente desde el backend.
 
 >[!NOTE]
 >
