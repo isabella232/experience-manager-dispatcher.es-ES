@@ -1,6 +1,6 @@
 ---
 title: Configurar Dispatcher
-description: Aprenda a configurar Dispatcher. Obtenga información sobre la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
+description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: d7045fd779bf2c59034247266930e4b79ec2156f
 workflow-type: tm+mt
@@ -1151,7 +1151,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 Utilice la propiedad `/statfileslevel` para invalidar los archivos en caché según su ruta:
 
-* Dispatcher crea `.stat`archivos en cada carpeta desde la carpeta docroot hasta el nivel especificado. La carpeta docroot es el nivel 0.
+* Dispatcher crea `.stat` archivos en cada carpeta desde la carpeta docroot hasta el nivel especificado. La carpeta docroot es el nivel 0.
 * Los archivos se invalidan tocando el archivo `.stat`. La fecha de la última modificación del archivo `.stat` se compara con la fecha de la última modificación de un documento almacenado en caché. El documento se recupera si el archivo `.stat` es más reciente.
 
 * Cuando se invalida un archivo ubicado en un nivel específico, se tocarán **todos** los archivos `.stat` desde docroot **hasta** el nivel del archivo invalidado o el `statsfilevel` configurado (el que sea menor).
