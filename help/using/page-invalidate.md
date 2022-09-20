@@ -13,10 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: f447ff9b3785248a4906c1c9abdcbd18576aa36d
+source-git-commit: f255701f23a628ba0d8b6cd91228462e1b552ffa
 workflow-type: tm+mt
-source-wordcount: '1404'
-ht-degree: 100%
+source-wordcount: '1421'
+ht-degree: 98%
 
 ---
 
@@ -114,6 +114,7 @@ La descarga de Dispatcher está controlada por un agente de replicación que ope
    **Nota:** Para los agentes de vaciado de Dispatcher, la propiedad URI solo se utiliza si utiliza entradas de host virtual basadas en rutas para diferenciar entre granjas. Utilice este campo para dirigirse a la granja para invalidarla. Por ejemplo, la granja n.º 1 tiene un host virtual de `www.mysite.com/path1/*` y la granja n.º 2 lo tiene de `www.mysite.com/path2/*`. Puede utilizar una URL de `/path1/invalidate.cache` para dirigirse a la primera granja de servidores y `/path2/invalidate.cache` para dirigirse a la segunda. Para obtener más información, consulte [Utilizar Dispatcher con varios dominios](dispatcher-domains.md).
 
 1. Configure otros parámetros según sea necesario.
+1. Inicie sesión en la instancia de publicación y valide la configuración del agente de vaciado. Además, asegúrese de que esté habilitado.
 1. Repita el proceso para cada instancia de publicación afectada.
 
 Después de configurar, cuando active una página de autor a publicación, este agente iniciará una replicación estándar. El registro incluye mensajes que indican solicitudes procedentes del servidor de publicación, de forma similar al siguiente ejemplo:
