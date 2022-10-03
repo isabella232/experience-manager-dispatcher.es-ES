@@ -2,10 +2,10 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: f379daec71240150706eb90d930dbc756bbf8eb1
-workflow-type: ht
-source-wordcount: '8636'
-ht-degree: 100%
+source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
+workflow-type: tm+mt
+source-wordcount: '8675'
+ht-degree: 99%
 
 ---
 
@@ -406,7 +406,7 @@ En este ejemplo, la siguiente tabla muestra los hosts virtuales que se resuelven
 
 >[!CAUTION]
 >
->`/allowAuthorized` **debe** configurarse como `"0"` en la `/cache` sección para habilitar esta función.
+>`/allowAuthorized` **debe** configurarse como `"0"` en la `/cache` sección para habilitar esta función. Tal y como se detalla en la sección [Almacenamiento en caché cuando se utiliza la autenticación](#caching-when-authentication-is-used) cuando configure `/allowAuthorized 0 ` las solicitudes que incluyen información de autenticación son **not** en caché. Si se requiere un almacenamiento en caché que distinga los permisos, consulte la [Almacenamiento en caché de contenido seguro](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html?lang=es) página.
 
 Cree una sesión segura para acceder a la granja de procesamiento, de modo que los usuarios tengan que iniciar sesión para acceder a cualquier página de la granja. Tras iniciar sesión, los usuarios pueden acceder a las páginas de la granja. Consulte [Creación de un grupo de usuarios cerrado](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=es#creating-the-user-group-to-be-used) para obtener información sobre el uso de esta función con CUG. Además, consulte la [Lista de comprobación de seguridad](/help/using/security-checklist.md) de Dispatcher antes de empezar.
 
