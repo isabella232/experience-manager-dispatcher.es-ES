@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: d19a27256c44ec00fd440b2f8a2fe408a4a4b7c8
-workflow-type: ht
+source-git-commit: 63dc6184b502b517238c60ef6223b39bd7594306
+workflow-type: tm+mt
 source-wordcount: '3693'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -190,7 +190,7 @@ Utilice el siguiente procedimiento para agregar el módulo ISAPI de Dispatcher a
 1. Con el modo Vista de características, en la sección IIS haga doble clic en Asignaciones de controladores.
 1. En el panel Acciones de la página Asignaciones de controladores, haga clic en Agregar mapa de script comodín, agregue los siguientes valores de propiedad y, a continuación, haga clic en Aceptar:
 
-   * Ruta de solicitud: *
+   * Ruta de solicitud: &#42;
    * Ejecutable: la ruta absoluta del archivo disp_iis.dll, por ejemplo `C:\inetpub\Scripts\disp_iis.dll`.
    * Nombre: un nombre descriptivo para la asignación de controladores, por ejemplo `Dispatcher`.
 
