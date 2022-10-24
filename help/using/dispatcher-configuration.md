@@ -2,8 +2,8 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 112aa011e7a338be2b397d0c9b785fc2d9905b5d
-workflow-type: ht
+source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
+workflow-type: tm+mt
 source-wordcount: '8675'
 ht-degree: 100%
 
@@ -841,7 +841,7 @@ Una sola entrada puede tener `glob` o alguna combinación de `method`, `url`, `q
 
 ### Prueba de seguridad de Dispatcher {#testing-dispatcher-security}
 
-Los filtros de Dispatcher deben bloquear el acceso a las siguientes páginas y secuencias de comandos en las instancias de publicación de AEM. Use un explorador web para intentar abrir las siguientes páginas como lo haría un visitante del sitio y verificar que devuelve un código 403. Si obtiene cualquier otro resultado, ajuste los filtros.
+Los filtros de Dispatcher deben bloquear el acceso a las siguientes páginas y secuencias de comandos en las instancias de publicación de AEM. Use un explorador web para intentar abrir las siguientes páginas como lo haría un visitante del sitio y verificar que devuelve un código 404. Si obtiene cualquier otro resultado, ajuste los filtros.
 
 Tenga en cuenta que debería ver el procesamiento normal de la página para `/content/add_valid_page.html?debug=layout`.
 
@@ -901,7 +901,7 @@ Ejecute el siguiente comando en un terminal o símbolo del sistema para determin
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
-Ejecute el siguiente comando en un terminal o símbolo del sistema para intentar invalidar la caché de Dispatcher y para asegurarse de que recibe una respuesta de código 404:
+Ejecute el siguiente comando en un terminal o símbolo del sistema para intentar invalidar la caché de Dispatcher y para asegurarse de que recibe una respuesta de código 403:
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
