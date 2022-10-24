@@ -13,9 +13,9 @@ index: y
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
+source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
 workflow-type: ht
-source-wordcount: '1359'
+source-wordcount: '0'
 ht-degree: 100%
 
 ---
@@ -30,7 +30,7 @@ Utilice conexiones SSL entre Dispatcher y el equipo de procesamiento:
 >[!NOTE]
 >
 >Las operaciones relacionadas con los certificados SSL están vinculadas a productos de terceros. No están cubiertos por el Contrato de Mantenimiento y 
->Soporte Platino de Adobe.
+Soporte Platino de Adobe.
 
 ## Usar SSL cuando Dispatcher se conecta a AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
@@ -78,7 +78,7 @@ En el siguiente ejemplo, el archivo dispatcher.any muestra los valores de propie
    { 
       /virtualhosts
       {
-         # select this farm for all incoming HTTPS requestss
+         # select this farm for all incoming HTTPS requests
          "https://*"
       }
       /renders
@@ -101,7 +101,7 @@ En el siguiente ejemplo, el archivo dispatcher.any muestra los valores de propie
       /virtualhosts
       {
          # select this farm for all incoming HTTP requests
-         "https://*"
+         "http://*"
       }
       /renders
       {
