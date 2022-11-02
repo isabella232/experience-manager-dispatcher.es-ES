@@ -3,7 +3,7 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 0debee043078b869d0af3258075bd83bf0312c8f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8675'
 ht-degree: 100%
 
@@ -901,7 +901,7 @@ Ejecute el siguiente comando en un terminal o símbolo del sistema para determin
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
-Ejecute el siguiente comando en un terminal o símbolo del sistema para intentar invalidar la caché de Dispatcher y para asegurarse de que recibe una respuesta de código 403:
+Ejecute el siguiente comando en un terminal o símbolo del sistema para intentar invalidar la caché de Dispatcher y para asegurarse de recibir una respuesta de código 403:
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
