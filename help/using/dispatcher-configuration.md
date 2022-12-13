@@ -3,8 +3,8 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 51be516f90587ceda19180f13727c8372a794261
-workflow-type: ht
-source-wordcount: '0'
+workflow-type: tm+mt
+source-wordcount: '8675'
 ht-degree: 100%
 
 ---
