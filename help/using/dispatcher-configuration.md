@@ -2,9 +2,9 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 9ee19d28b9d18f2ffd4f45129e48b5431beacc77
-workflow-type: tm+mt
-source-wordcount: '8675'
+source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+workflow-type: ht
+source-wordcount: '0'
 ht-degree: 100%
 
 ---
@@ -286,10 +286,6 @@ El siguiente código es un ejemplo de configuración para `/clientheaders`:
   "accept-language"
   "accept"
   "host"
-  "if-match"
-  "if-none-match"
-  "if-range"
-  "if-unmodified-since"
   "max-forwards"
   "proxy-authorization"
   "proxy-connection"
