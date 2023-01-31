@@ -2,10 +2,10 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 51be516f90587ceda19180f13727c8372a794261
+source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
 workflow-type: tm+mt
-source-wordcount: '8675'
-ht-degree: 100%
+source-wordcount: '8710'
+ht-degree: 99%
 
 ---
 
@@ -1284,6 +1284,11 @@ Para especificar qué parámetros se ignoran, agregue reglas glob a la propiedad
 
 * Para almacenar en caché una página a pesar de la solicitud que contiene un parámetro de URL, cree una propiedad glob que permita el parámetro (que se ignorará).
 * Para evitar que la página se almacene en caché, cree una propiedad glob que rechace el parámetro (que se ignorará).
+
+>[!NOTE]
+>
+>Al configurar la propiedad glob, tenga en cuenta que debe coincidir con el nombre del parámetro de consulta. Por ejemplo, si desea ignorar el parámetro &quot;p1&quot; de la siguiente dirección URL `http://example.com/path/test.html?p1=test&p2=v2`, la propiedad glob debe ser:
+> `/0002 { /glob "p1" /type "allow" }`
 
 El siguiente ejemplo hace que Dispatcher ignore todos los parámetros, excepto el parámetro `nocache`. Dispatcher nunca almacena en caché las direcciones URL de solicitud que incluyen la variable `nocache`:
 
