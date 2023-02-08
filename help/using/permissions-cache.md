@@ -10,10 +10,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: ef395d122b1f248cbcdad5a74ff111872c4d2b00
+source-git-commit: 31eaa42b17838d97cacd5c535e04be01a3eb6807
 workflow-type: tm+mt
-source-wordcount: '856'
-ht-degree: 96%
+source-wordcount: '918'
+ht-degree: 90%
 
 ---
 
@@ -60,7 +60,6 @@ Los siguientes diagramas ilustran el orden de los eventos que se producen cuando
 1. El procesador llama al servlet AEM authorizer (que no es el servlet Dispatcher AuthChcker) para realizar una comprobación de seguridad. Cuando el usuario está autorizado, el procesamiento incluye la página representada en el cuerpo del mensaje de respuesta.
 1. Dispatcher reenvía la respuesta al explorador. Dispatcher añade el cuerpo del mensaje de respuesta del procesador a la caché.
 
-
 ## Implementar el almacenamiento en caché con permisos confidenciales {#implementing-permission-sensitive-caching}
 
 Para implementar el almacenamiento en caché que con permisos confidenciales, realice las siguientes tareas:
@@ -71,6 +70,11 @@ Para implementar el almacenamiento en caché que con permisos confidenciales, re
 >[!NOTE]
 >
 >Normalmente, los recursos seguros se almacenan en una carpeta separada de los archivos no seguros. Por ejemplo, /content/secure/
+
+>[!NOTE]
+>
+>Cuando hay una CDN (o cualquier otra caché) delante de Dispatcher, debe configurar los encabezados de caché en consecuencia para que la CDN no almacene en caché el contenido privado. Por ejemplo: `Header always set Cache-Control private`.
+>Para AEM as a Cloud Service, consulte la [Almacenamiento en caché](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) para obtener más información sobre cómo establecer encabezados de almacenamiento en caché privados.
 
 ## Creación del servlet Auth Checker {#create-the-auth-checker-servlet}
 
