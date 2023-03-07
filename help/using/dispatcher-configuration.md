@@ -2,10 +2,10 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 0378cfc2585339920894dd354c59929ef2bf49e0
-workflow-type: ht
-source-wordcount: '8710'
-ht-degree: 100%
+source-git-commit: 0ac7c1cf3fc9330665b7a758cea38410c1958f1c
+workflow-type: tm+mt
+source-wordcount: '8984'
+ht-degree: 96%
 
 ---
 
@@ -1383,7 +1383,31 @@ Para obtener más información, lea las secciones anteriores `/invalidate` y `/s
 
 ### Configuración de la invalidación de caché basada en tiempo - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-Si se establece en 1 (`/enableTTL "1"`), la propiedad `/enableTTL` evaluará los encabezados de respuesta del backend y, si contienen una fecha `Expires` o max-age `Cache-Control`, se creará un archivo auxiliar vacío junto al archivo de caché, con una hora de modificación igual a la fecha de expiración. Si se solicita el archivo en caché pasado el tiempo de modificación, se vuelve a solicitar automáticamente desde el backend.
+La invalidación de la caché basada en el tiempo depende de `/enableTTL` y la presencia de encabezados de caducidad regulares desde el estándar HTTP. Si establece la propiedad en 1 (`/enableTTL "1"`), evalúa los encabezados de respuesta del backend y si los encabezados contienen un `Cache-Control`, `max-age` o `Expires` fecha, se crea un archivo auxiliar vacío junto al archivo en caché, con la hora de modificación igual a la fecha de caducidad. Si se solicita el archivo en caché pasado el tiempo de modificación, se vuelve a solicitar automáticamente desde el backend.
+
+Antes de la versión 4.3.5 de Dispatcher, la lógica de invalidación de TTL se basaba únicamente en el valor TTL configurado. Con la versión de Dispatcher 4.3.5, ambos definen el TTL **y** se tienen en cuenta las reglas de invalidación de la caché de dispatcher. Como tal, para un archivo en caché:
+
+1. If `/enableTTL` se establece en 1, se comprueba la caducidad del archivo. Si el archivo ha caducado según el TTL establecido, no se realizan otras comprobaciones y el archivo en caché se vuelve a solicitar desde el backend.
+2. Si el archivo no ha caducado o `/enableTTL` no está configurado, se aplican las reglas de invalidación de caché estándar como las establecidas por [/statfileslevel](#invalidating-files-by-folder-level) y [/invalidar](#automatically-invalidating-cached-files). Esto significa que Dispatcher puede invalidar archivos para los que el TTL no ha caducado.
+
+Esta nueva implementación admite casos de uso en los que los archivos tienen un TTL más largo (por ejemplo, en la CDN), pero aún se pueden invalidar aunque el TTL no haya caducado. Favorece la actualización del contenido sobre la proporción de visitas de caché en Dispatcher.
+
+Por el contrario, en caso de que necesite **solamente** la lógica de caducidad aplicada a un archivo y, a continuación, establecer `/enableTTL` Seleccione 1 y excluya ese archivo del mecanismo de invalidación de caché estándar. Por ejemplo, puede:
+
+* Configure las variables [reglas de invalidación](#automatically-invalidating-cached-files) en la sección de caché para ignorar el archivo. En el siguiente fragmento, todos los archivos terminan en `.example.html` se ignoran y caducarán solo cuando haya pasado el TTL establecido.
+
+```xml
+  /invalidate
+  {
+   /0000  { /glob "*" /type "deny" }
+   /0001  { /glob "*.html" /type "allow" }
+   /0002  { /glob "*.example.html" /type "deny" }
+  }
+```
+
+* Diseñe la estructura de contenido de forma que pueda establecer una alta [/statfilelevel](#invalidating-files-by-folder-level) por lo tanto, el archivo no se invalida automáticamente.
+
+Esto garantiza que `.stat` no se utiliza la invalidación de archivos y solo la caducidad TTL está activa para los archivos especificados.
 
 >[!NOTE]
 >
