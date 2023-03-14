@@ -4,10 +4,10 @@ seo-title: Top issues for AEM Dispatcher
 description: Problemas principales de Dispatcher de AEM
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
-source-wordcount: '1633'
-ht-degree: 100%
+source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+workflow-type: tm+mt
+source-wordcount: '1578'
+ht-degree: 74%
 
 ---
 
@@ -19,7 +19,7 @@ ht-degree: 100%
 
 ### ¿Qué es Dispatcher?
 
-Dispatcher es una herramienta de equilibrio de carga o almacenamiento en caché de Adobe Experience Manager que ayuda a crear un entorno de creación web dinámico y rápido. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache, con el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor parte posible del contenido del sitio web estático y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (procesamientos).
+Dispatcher es una herramienta de almacenamiento en caché o de equilibrio de carga de Adobe Experience Manager que ayuda a crear un entorno de creación web rápido y dinámico. Para el almacenamiento en caché, Dispatcher funciona como parte de un servidor HTTP, como Apache. Tiene el objetivo de almacenar (o &quot;almacenar en caché&quot;) la mayor cantidad posible de contenido estático del sitio web y acceder al motor de diseño del sitio web con la menor frecuencia posible. En una función de equilibrio de carga, Dispatcher distribuye las solicitudes de usuario (carga) entre diferentes instancias de AEM (renderizaciones).
 
 Para almacenar en la caché, el módulo de Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Así pues, Dispatcher coloca los documentos guardados en la caché en la raíz del documento del servidor web.
 
@@ -27,15 +27,15 @@ Para almacenar en la caché, el módulo de Dispatcher utiliza la capacidad del s
 
 Dispatcher utiliza la capacidad del servidor web para proporcionar contenido estático. Dispatcher almacena documentos en caché en la raíz del documento del servidor web. Dispatcher tiene dos métodos principales para actualizar el contenido de la caché cuando se realizan cambios en el sitio web.
 
-* **Las actualizaciones de contenido** eliminan las páginas que han cambiado, así como los archivos que están directamente asociados a ellas.
+* **Actualizaciones de contenido** elimine las páginas que han cambiado y los archivos que estén directamente asociados a ellas.
 * **La invalidación automática** invalida automáticamente las partes de la caché que pueden estar desactualizadas tras una actualización. Es decir, marca las páginas relevantes como desactualizadas, sin eliminar nada.
 
 ### ¿Cuáles son los beneficios del equilibrio de carga?
 
-Equilibrio de carga distribuye las solicitudes de usuarios (carga) entre varias instancias de AEM. La siguiente lista describe las ventajas del equilibrio de carga:
+El equilibrio de carga distribuye las solicitudes del usuario (carga) entre varias instancias de AEM. La siguiente lista describe las ventajas del equilibrio de carga:
 
-* **Mayor potencia de procesamiento**: en la práctica, esto significa que Dispatcher comparte solicitudes de documentos entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
-* **Aumento de la cobertura de seguridad contra fallos**: si Dispatcher no recibe respuestas de una instancia, reenviará automáticamente las solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida.
+* **Mayor potencia de procesamiento**: En la práctica, este método significa que Dispatcher comparte solicitudes de documento entre varias instancias de AEM. Dado que cada instancia tiene menos documentos para procesar, los tiempos de respuesta son más rápidos. Dispatcher guarda estadísticas internas de cada categoría de documento, de modo que puede estimar la carga y distribuir las consultas de forma eficaz.
+* **Mayor cobertura de seguridad contra fallos**: Si Dispatcher no recibe respuestas de una instancia, envía automáticamente solicitudes a una de las otras instancias. Por lo tanto, si una instancia deja de estar disponible, el único efecto es una ralentización del sitio, proporcional a la potencia de cálculo perdida.
 
 >[!NOTE]
 >
@@ -105,9 +105,8 @@ Content-Length: 0
 
 Dispatcher eliminará los archivos en caché y las carpetas que tengan nombres que coincidan con el valor del encabezado CQ-Handle. Por ejemplo, un CQ-Handle de `/content/geomtrixx-outdoors/en` coincide con los siguientes elementos:
 
-Todos los archivos (de cualquier extensión) denominados en del directorio geometrixx-outdoors
-Cualquier directorio llamado `_jcr_content` debajo del directorio en (que, si existe, contiene procesamientos en caché de subnodos de la página)
-El directorio en solo se eliminará si `CQ-Action` es `Delete` o `Deactivate`.
+Todos los archivos (de cualquier extensión de archivo) denominados en en el directorio geometrixx-outdoors . Cualquier directorio llamado `_jcr_content` debajo del directorio en (que, si existe, contiene renderizaciones en caché de subnodos de la página).
+El directorio `en` solo se elimina si la variable `CQ-Action` es `Delete` o `Deactivate`.
 
 Para obtener más información sobre este tema, consulte [Invalidar manualmente la caché de Dispatcher](page-invalidate.md).
 
@@ -121,9 +120,9 @@ Consulte las páginas [Lista de comprobación de seguridad de Dispatcher](securi
 
 ### El problema `jcr:content` de Dispatcher cambió a `jcr%3acontent`
 
-**Pregunta**: recientemente nos hemos enfrentado a un problema a nivel de Dispatcher donde una de las llamadas ajax que recibía datos del repositorio de CQ tenía `jcr:content` y se codificó para `jcr%3acontent` derivando en resultados incorrectos.
+**Pregunta**: El negocio ha enfrentado recientemente un problema a nivel de Dispatcher. Una de las llamadas AJAX que obtenía algunos datos del repositorio de CQ tenía `jcr:content` en ella. que se codificó en `jcr%3acontent` que resulta en ese conjunto de resultados incorrecto.
 
-**Respuesta**: utilice el método `ResourceResolver.map()` para obtener una URL &quot;favorable&quot; para utilizarla / desde la que emitir solicitudes y también para resolver el problema de almacenamiento en caché con Dispatcher. El método map() codifica los dos puntos `:` en guiones bajos y el método resolve() los descodifica de nuevo en el formato legible JCR SLING. Debe utilizar el método map() para generar la URL que se utiliza en la llamada Ajax.
+**Respuesta**: Uso `ResourceResolver.map()` método para obtener una URL &#39;fácil de usar&#39; para obtener solicitudes de y también para resolver el problema de almacenamiento en caché con Dispatcher. El método map() codifica la variable `:` dos puntos para guiones bajos y el método resolve() los descodifica de nuevo en el formato legible JCR SLING. Utilice el método map() para generar la URL que se utiliza en la llamada de Ajax.
 
 Más información: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
@@ -131,26 +130,22 @@ Más información: [https://sling.apache.org/documentation/the-sling-engine/mapp
 
 ### ¿Cómo configuro los agentes de vaciado de Dispatcher en una instancia de publicación?
 
-Consulte la página [Replicación](https://helpx.adobe.com/content/help/es/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents).
+Consulte la página [Replicación](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents).
 
 ### ¿Cómo puedo solucionar problemas de vaciado de Dispatcher?
 
-[Consulte este artículo de solución de problemas](https://helpx.adobe.com/content/help/es/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) que responde a las siguientes preguntas:
+[Consulte estos artículos de solución de problemas](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]).
 
-* ¿Cómo resuelvo una situación en la que no se está guardando ningún contenido en la caché de Dispatcher?
-* ¿Cómo resuelvo una situación en la que los archivos de caché no se actualizan?
-* ¿Cómo resuelvo una situación en la que no funciona nada relacionado con el vaciado de Dispatcher?
-
-Si las operaciones de eliminación están causando que Dispatcher se vacíe, [use la solución de esta publicación de blog de la comunidad de Sensei Martin](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
+Si las operaciones de eliminación están causando que Dispatcher se vacíe, [use la solución de esta publicación de blog de la comunidad de Sensei Martin](https://mkalugin-cq.blogspot.com/2012/04/i-have-been-working-on-following.html).
 
 ### ¿Cómo vacío los recursos DAM de la caché de Dispatcher?
 
-Puede utilizar la función &quot;replicación en cadena&quot;.  Con esta función habilitada, el agente de vaciado de Dispatcher enviará una solicitud de vaciado cuando reciba una replicación del autor.
+Puede utilizar la función &quot;replicación en cadena&quot;.  Con esta función habilitada, el agente de vaciado de Dispatcher envía una solicitud de vaciado cuando se recibe una replicación del autor.
 
 Para habilitarlo:
 
 1. [Siga los siguientes pasos](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) para crear agentes de vaciado al publicar
-1. Vaya a la configuración de cada uno de esos agentes y, en la pestaña **Desencadenantes**, marque la casilla **Al recibir**.
+1. Vaya a la configuración de cada agente y en el **Déclencheur** , marque **Recepción activada** en la ventana
 
 ## Varios
 
@@ -166,11 +161,11 @@ Puede definir si Dispatcher almacena en caché un documento utilizando el archiv
 
 La propiedad `/rules` controla qué documentos se almacenan en caché según la ruta del documento. Independientemente de la propiedad `/rules`, Dispatcher nunca almacena en caché un documento en las siguientes circunstancias:
 
-* Si el URI de la solicitud contiene el signo de interrogación `(?)`.
-* Esto generalmente indica una página dinámica, como un resultado de búsqueda, que no necesita almacenarse en la caché.
+* El URI de solicitud contiene un `(?)` signo de interrogación.
+* Indica una página dinámica, como un resultado de búsqueda que no necesita almacenarse en caché.
 * Si falta la extensión del archivo.
 * El servidor web necesita la extensión para determinar el tipo de documento (el tipo MIME).
-* Si el encabezado de autenticación está establecido (esto se puede configurar)
+* El encabezado de autenticación está establecido (configurable).
 * Si la instancia de AEM responde con los siguientes encabezados:
    * sin caché
    * sin almacenamiento

@@ -13,10 +13,10 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: 3a0e237278079a3885e527d7f86989f8ac91e09d
-workflow-type: ht
-source-wordcount: '543'
-ht-degree: 100%
+source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+workflow-type: tm+mt
+source-wordcount: '560'
+ht-degree: 43%
 
 ---
 
@@ -30,14 +30,14 @@ ht-degree: 100%
 
 >[!NOTE]
 >
->Consulte también la [Base de conocimientos de Dispatcher](https://helpx.adobe.com/es/experience-manager/kb/index/dispatcher.html), la [Solución de problemas de vaciado de Dispatcher](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) y las [Preguntas frecuentes sobre problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
+>Marque la [Base de conocimiento de Dispatcher](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Solución de problemas de vaciado de Dispatcher](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]) y [Preguntas más frecuentes sobre los problemas principales de Dispatcher](dispatcher-faq.md) para obtener más información.
 
 ## Comprobar la configuración básica {#check-the-basic-configuration}
 
 Como siempre, los primeros pasos son comprobar los conceptos básicos:
 
 * [Confirmar operación básica](/help/using/dispatcher-configuration.md#confirming-basic-operation)
-* Comprobar todos los archivos de registro de su servidor web y Dispatcher. Si es necesario, aumente el `loglevel` utilizado para el [registro](/help/using/dispatcher-configuration.md#logging) de Dispatcher.
+* Compruebe todos los archivos de registro del servidor web y Dispatcher. Si es necesario, aumente el `loglevel` utilizado para Dispatcher [registro](/help/using/dispatcher-configuration.md#logging).
 
 * [Comprobar la configuración](/help/using/dispatcher-configuration.md):
 
@@ -46,7 +46,7 @@ Como siempre, los primeros pasos son comprobar los conceptos básicos:
       * ¿Ha determinado qué Dispatcher está administrando el sitio web o la página que está investigando?
    * ¿Ha implementado filtros?
 
-      * ¿Están afectando al asunto que está investigando?
+      * ¿Estos filtros están afectando el asunto que está investigando?
 
 
 ## Herramientas de diagnóstico de IIS {#iis-diagnostic-tools}
@@ -56,16 +56,16 @@ IIS proporciona varias herramientas de seguimiento, en función de la versión r
 * IIS 6: las herramientas de diagnóstico de IIS se pueden descargar y configurar
 * IIS 7: el seguimiento está totalmente integrado
 
-Esto puede ayudarle a supervisar la actividad.
+Estas herramientas pueden ayudarle a supervisar la actividad.
 
 ## IIS y 404 no encontrado {#iis-and-not-found}
 
-Al utilizar IIS, es posible que `404 Not Found` aparezca en varias ocasiones. Si es así, consulte los siguientes artículos de la Base de conocimientos.
+Al utilizar IIS, puede experimentar `404 Not Found` que se devuelve en varios escenarios. Si es así, consulte los siguientes artículos de la Base de conocimientos.
 
-* [IIS 6/7: el método POST devuelve el valor 404](https://helpx.adobe.com/es/experience-manager/kb/IIS6IsapiFilters.html)
-* [IIS 6: las solicitudes a direcciones URL que contienen la ruta base `/bin` devuelven `404 Not Found`](https://helpx.adobe.com/es/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: el método POST devuelve el valor 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
+* [IIS 6: Solicitudes a direcciones URL que contienen la ruta base `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-También debe comprobar que la raíz de la caché de Dispatcher y la del documento de IIS estén configuradas en el mismo directorio.
+Compruebe también que la raíz de la caché de Dispatcher y la raíz del documento de IIS estén configuradas en el mismo directorio.
 
 ## Problemas al eliminar modelos de flujo de trabajo {#problems-deleting-workflow-models}
 
@@ -75,13 +75,13 @@ Problemas al intentar eliminar modelos de flujo de trabajo al acceder a una inst
 
 **Pasos a seguir:**
 
-1. Inicie sesión en la instancia de autor (confirme que las solicitudes se enrutan a través de Dispatcher).
-1. Cree un nuevo flujo de trabajo; por ejemplo, con el título workflowToDelete.
+1. Inicie sesión en la instancia de autor (confirme que las solicitudes se están enrutando a través de Dispatcher).
+1. Crear un flujo de trabajo; por ejemplo, con el Título establecido en workflowToDelete.
 1. Confirme que el flujo de trabajo se ha creado correctamente.
-1. Seleccione y haga clic con el botón derecho en el flujo de trabajo y, a continuación, haga clic en **Eliminar**.
+1. Seleccione el flujo de trabajo y haga clic con el botón derecho del ratón y, a continuación, haga clic en **Eliminar**.
 
 1. Haga clic en **Sí** para confirmar.
-1. Aparecerá un mensaje de error que muestra:\
+1. Aparece un cuadro de mensaje de error que muestra lo siguiente:\
    “`ERROR 'Could not delete workflow model!!`”.
 
 **Resolución**
@@ -104,27 +104,27 @@ Agregue los siguientes encabezados a la sección `/clientheaders` del archivo `d
 
 ## Interferencia con mod_dir (Apache) {#interference-with-mod-dir-apache}
 
-Esto describe cómo interactúa Dispatcher con `mod_dir` dentro del servidor web Apache, ya que puede producir varios efectos inesperados:
+Este proceso describe cómo interactúa Dispatcher con `mod_dir` dentro del servidor web Apache, ya que puede producir varios efectos potencialmente inesperados:
 
 ### Apache 1.3 {#apache}
 
-En Apache 1.3 `mod_dir` administra cada solicitud donde la URL se asigna a un directorio en el sistema de archivos.
+En Apache 1.3, `mod_dir` gestiona todas las solicitudes en las que la dirección URL se asigna a un directorio del sistema de archivos.
 
 Puede:
 
 * redirigir la solicitud a un archivo `index.html` existente
 * generar una lista de directorios
 
-Cuando Dispatcher esté habilitado, procesará dichas solicitudes registrándose como controlador para el tipo de contenido `httpd/unix-directory`.
+Cuando Dispatcher está habilitado, procesa dichas solicitudes registrándose como controlador para el tipo de contenido `httpd/unix-directory`.
 
 ### Apache 2.x {#apache-x}
 
-En Apache 2.x las cosas son diferentes. Un módulo puede administrar diferentes etapas de la solicitud, como la corrección de URL. `mod_dir` administra este paso redireccionando una solicitud (cuando la dirección URL se asigna a un directorio) a la dirección URL con un `/` anexo.
+En Apache 2.x, las cosas son diferentes. Un módulo puede administrar diferentes etapas de la solicitud, como la corrección de URL. La variable `mod_dir` gestiona esta etapa redireccionando una solicitud (cuando la dirección URL se asigna a un directorio) a la dirección URL con un `/` anexado.
 
-Dispatcher no intercepta la corrección `mod_dir`, pero administra completamente la solicitud a la dirección URL redirigida (es decir, con `/` anexado). Esto puede suponer un problema si el servidor remoto (por ejemplo, AEM) administra las solicitudes a `/a_path` de forma diferente a las solicitudes a `/a_path/` (cuando `/a_path` se asigna a un directorio existente).
+Dispatcher no intercepta el `mod_dir` solucionado, pero gestiona completamente la solicitud a la dirección URL redireccionada (es decir, con `/` anexado). Este proceso puede suponer un problema si el servidor remoto (por ejemplo, AEM) gestiona las solicitudes de `/a_path` de forma diferente a las solicitudes para `/a_path/` (cuando `/a_path` se asigna a un directorio existente).
 
-Si esto sucede, debe:
+Si esta situación ocurre, debe:
 
-* deshabilitar `mod_dir` para el subárbol `Directory` o `Location` que administra Dispatcher
+* disable `mod_dir` para el `Directory` o `Location` subárbol gestionado por Dispatcher
 
 * utilizar `DirectorySlash Off` para configurar `mod_dir` no anexar `/`
