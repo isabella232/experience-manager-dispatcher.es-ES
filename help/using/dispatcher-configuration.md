@@ -5,7 +5,7 @@ exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
 workflow-type: tm+mt
 source-wordcount: '8900'
-ht-degree: 71%
+ht-degree: 72%
 
 ---
 
@@ -1278,7 +1278,7 @@ Cuando se ignora un parámetro para una página, la página se almacena en cach�
 
 >[!NOTE]
 >
->Se recomienda configurar la variable `ignoreUrlParams` en forma de lista de permitidos. Como tal, todos los parámetros de consulta se ignoran y solo los parámetros de consulta conocidos o esperados están exentos de ser ignorados (“denegado”). Para obtener más información y ejemplos, consulte [esta página](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot—the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
+>Se recomienda configurar la variable `ignoreUrlParams` en forma de lista de permitidos. Como tal, todos los parámetros de consulta se ignoran y solo los parámetros de consulta conocidos o esperados están exentos de ser ignorados (“denegado”). Para obtener más información y ejemplos, consulte [esta página](https://github.com/adobe/aem-dispatcher-optimizer-tool/blob/main/docs/Rules.md#dot---the-dispatcher-publish-farm-cache-should-have-its-ignoreurlparams-rules-configured-in-an-allow-list-manner).
 
 Para especificar qué parámetros se ignoran, agregue reglas glob a la propiedad `ignoreUrlParams`:
 
@@ -1385,14 +1385,14 @@ Para obtener más información, lea las secciones anteriores `/invalidate` y `/s
 
 La invalidación de caché basada en el tiempo depende de la variable `/enableTTL` y la presencia de encabezados de caducidad regulares desde el estándar HTTP. Si establece la propiedad en 1 (`/enableTTL "1"`), evalúa los encabezados de respuesta desde el servidor. Si los encabezados contienen un `Cache-Control`, `max-age` o `Expires` , se crea un archivo auxiliar vacío junto al archivo almacenado en caché, con la hora de modificación igual a la fecha de caducidad. Cuando se solicita el archivo en caché más allá del tiempo de modificación, se vuelve a solicitar automáticamente desde el servidor.
 
-Antes de Dispatcher 4.3.5, la lógica de invalidación de TTL solo se basaba en el valor TTL configurado. Con Dispatcher 4.3.5, ambos establecen el TTL **y** se contabilizan las reglas de invalidación de caché de Dispatcher. Como tal, para un archivo en caché:
+Antes de Dispatcher 4.3.5, la lógica de invalidación de TTL solo se basaba en el valor TTL configurado. Con Dispatcher 4.3.5, ambos establecen el TTL **y** se contabilizan las reglas de invalidación de caché de Dispatcher. Como tal, para un archivo en la caché:
 
-1. If `/enableTTL` se establece en 1, la caducidad del archivo se marca. Si el archivo ha caducado de acuerdo con el TTL establecido, no se realiza ninguna otra comprobación y el archivo en caché se vuelve a solicitar desde el servidor.
+1. Si `/enableTTL` se establece en 1, se comprueba la expiración del archivo. Si el archivo ha expirado según el TTL establecido, no se realizan otras comprobaciones y el archivo en caché se vuelve a solicitar desde el back-end.
 2. Si el archivo no ha caducado, o `/enableTTL` no está configurado, se aplican las reglas de invalidación de caché estándar, como las reglas establecidas por [/statfileslevel](#invalidating-files-by-folder-level) y [/invalidate](#automatically-invalidating-cached-files). Este flujo significa que Dispatcher puede invalidar archivos para los que el TTL no ha caducado.
 
 Esta nueva implementación admite casos de uso en los que los archivos tienen un TTL más largo (por ejemplo, en la CDN), pero aún se pueden invalidar aunque el TTL no haya caducado. Favorece la actualización del contenido sobre la proporción de visitas en caché en Dispatcher.
 
-Por el contrario, en caso de que necesite **only** la lógica de caducidad aplicada a un archivo y, a continuación, establezca `/enableTTL` a 1 y excluya ese archivo del mecanismo de invalidación de caché estándar. Por ejemplo, puede:
+Por el contrario, en caso de que necesite **only** la lógica de caducidad aplicada a un archivo y, a continuación, establezca `/enableTTL` a 1 y excluya ese archivo del mecanismo de invalidación de caché estándar. Por ejemplo, puede hacer lo siguiente:
 
 * Para ignorar el archivo, configure la variable [reglas de invalidación](#automatically-invalidating-cached-files) en la sección caché. En el siguiente fragmento, todos los archivos que terminan en `.example.html` se ignoran y caducan solo cuando ha pasado el TTL establecido.
 
@@ -1405,7 +1405,7 @@ Por el contrario, en caso de que necesite **only** la lógica de caducidad aplic
   }
 ```
 
-* Diseñe la estructura de contenido de forma que pueda establecer una [/statfilelevel](#invalidating-files-by-folder-level) por lo tanto, el archivo no se invalida automáticamente.
+* Diseñe la estructura de contenido de forma que pueda establecer una alta [/statfilelevel](#invalidating-files-by-folder-level) para que el archivo no se invalide automáticamente.
 
 Al hacerlo, se garantiza que `.stat` no se usa la invalidación de archivos y solo está activa la caducidad de TTL para los archivos especificados.
 
@@ -1852,8 +1852,10 @@ A continuación se muestra una lista que contiene los encabezados de respuesta q
    El archivo de destino está contenido en la caché y Dispatcher ha determinado que es válido entregarlo.
 * **almacenamiento en caché**\
    El archivo de destino no está contenido en la caché y Dispatcher ha determinado que es válido almacenar en caché la salida y entregarla.
-* **almacenamiento en caché: el archivo stat es más reciente**. El archivo de destino está en la caché, sin embargo, está invalidado por un archivo stat más reciente. Dispatcher elimina el archivo de destino, lo vuelve a crear en la salida y lo envía.
-* **no almacenable en caché: sin raíz de documento**. La configuración de la granja no contiene una raíz de documento (elemento de configuración 
+* **almacenamiento en caché: el archivo stat es más reciente**
+El archivo de destino está en la caché, sin embargo, está invalidado por un archivo stat más reciente. Dispatcher elimina el archivo de destino, lo vuelve a crear en la salida y lo envía.
+* **no almacenable en caché: sin raíz de documento**
+La configuración de la granja no contiene una raíz de documento (elemento de configuración 
 `cache.docroot`).
 * **no almacenable en caché: ruta del archivo de caché demasiado larga**\
    El archivo de destino, (la concatenación de la raíz del documento y el archivo URL), supera el nombre de archivo más largo permitido por el sistema.
@@ -1879,7 +1881,8 @@ El método HTTP no es un GET ni un HEAD. Dispatcher supone que la salida contien
    El verificador de autorizaciones de la granja denegó el acceso al archivo en caché.
 * **no almacenable en caché: sesión no válida**.
 La caché de la granja está regida por un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) y la sesión del usuario ya no es válida.
-* **no almacenable en caché: la respuesta contiene`no_cache`** El servidor remoto devolvió un 
+* **no almacenable en caché: la respuesta contiene`no_cache`**
+El servidor remoto devolvió un 
 `Dispatcher: no_cache` , que prohíbe a Dispatcher almacenar en caché la salida.
 * **no almacenable en caché: la longitud del contenido de respuesta es cero**
 La longitud del contenido de la respuesta es cero; Dispatcher no crea un archivo de longitud cero.
