@@ -9,9 +9,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
+source-git-commit: 7dd2ba37e149af960ba428421d64a5a24542eeeb
 workflow-type: tm+mt
-source-wordcount: '3165'
+source-wordcount: '3154'
 ht-degree: 57%
 
 ---
@@ -26,7 +26,7 @@ Dispatcher es una herramienta de equilibrio de carga y almacenamiento en caché 
 
 El proceso de implementación de Dispatcher es independiente del servidor web y de la plataforma del sistema operativo elegida:
 
-1. Obtenga información sobre Dispatcher (esta página). Consulte también [preguntas más frecuentes sobre Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/troubleshooting/dispatcher-faq.html?lang=en).
+1. Obtenga información sobre Dispatcher (esta página). Consulte también [preguntas más frecuentes sobre Dispatcher](/help/using/dispatcher-faq.md).
 1. Instale un [servidor web admitido](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=es) según la documentación del servidor web.
 1. [Instale el módulo de Dispatcher](dispatcher-install.md) en el servidor web y configure ese servidor web en consecuencia.
 1. [Configure Dispatcher](dispatcher-configuration.md) (mediante el archivo dispatcher.any).
@@ -45,7 +45,7 @@ Utilice la siguiente información según sea necesario:
 
 * [Lista de comprobación de seguridad de Dispatcher](security-checklist.md)
 * [Base de conocimientos de Dispatcher](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html)
-* [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/configuring-performance.html?lang=en)
+* [Optimizar un sitio web para el rendimiento de la caché](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/configuring-performance.html)
 * [Utilizar Dispatcher con varios dominios](dispatcher-domains.md)
 * [Utilizar SSL con Dispatcher](dispatcher-ssl.md)
 * [Implementar el almacenamiento en caché con permisos confidenciales](permissions-cache.md)

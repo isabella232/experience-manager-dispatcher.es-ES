@@ -4,7 +4,7 @@ seo-title: Top issues for AEM Dispatcher
 description: Problemas principales de Dispatcher de AEM
 seo-description: Top issues for Adobe AEM Dispatcher
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 26c8edbb142297830c7c8bd068502263c9f0e7eb
+source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
 workflow-type: tm+mt
 source-wordcount: '1578'
 ht-degree: 74%
@@ -130,7 +130,7 @@ Más información: [https://sling.apache.org/documentation/the-sling-engine/mapp
 
 ### ¿Cómo configuro los agentes de vaciado de Dispatcher en una instancia de publicación?
 
-Consulte la página [Replicación](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents).
+Consulte la página [Replicación](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents).
 
 ### ¿Cómo puedo solucionar problemas de vaciado de Dispatcher?
 
