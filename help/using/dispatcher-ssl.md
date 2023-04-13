@@ -14,9 +14,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: e87af532ee3268f0a45679e20031c3febc02de58
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1355'
-ht-degree: 69%
+ht-degree: 100%
 
 ---
 
@@ -66,9 +66,9 @@ Para configurar Dispatcher para que se conecte con AEM o CQ a través de SSL, su
 * La sección `renders` del host virtual incluye un elemento que identifica el nombre de host y el puerto de la instancia de CQ o AEM que utiliza HTTPS.
 * El elemento `renders` incluye una propiedad denominada `secure` de valor `1`.
 
-Nota: Cree otro host virtual para gestionar solicitudes HTTP, si es necesario.
+Nota: Cree otro host virtual para administrar solicitudes HTTP si fuera necesario.
 
-El siguiente ejemplo `dispatcher.any` El archivo muestra los valores de propiedad para conectarse usando HTTPS a una instancia de CQ que se está ejecutando en un host `localhost` y puerto `8443`:
+En el siguiente ejemplo, el archivo `dispatcher.any` muestra los valores de propiedad para la conexión mediante HTTPS a una instancia de CQ que se ejecuta en el host `localhost` y en el puerto `8443`:
 
 ```
 /farms
@@ -129,13 +129,13 @@ Para configurar SSL mutuo, necesita certificados firmados por una autoridad de c
 
 * Certificados firmados para la instancia de procesamiento y Dispatcher
 * El certificado de CA (si actúa como CA)
-* Abra las bibliotecas OpenSSL para generar la CA, los certificados y las solicitudes de certificado.
+* Abra las bibliotecas OpenSSL para generar la CA, los certificados y las solicitudes de certificado
 
 Para configurar SSL mutuo, realice los siguientes pasos:
 
 1. [Instale](dispatcher-install.md) la última versión de Dispatcher para su plataforma. Utilice un binario de Dispatcher que admita SSL (SSL está en el nombre del archivo, como dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
 1. [Cree o consiga un certificado firmado por la CA](dispatcher-ssl.md#main-pars-title-3) para Dispatcher y la instancia de procesamiento.
-1. [Crear un almacén de claves que contenga un certificado de renderización](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del renderizado.
+1. [Cree un repositorio de claves que contenga certificado de procesamiento](dispatcher-ssl.md#main-pars-title-6) y configure el servicio HTTP del procesamiento para utilizarlo.
 1. [Configure el módulo del servidor web de Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mutuo.
 
 ### Crear o conseguir certificados firmados por la CA {#creating-or-obtaining-ca-signed-certificates}
@@ -146,8 +146,8 @@ Cree o consiga los certificados firmados por la CA que autentican la instancia d
 
 Si actúa como CA, utilice [OpenSSL](https://www.openssl.org/) para crear la autoridad de certificación que firme los certificados de servidor y cliente. (Debe tener instaladas las bibliotecas OpenSSL). Si utiliza una CA de terceros, no realice este procedimiento.
 
-1. Abra un terminal y cambie el directorio actual al directorio que contiene el `CA.sh` como `/usr/local/ssl/misc`.
-1. Para crear la CA, introduzca el siguiente comando y, a continuación, proporcione los valores cuando se le pida:
+1. Abra un terminal y cambie el directorio actual al que contenga el archivo `CA.sh`, como `/usr/local/ssl/misc`.
+1. Para crear la CA, introduzca el siguiente comando y, a continuación, proporcione los valores cuando se le solicite:
 
    ```shell
    ./CA.sh -newca
@@ -155,13 +155,13 @@ Si actúa como CA, utilice [OpenSSL](https://www.openssl.org/) para crear la aut
 
    >[!NOTE]
    >
-   >Varias propiedades de la variable `openssl.cnf` controla el comportamiento del script CA.sh. Edite este archivo según sea necesario antes de crear su CA.
+   >Varias propiedades del archivo `openssl.cnf` controlan el comportamiento del script CA.sh. Edite este archivo según sea necesario antes de crear su CA.
 
 #### Crear certificados {#creating-the-certificates}
 
 Utilice OpenSSL para crear las solicitudes de certificado que se enviarán a la CA de terceros o para firmar con la CA.
 
-Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identificar al titular del certificado. Para el certificado de la instancia de renderización, utilice el nombre de host del equipo de instancia como Nombre común si está configurando Dispatcher para aceptar el certificado y solo si coincide con el nombre de host de la instancia de publicación. (Consulte la propiedad [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11)).
+Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identificar al titular del certificado. Para el certificado de la instancia de procesamiento, utilice el nombre de host del equipo de instancia como Nombre común si está configurando Dispatcher para aceptar el certificado, solo si coincide con el nombre de host de la instancia de publicación. (Consulte la propiedad [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11)).
 
 1. Abra un terminal y cambie el directorio actual al que contenga el archivo CH.sh de sus bibliotecas OpenSSL.
 1. Introduzca el siguiente comando y proporcione los valores cuando se le solicite. Si es necesario, utilice el nombre de host de la instancia de publicación como Nombre común. El nombre de host es un nombre con resolución DNS para la dirección IP del procesamiento:
@@ -178,34 +178,34 @@ Al crear un certificado, OpenSSL utiliza la propiedad Nombre común para identif
    ./CA.sh -sign
    ```
 
-   Dos archivos llamados `newcert.pem` y `newkey.pem` se crean en el directorio que contiene los archivos de administración de CA. Estos dos archivos son el certificado público y la clave privada del equipo de procesamiento, respectivamente.
+   Se crearán dos archivos denominados `newcert.pem` y `newkey.pem` en el directorio que contenga sus archivos de administración de CA. Estos dos archivos son el certificado público y la clave privada del equipo de procesamiento, respectivamente.
 
-1. Cambiar nombre `newcert.pem` a `rendercert.pem`y cambie el nombre `newkey.pem` a `renderkey.pem`.
-1. Repita los pasos 2 y 3 para crear un certificado y una clave pública para el módulo de Dispatcher. Asegúrese de utilizar un nombre común específico de la instancia de Dispatcher.
-1. Cambiar nombre `newcert.pem` a `dispcert.pem`y cambie el nombre `newkey.pem` a `dispkey.pem`.
+1. Cambie el nombre `newcert.pem` por `rendercert.pem` y cambie el nombre `newkey.pem` por `renderkey.pem`.
+1. Repita los pasos 2 y 3 para crear un nuevo certificado y una nueva clave pública para el módulo de Dispatcher. Asegúrese de utilizar un nombre común específico de la instancia de Dispatcher.
+1. Cambie el nombre `newcert.pem` por `dispcert.pem` y cambie el nombre `newkey.pem` por `dispkey.pem`.
 
 ### Configurar SSL en el equipo de procesamiento {#configuring-ssl-on-the-render-computer}
 
-Configure SSL en la instancia de renderización mediante el `rendercert.pem` y `renderkey.pem` archivos.
+Configure SSL en la instancia de procesamiento utilizando los archivos `rendercert.pem` y `renderkey.pem`.
 
-#### Conversión del certificado de renderización al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
+#### Conversión del certificado de procesamiento al formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
 
-Utilice el siguiente comando para convertir el certificado de renderización, que es un archivo PEM, a un archivo PKCS#12. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
+Utilice el siguiente comando para convertir el certificado de procesamiento, que es un archivo PEM, a un archivo PKCS#12. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
 
 1. En una ventana del terminal, cambie el directorio actual a la ubicación del certificado de procesamiento y la clave privada.
-1. Para convertir el certificado de renderización, que es un archivo PEM, a un archivo PKCS#12, introduzca el siguiente comando. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
+1. Para convertir el certificado de procesamiento, que es un archivo PEM, a un archivo PKCS#12, introduzca el siguiente comando. Incluya también el certificado de la CA que firmó el certificado de procesamiento:
 
    ```shell
    openssl pkcs12 -export -in rendercert.pem -inkey renderkey.pem  -certfile demoCA/cacert.pem -out rendercert.p12
    ```
 
-1. Para convertir el archivo PKCS#12 al formato Java™ KeyStore (JKS) , introduzca el siguiente comando:
+1. Para convertir el archivo PKCS#12 al formato Java™ KeyStore (JKS), introduzca el siguiente comando:
 
    ```shell
    keytool -importkeystore -srckeystore servercert.p12 -srcstoretype pkcs12 -destkeystore render.keystore
    ```
 
-1. El almacén de claves Java™ se crea con un alias predeterminado. Puede cambiar el alias si lo desea:
+1. Java™ Keystore se crea utilizando un alias predeterminado. Puede cambiar el alias si lo desea:
 
    ```shell
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
@@ -227,7 +227,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
  -->
 
-1. Utilice un editor de texto para abrir el archivo cacert.pem y eliminar todo el texto que precede a la siguiente línea:
+1. Utilice un editor de texto para abrir el archivo cacert.pem y quitar todo el texto que preceda a la siguiente línea:
 
    `-----BEGIN CERTIFICATE-----`
 
@@ -251,7 +251,7 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configurar la instancia de procesamiento {#configuring-the-render-instance}
 
-Para configurar el servicio HTTP de la instancia de renderización para que utilice SSL, utilice el certificado de renderización con las instrucciones del *Habilitar SSL en la instancia de publicación* sección:
+Para configurar el servicio HTTP de la instancia de procesamiento para que utilice SSL, utilice el certificado de procesamiento con las instrucciones en la sección *Habilitar SSL en la instancia de publicación*:
 
 * AEM 6.2: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=es)
 * AEM 6.1: [Habilitación de HTTP sobre SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=es)
