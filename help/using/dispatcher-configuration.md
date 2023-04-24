@@ -3,9 +3,9 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 434a17077cea8958a55a637eddd1f4851fc7f2ee
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1411,7 +1411,7 @@ Esto garantiza que la invalidación de archivos `.stat` no se utiliza y solo la 
 
 >[!NOTE]
 >
->Tenga en cuenta esta configuración `/enableTTL` a 1 habilita el almacenamiento en caché TTL solo en el lado del dispatcher. Como tal, la información TTL contenida en el archivo adicional (ver arriba) no se proporciona a ningún otro agente de usuario que solicite un tipo de archivo de este tipo a Dispatcher. Si desea proporcionar encabezados de almacenamiento en caché a sistemas descendentes como una CDN o un explorador, debe configurar la variable `/cache/headers` en consecuencia.
+>Tenga en cuenta esta configuración `/enableTTL` a 1 habilita el almacenamiento en caché TTL solo en el lado del dispatcher. Como tal, la información TTL contenida en el archivo adicional (ver arriba) no se proporciona a ningún otro agente de usuario que solicite un tipo de archivo de este tipo al dispatcher. Si desea proporcionar encabezados de almacenamiento en caché a sistemas descendentes como una CDN o un explorador, debe configurar la `/cache/headers` sección en consecuencia.
 
 >[!NOTE]
 >
