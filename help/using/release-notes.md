@@ -10,13 +10,13 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: f2036e8f73d5f9f58ff713df8f04caad89d660fc
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1063'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
-# Notas de la versión de Dispatcher de AEM {#aem-dispatcher-release-notes}
+# Notas de la versión de Dispatcher de AEM{#aem-dispatcher-release-notes}
 
 ## Información de la versión {#release-information}
 
@@ -45,9 +45,9 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 **Mejoras**:
 
-* AEM DISP-911-05: se puede filtrar X-Edge-Key en disp_apache2.c
-* DISP-937 registrando todos los selectores
-* DISP-998 hacer configurable la carga de direcciones URL mnemónicas al inicio
+* AEM DISP-911-05: se puede divulgar X-Edge-Key en disp_apache2.c
+* DISP-937 registro de todos los selectores
+* DISP-998 ha hecho que la carga de URL mnemónicas en el inicio sea configurable
 
 ### Versión 4.3.5 (04 de abril de 2022) {#apr}
 
@@ -65,7 +65,7 @@ Para obtener instrucciones detalladas, consulte [Instalación de Dispatcher](dis
 
 **Mejoras**:
 
-* DISP-874: crea una configuración de Dispatcher para activar o desactivar la implementación de DISP-818 mediante un indicador `DispatcherRestrictUncacheableContent`. El valor por defecto es 0. Cuando está activada, elimina los encabezados de almacenamiento en caché establecidos por el moderador que caducan para el contenido que no se puede almacenar en caché. Es distinto del comportamiento encontrado en la versión 4.3.3 (donde el valor predeterminado era Activado) pero igual que las versiones anteriores a la 4.3.3 (donde el valor predeterminado era Desactivado). Mantener la opción predeterminada `DispatcherRestrictUncacheableContent` desactivada es el método recomendado, por lo que la caché del explorador tiene más flexibilidad. Si, al actualizar de la versión 4.3.3 a la 4.3.4, desea mantener el mismo comportamiento que en la 4.3.3, debe establecer explícitamente `DispatcherRestrictUncacheableContent` como Activado.
+* DISP-874: crea una configuración de Dispatcher para activar o desactivar la implementación de DISP-818 mediante un indicador `DispatcherRestrictUncacheableContent`. El valor por defecto es 0. Cuando está activada, elimina los encabezados de almacenamiento en caché establecidos por el moderador que caducan para el contenido que no se puede almacenar en caché. Es distinto del comportamiento encontrado en la versión 4.3.3 (donde el valor predeterminado era Activado) pero igual que las versiones anteriores a la 4.3.3 (donde el valor predeterminado era Desactivado). Mantener la opción predeterminada `DispatcherRestrictUncacheableContent`desactivada es el método recomendado, por lo que la caché del explorador tiene más flexibilidad. Si, al actualizar de la versión 4.3.3 a la 4.3.4, desea mantener el mismo comportamiento que en la 4.3.3, debe establecer explícitamente `DispatcherRestrictUncacheableContent` como Activado.
 * DISP-841: Dispatcher no respeta /serverStaleOnError para el código de respuesta 504
 * DISP-874: cree una configuración de Dispatcher para activar o desactivar la implementación de DISP-818
 * DISP-883: el seguimiento muestra la descomposición de la solicitud de URL en Dispatcher
