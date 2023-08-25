@@ -2,10 +2,10 @@
 title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 434a17077cea8958a55a637eddd1f4851fc7f2ee
+source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
 workflow-type: tm+mt
 source-wordcount: '8941'
-ht-degree: 100%
+ht-degree: 99%
 
 ---
 
@@ -368,7 +368,7 @@ El siguiente ejemplo representa un fragmento de un archivo `dispatcher.any` que 
     {
     /virtualhosts
       {
-      "www.mycompany.com"
+      "www.mycompany.com/products/*"
       }
     /renders
       {
@@ -380,7 +380,7 @@ El siguiente ejemplo representa un fragmento de un archivo `dispatcher.any` que 
     {
     /virtualhosts
       {
-      "www.mycompany.com/products/*"
+      "www.mycompany.com"
       }
     /renders
       {
@@ -647,7 +647,7 @@ El siguiente filtro de ejemplo permite enviar datos de formulario mediante el m�
 
 #### Filtro de ejemplo: Permitir el acceso a la consola de flujo de trabajo {#example-filter-allow-access-to-the-workflow-console}
 
-El siguiente ejemplo muestra un filtro utilizado para denegar el acceso externo a la consola de flujo de trabajo:
+El siguiente ejemplo muestra un filtro utilizado para permitir el acceso externo a la consola de flujo de trabajo:
 
 ```xml
 /filter {
@@ -825,6 +825,7 @@ Una sola entrada puede tener `glob` o alguna combinación de `method`, `url`, `q
 >Si una regla contiene `/query`, solo coincidirá con las solicitudes que contienen una cadena de consulta y coincidirán con el patrón de consulta proporcionado.
 >
 >En el ejemplo anterior, si las solicitudes a `/etc` que no tienen una cadena de consulta deben ser permitidas también, se requerirían las siguientes reglas:
+>
 
 ```xml
 /filter {  
@@ -1849,40 +1850,38 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/wknd/us/en.html
 A continuación se muestra una lista que contiene los encabezados de respuesta que `X-Dispatcher-Info` devolverá:
 
 * **en caché**\
-   El archivo de destino está en la caché y Dispatcher ha determinado que es válido entregarlo.
+  El archivo de destino está en la caché y Dispatcher ha determinado que es válido entregarlo.
 * **almacenamiento en caché**\
-   El archivo de destino no está en la caché y Dispatcher ha determinado que es válido almacenar la salida en caché y entregarla.
+  El archivo de destino no está en la caché y Dispatcher ha determinado que es válido almacenar la salida en caché y entregarla.
 * **almacenamiento en caché: el archivo stat es más reciente**
 El archivo de destino está en la caché, sin embargo, está invalidado por un archivo stat más reciente. Dispatcher elimina el archivo de destino, lo recrea desde la salida y lo envía.
 * **no almacenable en caché: sin raíz de documento**
-La configuración de la granja no contiene una raíz de documento (elemento de configuración 
-`cache.docroot`).
+La configuración de la granja no contiene una raíz de documento (elemento de configuración `cache.docroot`).
 * **no almacenable en caché: ruta del archivo de caché demasiado larga**\
-   El archivo de destino, (la concatenación de la raíz del documento y el archivo URL), supera el nombre de archivo más largo permitido por el sistema.
+  El archivo de destino, (la concatenación de la raíz del documento y el archivo URL), supera el nombre de archivo más largo permitido por el sistema.
 * **no almacenable en caché: ruta de archivo temporal demasiado larga**\
-   La plantilla del nombre de archivo temporal supera el nombre de archivo más largo permitido por el sistema. Dispatcher crea primero un archivo temporal, antes de crear o sobrescribir realmente el archivo almacenado en caché. El nombre del archivo temporal es el nombre del archivo de destino con los caracteres `_YYYYXXXXXX` anexados a él, donde los caracteres `Y` y `X` se reemplazarán para crear un nombre único.
+  La plantilla del nombre de archivo temporal supera el nombre de archivo más largo permitido por el sistema. Dispatcher crea primero un archivo temporal, antes de crear o sobrescribir realmente el archivo almacenado en caché. El nombre del archivo temporal es el nombre del archivo de destino con los caracteres `_YYYYXXXXXX` anexados a él, donde los caracteres `Y` y `X` se reemplazarán para crear un nombre único.
 * **no almacenable en caché: la dirección URL de solicitud no tiene extensión**\
-   La dirección URL de solicitud no tiene extensión o hay una ruta después de la extensión de archivo, por ejemplo: `/test.html/a/path`.
+  La dirección URL de solicitud no tiene extensión o hay una ruta después de la extensión de archivo, por ejemplo: `/test.html/a/path`.
 * **no almacenable en caché: la solicitud no era un GET ni HEAD**
 El método HTTP no es ni GET ni HEAD. Dispatcher supone que la salida contiene datos dinámicos que no deben almacenarse en caché.
 * **no almacenable en caché: solicitud contenida en una cadena de consulta**\
-   La solicitud contenía una cadena de consulta. Dispatcher supone que la salida depende de la cadena de consulta dada y, por lo tanto, no se almacena en caché.
+  La solicitud contenía una cadena de consulta. Dispatcher supone que la salida depende de la cadena de consulta dada y, por lo tanto, no se almacena en caché.
 * **no almacenable en caché: el administrador de sesiones no se ha autentificado**\
-   La caché de la granja está regida por un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) y la solicitud no contenía la información de autenticación adecuada.
+  La caché de la granja está regida por un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) y la solicitud no contenía la información de autenticación adecuada.
 * **no almacenable en caché: la solicitud contiene autorización**\
-   No se permite que la granja almacene en caché la salida (`allowAuthorized 0`) y la solicitud contiene información de autenticación.
+  No se permite que la granja almacene en caché la salida (`allowAuthorized 0`) y la solicitud contiene información de autenticación.
 * **no almacenable en caché: el destino es un directorio**\
-   El archivo de destino es un directorio. Esta ubicación podría señalar a algún error conceptual, en el que una dirección URL y algunas direcciones URL secundarias contienen salida almacenable en caché. Por ejemplo, si una solicitud a `/test.html/a/file.ext` llega primero y contiene salida almacenable en caché, Dispatcher no puede almacenar en caché la salida de una solicitud posterior a `/test.html`.
+  El archivo de destino es un directorio. Esta ubicación podría señalar a algún error conceptual, en el que una dirección URL y algunas direcciones URL secundarias contienen salida almacenable en caché. Por ejemplo, si una solicitud a `/test.html/a/file.ext` llega primero y contiene salida almacenable en caché, Dispatcher no puede almacenar en caché la salida de una solicitud posterior a `/test.html`.
 * **no almacenable en caché: la dirección URL de solicitud tiene una barra diagonal**\
-   La dirección URL de la solicitud tiene una barra diagonal.
+  La dirección URL de la solicitud tiene una barra diagonal.
 * **no almacenable en caché: la URL de solicitud no está en las reglas de caché**\
-   Las reglas de caché de la granja deniegan explícitamente el almacenamiento en caché de la salida de alguna URL de solicitud.
+  Las reglas de caché de la granja deniegan explícitamente el almacenamiento en caché de la salida de alguna URL de solicitud.
 * **no almacenable en caché: acceso denegado del verificador de autorizaciones**\
-   El verificador de autorizaciones de la granja denegó el acceso al archivo en caché.
+  El verificador de autorizaciones de la granja denegó el acceso al archivo en caché.
 * **no almacenable en caché: sesión no válida**.
 La caché de la granja está regida por un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) y la sesión del usuario ya no es válida.
 * **no almacenable en caché: la respuesta contiene`no_cache`**
-El servidor remoto devolvió un 
-encabezado `Dispatcher: no_cache`, prohibiendo que Dispatcher almacene en caché la salida.
+El servidor remoto devolvió un encabezado `Dispatcher: no_cache`, prohibiendo que Dispatcher almacene en caché la salida.
 * **no almacenable en caché: la longitud del contenido de respuesta es cero**. 
 La longitud del contenido de la respuesta es cero; Dispatcher no creará un archivo de longitud cero.
