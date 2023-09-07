@@ -3,9 +3,9 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 5fe3bb534b239d5aec892623cab65e84e04c7d10
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8941'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -213,7 +213,7 @@ Cada propiedad de granja puede contener las siguientes propiedades secundarias:
 
 >[!CAUTION]
 >
->El parámetro `/homepage` (solo IIS) ya no funciona. En su lugar, debe utilizar el [Módulo de reescritura de URL de IIS](https://learn.microsoft.com/es-es/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
+>El parámetro `/homepage`(solo IIS) ya no funciona. En su lugar, debe utilizar el [Módulo de reescritura de URL de IIS](https://learn.microsoft.com/es-es/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
 >Si utiliza Apache, debe utilizar el módulo `mod_rewrite`. Consulte la documentación del sitio web Apache para obtener información sobre `mod_rewrite` (por ejemplo, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). Al utilizar `mod_rewrite`, se recomienda utilizar el indicador &#39;passthrough|PT&#39; (pasar al siguiente controlador) para forzar al motor de reescritura a establecer el campo `uri` de la estructura interna `request_rec` en el valor del campo `filename`.
 
@@ -647,7 +647,7 @@ El siguiente filtro de ejemplo permite enviar datos de formulario mediante el m�
 
 #### Filtro de ejemplo: Permitir el acceso a la consola de flujo de trabajo {#example-filter-allow-access-to-the-workflow-console}
 
-El siguiente ejemplo muestra un filtro utilizado para permitir el acceso externo a la consola de flujo de trabajo:
+En el siguiente ejemplo se muestra un filtro que se utiliza para permitir el acceso externo a la consola de flujo de trabajo:
 
 ```xml
 /filter {
@@ -1149,7 +1149,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 Utilice la propiedad `/statfileslevel` para invalidar los archivos en caché según su ruta:
 
-* Dispatcher crea `.stat` archivos en cada carpeta desde la carpeta docroot hasta el nivel especificado. La carpeta docroot es el nivel 0.
+* Dispatcher crea `.stat`archivos en cada carpeta desde la carpeta docroot hasta el nivel especificado. La carpeta docroot es el nivel 0.
 * Los archivos se invalidan tocando el archivo `.stat`. La fecha de la última modificación del archivo `.stat` se compara con la fecha de la última modificación de un documento almacenado en caché. El documento se recupera si el archivo `.stat` es más reciente.
 
 * Cuando se invalida un archivo ubicado en un nivel específico, se tocan **todos** `.stat` los archivos desde docroot **hasta** el nivel del archivo invalidado o el `statsfilevel` configurado (el que sea menor).
