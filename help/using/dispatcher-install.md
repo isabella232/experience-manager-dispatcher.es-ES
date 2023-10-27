@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 663e493f3e1ae26c264e574cec4e0b271a971809
+source-git-commit: 3bb9cb81ac98147bf12e9370d02002dd91ee374e
 workflow-type: tm+mt
-source-wordcount: '3693'
+source-wordcount: '3726'
 ht-degree: 100%
 
 ---
@@ -314,9 +314,9 @@ Siga los siguientes pasos para agregar Dispatcher a su servidor web Apache:
 
    * **Windows**: Lugar `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
    * **Unix**: Localice el directorio `<APACHE_ROOT>/libexec` o `<APACHE_ROOT>/modules`según su instalación.\
-      Copie `dispatcher-apache<options>.so` en este directorio.\
-      Para simplificar el mantenimiento a largo plazo, también puede crear un vínculo simbólico denominado `mod_dispatcher.so` a Dispatcher:\
-      `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
+     Copie `dispatcher-apache<options>.so` en este directorio.\
+     Para simplificar el mantenimiento a largo plazo, también puede crear un vínculo simbólico denominado `mod_dispatcher.so` a Dispatcher:\
+     `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
 
 1. Copie el archivo dispatcher.any en el directorio `<APACHE_ROOT>/conf`.
 
@@ -362,10 +362,10 @@ Estos pasos son obligatorios:
 
    * El servidor Apache se inicia como raíz, aunque los procesos secundarios lo harán como daemon (por motivos de seguridad). DocumentRoot (`<APACHE_ROOT>/htdocs`) debe pertenecer al usuario daemon:
 
-      ```xml
-      cd <APACHE_ROOT>  
-      chown -R daemon:daemon htdocs
-      ```
+     ```xml
+     cd <APACHE_ROOT>  
+     chown -R daemon:daemon htdocs
+     ```
 
 **LoadModule**
 
@@ -400,6 +400,10 @@ DispatcherKeepAliveTimeout 60
 </IfModule>
 ...
 ```
+
+>[!NOTE]
+>
+>Los clientes que actualicen de forma específica de la versión 4.3.3 a la 4.3.4 notarán un comportamiento diferente en la forma en que se establecen los encabezados de caché para el contenido que no se puede almacenar en caché. Para obtener más información acerca de este cambio, consulte la página [Notas de la versión](/help/using/release-notes.md#nov).
 
 Los parámetros de configuración individuales:
 
