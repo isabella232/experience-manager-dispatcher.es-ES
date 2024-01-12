@@ -3,9 +3,9 @@ title: Configurar Dispatcher
 description: Aprenda a configurar Dispatcher. Obtenga información acerca de la compatibilidad con IPv4 e IPv6, archivos de configuración, variables de entorno, nombres de instancias, definición de granjas, identificación de hosts virtuales, etc.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 410346694a134c0f32a24de905623655f15269b4
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8857'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -1384,7 +1384,7 @@ Para obtener más información, lea las secciones anteriores `/invalidate` y `/s
 
 ### Configuración de la invalidación de caché basada en tiempo - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-La invalidación de la caché basada en el tiempo depende de la propiedad `/enableTTL` y la presencia de encabezados de caducidad regulares desde el HTTP estándar. Si establece la propiedad en 1 (`/enableTTL "1"`), evalúa los encabezados de respuesta del backend. Si los encabezados contienen un `Cache-Control`, `max-age` o `Expires` fecha, se crea un archivo auxiliar vacío junto al archivo en caché, con la hora de modificación igual a la fecha de caducidad. Si se solicita el archivo en la caché transcurrido el tiempo de modificación, se vuelve a solicitar automáticamente desde el back-end.
+La invalidación de la caché basada en el tiempo depende de la propiedad `/enableTTL` y la presencia de encabezados de caducidad regulares desde el HTTP estándar. Si se establece la propiedad en 1 (`/enableTTL "1"`), evalúa los encabezados de respuesta de back-end. Si los encabezados contienen una fecha `Cache-Control`, `max-age` o `Expires`, se crea un archivo auxiliar vacío junto al archivo de la caché, con una hora de modificación igual a la fecha de caducidad. Si se solicita el archivo en la caché transcurrido el tiempo de modificación, se vuelve a solicitar automáticamente desde el back-end.
 
 Antes de la versión 4.3.5 de Dispatcher, la lógica de invalidación de TTL se basaba únicamente en el valor de TTL configurado. Con la versión 4.3.5 de Dispatcher, se tienen en cuenta tanto el TTL establecido **y** como las reglas de invalidación de la caché de Dispatcher. Como tal, para un archivo en la caché:
 
@@ -1882,6 +1882,6 @@ El método HTTP no es ni GET ni HEAD. Dispatcher supone que la salida contiene d
 * **no almacenable en caché: sesión no válida**.
 La caché de la granja está regida por un administrador de sesiones (la configuración contiene un nodo `sessionmanagement`) y la sesión del usuario ya no es válida.
 * **no almacenable en caché: la respuesta contiene`no_cache`**
-El servidor remoto devolvió un `Dispatcher: no_cache` encabezado, prohibiendo que Dispatcher almacene en caché la salida.
+El servidor remoto devolvió un encabezado `Dispatcher: no_cache`, prohibiendo que Dispatcher almacene en caché la salida.
 * **no almacenable en caché: la longitud del contenido de respuesta es cero**. 
 La longitud del contenido de la respuesta es cero; Dispatcher no creará un archivo de longitud cero.
